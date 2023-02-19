@@ -16,15 +16,21 @@
 <body>
 
     <header class="welcome">
-        <nav class="navbar navbar-light py-2">
+        <nav class="navbar navbar-light py-3">
             <div class="container">
                 <a class="navbar-brand ml-auto d-flex align-items-center" href="#">
-                    <img src="https://ui-avatars.com/api/?name=Rishikesh+Suvarna&background=red&color=fff" alt="Username">
-                    <div class="d-flex align-items-center ml-3">
-                        <span>Rishikesh S</span>
-                        <i class="fas fa-chevron-down ml-2"></i>
-                    </div>
                 </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item d-flex align-items-center user-profile-nav">
+                        <img src="https://ui-avatars.com/api/?name=Rishikesh+Suvarna&background=327DF6&color=fff" alt="Username">
+                        <div class="d-flex align-items-center ml-2">
+                            <a href="FIXME:">
+                                <span>Rishikesh S</span>
+                                <i class="fas fa-chevron-down ml-2"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
@@ -35,46 +41,105 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <img src="assets/images/common/team-7.png" width="80" alt="">
-                        <div class="mt-4">
-                            <h4>Welcome Rishikesh,</h4>
-                            <span>Please select your preferences</span>
-                            <ul class="tags-wrapper d-flex flex-wrap list-unstyled mb-0">
-                                <li class="tag">
-                                    <a href="FIXME:">Crypto</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Real Estate</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Bonds</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Equity</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Private Equity</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Stocks</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Live Stock</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Agro</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Forex</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">NFTs</a>
-                                </li>
-                                <li class="tag">
-                                    <a href="FIXME:">Random</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="FIXME:" class="btn btn-custom px-5 mt-4 d-inline-flex align-items-center">Continue <i class="ml-3 fas fa-chevron-right"></i></a>
+                        <form action="#" method="POST">
+                            <div class="mt-4">
+                                <h4>Welcome Rishikesh,</h4>
+                                <span>Please select your preferences</span>
+                                <ul class="tags-wrapper d-flex flex-wrap list-unstyled mb-0">
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Crypto" id="Crypto">
+                                            <label for="Crypto">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Crypto</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Real Estate" id="Real Estate">
+                                            <label for="Real Estate">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Real Estate</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Bonds" id="Bonds">
+                                            <label for="Bonds">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Bonds</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Equity" id="Equity">
+                                            <label for="Equity">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Equity</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Private Equity" id="Private Equity">
+                                            <label for="Private Equity">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Private Equity</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Forex" id="Forex">
+                                            <label for="Forex">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Forex</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="NFTs" id="NFTs">
+                                            <label for="NFTs">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>NFTs</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Live Stock" id="Live Stock">
+                                            <label for="Live Stock">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Live Stock</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Agro" id="Agro">
+                                            <label for="Agro">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Agro</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li class="tag">
+                                        <div class="">
+                                            <input type="checkbox" name="Random" id="Random">
+                                            <label for="Random">
+                                                <i class="fas fa-check mr-2"></i>
+                                                <span>Random</span>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <button type="submit" class="btn btn-custom px-5 mt-4 d-inline-flex align-items-center">Continue <i class="ml-3 fas fa-chevron-right"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

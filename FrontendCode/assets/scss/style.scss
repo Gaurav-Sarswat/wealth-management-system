@@ -1,5 +1,6 @@
 @import '_variables';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700&display=swap');
 
 // MIXINS
 @mixin too-small-mobile {
@@ -67,7 +68,8 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    // font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
     min-height: 100vh;
 }
 
@@ -202,47 +204,157 @@ header.welcome {
 section.choose-preferences {
     ul.tags-wrapper {
         margin-top: 30px;
-        max-width: 500px;
+        max-width: 550px;
         li.tag {
             margin-bottom: 10px;
             margin-right: 10px;
-            a {
-                text-decoration: none;
-                display: inline-block;
+            input[type=checkbox] {
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                &:checked+label {
+                    background-color: $primary;
+                    color: $white;   
+                    i {
+                        display: block;
+                        opacity: 1;
+                    }
+                }
+            }
+            label {
+                margin-bottom: 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
                 padding: 10px 30px;
                 border: 2px solid $primary;
                 color: $primary;
                 font-weight: 500;
                 border-radius: 50px;
                 transition: .4s;
+                i {
+                    font-size: .8rem;
+                    display: none;
+                    opacity: 0;
+                    transition: .4s;
+                }
                 &:hover {
                     background-color: $primary;
                     color: $white;
                 }
             }
-        }    
+        }  
     }
 }
 
 // Welcome Ends
 
-// Dashboard Starts
+// Dashboard Nav Starts
 
-header {
-    .navbar-brand {
-        img {
-            width: auto;
-            height: 70px;
-        }
+.navbar-brand {
+    img {
+        width: auto;
+        height: 70px;
     }
-    .navbar-nav {
-        .user-profile-nav {
-            img  {
-                border-radius: 50%;
-                width: 45px;
+}
+.navbar-nav {
+    .user-profile-nav {
+        img  {
+            border-radius: 50%;
+            width: 35px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: $text;
+            span {
+                font-weight: 500;
+            }
+            i {
+                font-size: .8rem;
             }
         }
     }
 }
 
-// Dashboard Ends
+// Dashboard Nav Ends
+
+// Layout Starts
+
+main {
+    .layout-menu {
+        flex: 20%;
+        border-right: 1px solid $border;
+        min-height: 100vh;
+        nav {
+            height: 100px;
+        }
+        ul.main-menu {
+            li {
+                transition: .4s;
+                margin-bottom: 5px;
+                a {
+                    padding: 10px;
+                    text-decoration: none;
+                    color: $text;
+                    font-weight: 500;
+                    width: 100%;
+                }
+                span {
+                    margin-left: 10px;
+                }
+                i {
+                    color: $primary;
+                }
+                &.active {
+                    border-radius: 4px;
+                    background-color: rgba($primary, 0.1);
+                }
+                &:hover {
+                    border-radius: 4px;
+                    background-color: rgba($primary, 0.1);
+                }
+            }
+        }
+    }
+    .layout-main {
+        nav {
+            height: 100px;
+        }
+        flex: 80%;
+        min-height: 100vh;
+        .content-wrapper {
+            // BREADCRUMB
+            .custom-breadcrumb {
+                li {
+                    font-size: .85rem;
+                    padding-right: 15px;
+                    color: $text;
+                    a {
+                        color: $text-light;
+                        position: relative;
+                        display: block;
+                        text-decoration: none;
+                        transition: .4s;
+                        &:hover {
+                            color: $primary;
+                        }
+                        &::before {
+                            position: absolute;
+                            content: '/';
+                            top: 0;
+                            right: -10px;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .page-title {
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// Layout Ends

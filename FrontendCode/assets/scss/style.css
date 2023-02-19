@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Nunito", sans-serif;
   min-height: 100vh;
 }
 
@@ -119,15 +119,31 @@ header.welcome .navbar-brand i {
 
 section.choose-preferences ul.tags-wrapper {
   margin-top: 30px;
-  max-width: 500px;
+  max-width: 550px;
 }
 section.choose-preferences ul.tags-wrapper li.tag {
   margin-bottom: 10px;
   margin-right: 10px;
 }
-section.choose-preferences ul.tags-wrapper li.tag a {
-  text-decoration: none;
-  display: inline-block;
+section.choose-preferences ul.tags-wrapper li.tag input[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+}
+section.choose-preferences ul.tags-wrapper li.tag input[type=checkbox]:checked + label {
+  background-color: #327DF6;
+  color: #FFF;
+}
+section.choose-preferences ul.tags-wrapper li.tag input[type=checkbox]:checked + label i {
+  display: block;
+  opacity: 1;
+}
+section.choose-preferences ul.tags-wrapper li.tag label {
+  margin-bottom: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 30px;
   border: 2px solid #327DF6;
   color: #327DF6;
@@ -135,16 +151,100 @@ section.choose-preferences ul.tags-wrapper li.tag a {
   border-radius: 50px;
   transition: 0.4s;
 }
-section.choose-preferences ul.tags-wrapper li.tag a:hover {
+section.choose-preferences ul.tags-wrapper li.tag label i {
+  font-size: 0.8rem;
+  display: none;
+  opacity: 0;
+  transition: 0.4s;
+}
+section.choose-preferences ul.tags-wrapper li.tag label:hover {
   background-color: #327DF6;
   color: #FFF;
 }
 
-header .navbar-brand img {
+.navbar-brand img {
   width: auto;
   height: 70px;
 }
-header .navbar-nav .user-profile-nav img {
+
+.navbar-nav .user-profile-nav img {
   border-radius: 50%;
-  width: 45px;
+  width: 35px;
+}
+.navbar-nav .user-profile-nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: #212529;
+}
+.navbar-nav .user-profile-nav a span {
+  font-weight: 500;
+}
+.navbar-nav .user-profile-nav a i {
+  font-size: 0.8rem;
+}
+
+main .layout-menu {
+  flex: 20%;
+  border-right: 1px solid #eee;
+  min-height: 100vh;
+}
+main .layout-menu nav {
+  height: 100px;
+}
+main .layout-menu ul.main-menu li {
+  transition: 0.4s;
+  margin-bottom: 5px;
+}
+main .layout-menu ul.main-menu li a {
+  padding: 10px;
+  text-decoration: none;
+  color: #212529;
+  font-weight: 500;
+  width: 100%;
+}
+main .layout-menu ul.main-menu li span {
+  margin-left: 10px;
+}
+main .layout-menu ul.main-menu li i {
+  color: #327DF6;
+}
+main .layout-menu ul.main-menu li.active {
+  border-radius: 4px;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+main .layout-menu ul.main-menu li:hover {
+  border-radius: 4px;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+main .layout-main {
+  flex: 80%;
+  min-height: 100vh;
+}
+main .layout-main nav {
+  height: 100px;
+}
+main .layout-main .content-wrapper .custom-breadcrumb li {
+  font-size: 0.85rem;
+  padding-right: 15px;
+  color: #212529;
+}
+main .layout-main .content-wrapper .custom-breadcrumb li a {
+  color: #959595;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: 0.4s;
+}
+main .layout-main .content-wrapper .custom-breadcrumb li a:hover {
+  color: #327DF6;
+}
+main .layout-main .content-wrapper .custom-breadcrumb li a::before {
+  position: absolute;
+  content: "/";
+  top: 0;
+  right: -10px;
+  height: 100%;
+}
+main .layout-main .content-wrapper .page-title {
+  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */

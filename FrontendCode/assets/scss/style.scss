@@ -1,0 +1,360 @@
+@import '_variables';
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700&display=swap');
+
+// MIXINS
+@mixin too-small-mobile {
+    @media (min-width: $too-small-mobile) {
+        @content;
+    }
+}
+
+@mixin small-mobile {
+    @media (min-width: $small-mobile) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (min-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin small-tab {
+    @media (min-width: $small-tab) {
+        @content;
+    }
+}
+
+@mixin big-tab {
+    @media (min-width: $big-tab) {
+        @content;
+    }
+}
+
+@mixin small-desktop {
+    @media (min-width: $small-desktop) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin large-desktop {
+    @media (min-width: $large-desktop) {
+        @content;
+    }
+}
+
+@mixin center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    // font-family: 'Montserrat', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+}
+
+// Common Classes Starts
+
+.btn-custom {
+    background-color: $primary;
+    color: $white;
+    font-weight: 500;
+    padding: 12px 0;
+    border-radius: 25px;
+    border: 2px solid $primary;
+    &:hover {
+        color: $primary;
+        background: $white;
+    }
+}
+
+// Common Classes Ends
+
+main {
+    &.auth {
+        min-height: 100vh;
+    }
+    .top-left-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        img {
+            width: 300px;
+        }
+    }
+}
+
+.row {
+    &.auth {
+        min-height: 100vh;
+    }
+}
+
+// Login - Auth Starts
+
+header.auth-nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    .navbar {
+        .navbar-brand {
+            img {
+                width: auto;
+                height: 70px;
+            }
+        }
+    }
+}
+
+.auth-bg-wrapper {
+    background-image: url('../images/common/auth-bg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    &::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($primary, 0.15);
+    }
+}
+
+
+.auth-form-wrapper {
+    h4 {
+        font-size: 1.4rem;
+    }
+    .auth-form {
+        min-width: 350px;
+        .form-group {
+            margin-bottom: 20px;
+            input {
+                border: 1px solid #6a7a91;
+                border-radius: 2px;
+                padding: 20px 10px;
+                background-color: rgba($primary, 0.1);
+                &::placeholder {
+                    color: #666;
+                    font-size: .95rem;
+                    transition: .3s;
+                }
+                &:focus {
+                    box-shadow: none;
+                    &::placeholder {
+                        font-size: 0.85rem;
+                    }
+                }
+            }
+        }
+        p {
+            font-size: 0.9rem;
+        }
+        a {
+            text-decoration: none;
+            color: $primary;
+        }
+    }
+}
+
+// Login - Auth Ends
+
+// Welcome Starts
+
+header.welcome {
+    .navbar-brand {
+        img {
+            border-radius: 50%;
+            width: 40px;
+        }
+        span {
+            font-size: .95rem;
+            font-weight: 500;
+        }
+        i {
+            font-size: .8rem;
+        }
+    }
+}
+
+section.choose-preferences {
+    ul.tags-wrapper {
+        margin-top: 30px;
+        max-width: 550px;
+        li.tag {
+            margin-bottom: 10px;
+            margin-right: 10px;
+            input[type=checkbox] {
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                &:checked+label {
+                    background-color: $primary;
+                    color: $white;   
+                    i {
+                        display: block;
+                        opacity: 1;
+                    }
+                }
+            }
+            label {
+                margin-bottom: 0;
+                cursor: pointer;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 10px 30px;
+                border: 2px solid $primary;
+                color: $primary;
+                font-weight: 500;
+                border-radius: 50px;
+                transition: .4s;
+                i {
+                    font-size: .8rem;
+                    display: none;
+                    opacity: 0;
+                    transition: .4s;
+                }
+                &:hover {
+                    background-color: $primary;
+                    color: $white;
+                }
+            }
+        }  
+    }
+}
+
+// Welcome Ends
+
+// Dashboard Nav Starts
+
+.navbar-brand {
+    img {
+        width: auto;
+        height: 70px;
+    }
+}
+.navbar-nav {
+    .user-profile-nav {
+        img  {
+            border-radius: 50%;
+            width: 35px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            color: $text;
+            span {
+                font-weight: 500;
+            }
+            i {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+// Dashboard Nav Ends
+
+// Layout Starts
+
+main {
+    .layout-menu {
+        flex: 20%;
+        border-right: 1px solid $border;
+        min-height: 100vh;
+        nav {
+            height: 100px;
+        }
+        ul.main-menu {
+            li {
+                transition: .4s;
+                margin-bottom: 5px;
+                a {
+                    padding: 10px;
+                    text-decoration: none;
+                    color: $text;
+                    font-weight: 500;
+                    width: 100%;
+                }
+                span {
+                    margin-left: 10px;
+                }
+                i {
+                    color: $primary;
+                }
+                &.active {
+                    border-radius: 4px;
+                    background-color: rgba($primary, 0.1);
+                }
+                &:hover {
+                    border-radius: 4px;
+                    background-color: rgba($primary, 0.1);
+                }
+            }
+        }
+    }
+    .layout-main {
+        nav {
+            height: 100px;
+        }
+        flex: 80%;
+        min-height: 100vh;
+        .content-wrapper {
+            // BREADCRUMB
+            .custom-breadcrumb {
+                li {
+                    font-size: .85rem;
+                    padding-right: 15px;
+                    color: $text;
+                    a {
+                        color: $text-light;
+                        position: relative;
+                        display: block;
+                        text-decoration: none;
+                        transition: .4s;
+                        &:hover {
+                            color: $primary;
+                        }
+                        &::before {
+                            position: absolute;
+                            content: '/';
+                            top: 0;
+                            right: -10px;
+                            height: 100%;
+                        }
+                    }
+                }
+            }
+            .page-title {
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+// Layout Ends

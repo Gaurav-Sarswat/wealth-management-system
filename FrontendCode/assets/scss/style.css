@@ -27,6 +27,40 @@ body {
   background: #FFF;
 }
 
+.container-header {
+  padding: 24px;
+  padding-bottom: 24px;
+}
+
+.container {
+  padding-top: 24px;
+}
+
+.custom-card {
+  background: #FFF;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 12px;
+  box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
+}
+.custom-card figure img {
+  border-radius: 2px;
+}
+.custom-card .title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+.custom-card .content {
+  font-size: 0.95rem;
+}
+.custom-card .date {
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.custom-card a i {
+  transform: rotate(-45deg);
+}
+
 main.auth {
   min-height: 100vh;
 }
@@ -86,6 +120,12 @@ header.auth-nav .navbar .navbar-brand img {
   padding: 20px 10px;
   background-color: rgba(50, 125, 246, 0.1);
 }
+.auth-form-wrapper .auth-form .form-group input::-moz-placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
 .auth-form-wrapper .auth-form .form-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -93,6 +133,9 @@ header.auth-nav .navbar .navbar-brand img {
 }
 .auth-form-wrapper .auth-form .form-group input:focus {
   box-shadow: none;
+}
+.auth-form-wrapper .auth-form .form-group input:focus::-moz-placeholder {
+  font-size: 0.85rem;
 }
 .auth-form-wrapper .auth-form .form-group input:focus::placeholder {
   font-size: 0.85rem;

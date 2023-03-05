@@ -41,8 +41,6 @@ body {
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 12px;
-  -webkit-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
-  -moz-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
   box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
 }
 .custom-card figure img {
@@ -61,6 +59,89 @@ body {
 }
 .custom-card a i {
   transform: rotate(-45deg);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+.form-group input {
+  border: 1px solid #6a7a91;
+  border-radius: 2px;
+  padding: 20px 10px;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+.form-group input::-moz-placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.form-group input::placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+.form-group input:focus {
+  box-shadow: none;
+}
+.form-group input:focus::-moz-placeholder {
+  font-size: 0.85rem;
+}
+.form-group input:focus::placeholder {
+  font-size: 0.85rem;
+}
+.form-group select {
+  border: 1px solid #6a7a91;
+  border-radius: 2px;
+  height: 42px;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+.form-group select::-moz-placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.form-group select::placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+.form-group select:focus {
+  box-shadow: none;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+.form-group select:focus::-moz-placeholder {
+  font-size: 0.85rem;
+}
+.form-group select:focus::placeholder {
+  font-size: 0.85rem;
+}
+.form-group textarea {
+  border: 1px solid #6a7a91;
+  border-radius: 2px;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+.form-group textarea::-moz-placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
+.form-group textarea::placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+.form-group textarea:focus {
+  box-shadow: none;
+  background-color: rgba(50, 125, 246, 0.1);
+}
+.form-group textarea:focus::-moz-placeholder {
+  font-size: 0.85rem;
+}
+.form-group textarea:focus::placeholder {
+  font-size: 0.85rem;
 }
 
 main.auth {
@@ -122,6 +203,12 @@ header.auth-nav .navbar .navbar-brand img {
   padding: 20px 10px;
   background-color: rgba(50, 125, 246, 0.1);
 }
+.auth-form-wrapper .auth-form .form-group input::-moz-placeholder {
+  color: #666;
+  font-size: 0.95rem;
+  -moz-transition: 0.3s;
+  transition: 0.3s;
+}
 .auth-form-wrapper .auth-form .form-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -129,6 +216,9 @@ header.auth-nav .navbar .navbar-brand img {
 }
 .auth-form-wrapper .auth-form .form-group input:focus {
   box-shadow: none;
+}
+.auth-form-wrapper .auth-form .form-group input:focus::-moz-placeholder {
+  font-size: 0.85rem;
 }
 .auth-form-wrapper .auth-form .form-group input:focus::placeholder {
   font-size: 0.85rem;

@@ -124,6 +124,65 @@ body {
         }
     }
 }
+
+.form-group {
+    margin-bottom: 20px;
+    input {
+        border: 1px solid #6a7a91;
+        border-radius: 2px;
+        padding: 20px 10px;
+        background-color: rgba($primary, 0.1);
+        &::placeholder {
+            color: #666;
+            font-size: .95rem;
+            transition: .3s;
+        }
+        &:focus {
+            box-shadow: none;
+            &::placeholder {
+                font-size: 0.85rem;
+            }
+        }
+    }
+    select {
+        border: 1px solid #6a7a91;
+        border-radius: 2px;
+        // padding: 0 10px;
+        height: 42px;
+        background-color: rgba($primary, 0.1);
+        &::placeholder {
+            color: #666;
+            font-size: .95rem;
+            transition: .3s;
+        }
+        &:focus {
+            box-shadow: none;
+            background-color: rgba($primary, 0.1);
+            &::placeholder {
+                font-size: 0.85rem;
+            }
+        }
+    }
+    textarea {
+        border: 1px solid #6a7a91;
+        border-radius: 2px;
+        background-color: rgba($primary, 0.1);
+        &::placeholder {
+            color: #666;
+            font-size: .95rem;
+            transition: .3s;
+        }
+        &:focus {
+            box-shadow: none;
+            background-color: rgba($primary, 0.1);
+            &::placeholder {
+                font-size: 0.85rem;
+            }
+        }
+
+    }
+}
+
 // Common Classes Ends
 
 main {

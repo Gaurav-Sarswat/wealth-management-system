@@ -12,6 +12,7 @@ html {
 body {
   font-family: "Nunito", sans-serif;
   min-height: 100vh;
+  background-color: #D9D9D9;
 }
 
 .btn-custom {
@@ -24,16 +25,12 @@ body {
 }
 .btn-custom:hover {
   color: #327DF6;
-  background: #FFF;
+  background: transparent;
 }
 
 .container-header {
   padding: 24px;
   padding-bottom: 24px;
-}
-
-.container {
-  padding-top: 24px;
 }
 
 .custom-card {
@@ -142,6 +139,36 @@ body {
 }
 .form-group textarea:focus::placeholder {
   font-size: 0.85rem;
+}
+
+.table {
+  border-spacing: 0 5px;
+  border-collapse: separate;
+}
+.table thead {
+  background-color: transparent;
+}
+.table thead tr th {
+  border-color: transparent !important;
+}
+.table tbody tr {
+  background-color: white;
+  margin-bottom: 10px;
+}
+.table td {
+  vertical-align: middle;
+}
+.table td:first-child {
+  border-top-left-radius: 5px;
+}
+.table td:first-child {
+  border-bottom-left-radius: 5px;
+}
+.table td:last-child {
+  border-top-right-radius: 5px;
+}
+.table td:last-child {
+  border-bottom-right-radius: 5px;
 }
 
 main.auth {

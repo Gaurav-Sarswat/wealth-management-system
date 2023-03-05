@@ -71,6 +71,7 @@ body {
     // font-family: 'Montserrat', sans-serif;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
+    background-color: $bg-color;
 }
 
 // Common Classes Starts
@@ -84,16 +85,16 @@ body {
     border: 2px solid $primary;
     &:hover {
         color: $primary;
-        background: $white;
+        background: transparent;
     }
 }
 .container-header{
     padding: 24px;
     padding-bottom: 24px;
 }
-.container{
-    padding-top: 24px;
-}
+// .container{
+//     padding-top: 24px;
+// }
 .custom-card {
     background: $white;
     border: 1px solid #eee;
@@ -183,6 +184,39 @@ body {
     }
 }
 
+.table{
+    border-spacing: 0 5px;
+    border-collapse: separate;
+    thead{
+        background-color: transparent;
+        tr {
+            th {
+                border-color: transparent !important;
+            }
+        }
+    }
+    tbody{
+        tr{
+            background-color: white;
+            margin-bottom: 10px;
+        }
+    }
+    td {
+        vertical-align: middle;
+        &:first-child {
+            border-top-left-radius: 5px;
+        }
+        &:first-child {
+            border-bottom-left-radius: 5px;
+        }
+        &:last-child {
+            border-top-right-radius: 5px;
+        }
+        &:last-child {
+            border-bottom-right-radius: 5px;
+        }
+    }
+}
 // Common Classes Ends
 
 main {

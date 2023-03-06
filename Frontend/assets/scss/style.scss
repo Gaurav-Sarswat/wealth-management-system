@@ -239,9 +239,7 @@ main {
         min-height: 100vh;
     }
 }
-.row2{
-    
-}
+
 
 // Login - Auth Starts
 
@@ -487,6 +485,44 @@ main {
             .page-title {
                 font-weight: 500;
             }
+        }
+    }
+}
+
+section.filters {
+    .custom-input-group {
+        position: relative;
+        i {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 15px;
+            color: #666;
+        }
+        input {
+            border-radius: 50px;
+            border: 1px solid #6a7a91;
+            // padding: 20px 10px;
+            background-color: #EAEDF4;
+            height: 42px;
+            min-width: 300px;
+            padding-left: 40px;
+            &::placeholder {
+                color: #666;
+                font-size: .95rem;
+                transition: .3s;
+            }
+            &:focus {
+                box-shadow: none;
+                &::placeholder {
+                    font-size: 0.85rem;
+                }
+            }
+        }
+    }
+    .dropdown {
+        button {
+            background-color: #EAEDF4 !important;
         }
     }
 }

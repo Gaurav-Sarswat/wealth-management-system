@@ -12,7 +12,6 @@ html {
 body {
   font-family: "Nunito", sans-serif;
   min-height: 100vh;
-  background-color: #D9D9D9;
 }
 
 .btn-custom {
@@ -21,16 +20,20 @@ body {
   font-weight: 500;
   padding: 12px 0;
   border-radius: 25px;
-  border: 2px solid #327DF6;
+  border: 2px solid #327DF6 !important;
 }
 .btn-custom:hover {
-  color: #327DF6;
-  background: transparent;
+  color: #327DF6 !important;
+  background: #FFF !important;
 }
 
 .container-header {
   padding: 24px;
   padding-bottom: 24px;
+}
+
+.container {
+  padding-top: 24px;
 }
 
 .custom-card {
@@ -56,119 +59,6 @@ body {
 }
 .custom-card a i {
   transform: rotate(-45deg);
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-.form-group input {
-  border: 1px solid #6a7a91;
-  border-radius: 2px;
-  padding: 20px 10px;
-  background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-.form-group input::placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-.form-group input:focus {
-  box-shadow: none;
-}
-.form-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
-}
-.form-group input:focus::placeholder {
-  font-size: 0.85rem;
-}
-.form-group select {
-  border: 1px solid #6a7a91;
-  border-radius: 2px;
-  height: 42px;
-  background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group select::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-.form-group select::placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-.form-group select:focus {
-  box-shadow: none;
-  background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group select:focus::-moz-placeholder {
-  font-size: 0.85rem;
-}
-.form-group select:focus::placeholder {
-  font-size: 0.85rem;
-}
-.form-group textarea {
-  border: 1px solid #6a7a91;
-  border-radius: 2px;
-  background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group textarea::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-.form-group textarea::placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-.form-group textarea:focus {
-  box-shadow: none;
-  background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group textarea:focus::-moz-placeholder {
-  font-size: 0.85rem;
-}
-.form-group textarea:focus::placeholder {
-  font-size: 0.85rem;
-}
-
-.table {
-  border-spacing: 0 5px;
-  border-collapse: separate;
-}
-.table thead {
-  background-color: transparent;
-}
-.table thead tr th {
-  border-color: transparent !important;
-}
-.table tbody tr {
-  background-color: white;
-  margin-bottom: 10px;
-}
-.table td {
-  vertical-align: middle;
-}
-.table td:first-child {
-  border-top-left-radius: 5px;
-}
-.table td:first-child {
-  border-bottom-left-radius: 5px;
-}
-.table td:last-child {
-  border-top-right-radius: 5px;
-}
-.table td:last-child {
-  border-bottom-right-radius: 5px;
 }
 
 main.auth {
@@ -199,7 +89,7 @@ header.auth-nav .navbar .navbar-brand img {
 }
 
 .auth-bg-wrapper {
-  background-image: url("../images/common/auth-bg.png");
+  background-image: url("/images/common/auth-bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -400,46 +290,4 @@ main .layout-main .content-wrapper .custom-breadcrumb li a::before {
 }
 main .layout-main .content-wrapper .page-title {
   font-weight: 500;
-}
-
-section.filters .custom-input-group {
-  position: relative;
-}
-section.filters .custom-input-group i {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 15px;
-  color: #666;
-}
-section.filters .custom-input-group input {
-  border-radius: 50px;
-  border: 1px solid #6a7a91;
-  background-color: #EAEDF4;
-  height: 42px;
-  min-width: 300px;
-  padding-left: 40px;
-}
-section.filters .custom-input-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
-section.filters .custom-input-group input::placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  transition: 0.3s;
-}
-section.filters .custom-input-group input:focus {
-  box-shadow: none;
-}
-section.filters .custom-input-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
-}
-section.filters .custom-input-group input:focus::placeholder {
-  font-size: 0.85rem;
-}
-section.filters .dropdown button {
-  background-color: #EAEDF4 !important;
 }/*# sourceMappingURL=style.css.map */

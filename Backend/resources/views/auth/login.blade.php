@@ -49,7 +49,7 @@
                                         {{ __('Login') }}
                                     </x-button>
                                 </form>
-                                <p class="mt-2">Don't have an account ? <a href="FIXME:">Create an account</a></p>
+                                <p class="mt-2">Don't have an account ? <a href="{{ route('register') }}">Create an account</a></p>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>

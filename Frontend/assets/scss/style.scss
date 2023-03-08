@@ -71,7 +71,7 @@ body {
     // font-family: 'Montserrat', sans-serif;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
-    background-color: $bg-color;
+    // background-color: $bg-color;
 }
 
 // Common Classes Starts
@@ -198,6 +198,9 @@ body {
     }
     tbody{
         tr{
+            -webkit-box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
+            -moz-box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
+            box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
             background-color: white;
             margin-bottom: 10px;
         }

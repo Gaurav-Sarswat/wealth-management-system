@@ -12,7 +12,6 @@ html {
 body {
   font-family: "Nunito", sans-serif;
   min-height: 100vh;
-  background-color: #D9D9D9;
 }
 
 .btn-custom {
@@ -38,6 +37,8 @@ body {
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 12px;
+  -webkit-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
+  -moz-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
   box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
 }
 .custom-card figure img {
@@ -67,12 +68,6 @@ body {
   padding: 20px 10px;
   background-color: rgba(50, 125, 246, 0.1);
 }
-.form-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
 .form-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -80,9 +75,6 @@ body {
 }
 .form-group input:focus {
   box-shadow: none;
-}
-.form-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
 }
 .form-group input:focus::placeholder {
   font-size: 0.85rem;
@@ -93,12 +85,6 @@ body {
   height: 42px;
   background-color: rgba(50, 125, 246, 0.1);
 }
-.form-group select::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
 .form-group select::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -108,9 +94,6 @@ body {
   box-shadow: none;
   background-color: rgba(50, 125, 246, 0.1);
 }
-.form-group select:focus::-moz-placeholder {
-  font-size: 0.85rem;
-}
 .form-group select:focus::placeholder {
   font-size: 0.85rem;
 }
@@ -118,12 +101,6 @@ body {
   border: 1px solid #6a7a91;
   border-radius: 2px;
   background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group textarea::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
 }
 .form-group textarea::placeholder {
   color: #666;
@@ -133,9 +110,6 @@ body {
 .form-group textarea:focus {
   box-shadow: none;
   background-color: rgba(50, 125, 246, 0.1);
-}
-.form-group textarea:focus::-moz-placeholder {
-  font-size: 0.85rem;
 }
 .form-group textarea:focus::placeholder {
   font-size: 0.85rem;
@@ -152,6 +126,9 @@ body {
   border-color: transparent !important;
 }
 .table tbody tr {
+  -webkit-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
+  -moz-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
+  box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
   background-color: white;
   margin-bottom: 10px;
 }
@@ -230,12 +207,6 @@ header.auth-nav .navbar .navbar-brand img {
   padding: 20px 10px;
   background-color: rgba(50, 125, 246, 0.1);
 }
-.auth-form-wrapper .auth-form .form-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
 .auth-form-wrapper .auth-form .form-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -243,9 +214,6 @@ header.auth-nav .navbar .navbar-brand img {
 }
 .auth-form-wrapper .auth-form .form-group input:focus {
   box-shadow: none;
-}
-.auth-form-wrapper .auth-form .form-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
 }
 .auth-form-wrapper .auth-form .form-group input:focus::placeholder {
   font-size: 0.85rem;
@@ -420,12 +388,6 @@ section.filters .custom-input-group input {
   min-width: 300px;
   padding-left: 40px;
 }
-section.filters .custom-input-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
 section.filters .custom-input-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -433,9 +395,6 @@ section.filters .custom-input-group input::placeholder {
 }
 section.filters .custom-input-group input:focus {
   box-shadow: none;
-}
-section.filters .custom-input-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
 }
 section.filters .custom-input-group input:focus::placeholder {
   font-size: 0.85rem;

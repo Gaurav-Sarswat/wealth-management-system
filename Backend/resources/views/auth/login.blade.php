@@ -43,7 +43,7 @@
                                         <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
                                     </div>
                                     <div class="form-group">
-                                            <x-input id="password" placeholder="Create New Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
+                                            <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
                                     </div>
                                     <x-button type="submit" class="mt-4 btn btn-custom w-100">
                                         {{ __('Login') }}
@@ -59,7 +59,7 @@
                                         <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
                                     </div>
                                     <div class="form-group">
-                                            <x-input id="password" placeholder="Create New Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
+                                            <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
                                     </div>
                                     <x-button type="submit" class="mt-4 btn btn-custom w-100">
                                         {{ __('Login') }}
@@ -75,7 +75,7 @@
                                         <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
                                     </div>
                                     <div class="form-group">
-                                        <x-input id="password" placeholder="Create New Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
+                                        <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
                                     </div>
                                     <x-button type="submit" class="mt-4 btn btn-custom w-100">
                                         {{ __('Login') }}

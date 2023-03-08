@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,21 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+// Clients
+Route::name('client.')->prefix('client')->group(function(){
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/dashboard', function () {
+            return view('dashboard');
+        })->name('dashboard');
+    });
+});
+
 // Relationship Manager
 Route::name('relationship-manager.')->prefix('relationship-manager')->group(function(){
     Route::post('/login', [RelationshipManagerController::class, 'login'])->name('login');
+    
     Route::middleware('auth:rm')->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');

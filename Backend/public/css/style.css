@@ -22,13 +22,6 @@ body {
     color: #327DF6 !important;
     background: #FFF !important; }
 
-.container-header {
-  padding: 24px;
-  padding-bottom: 24px; }
-
-.container {
-  padding-top: 24px; }
-
 .custom-card {
   background: #FFF;
   border: 1px solid #eee;
@@ -192,12 +185,17 @@ main .layout-menu {
   main .layout-menu ul.main-menu li {
     transition: .4s;
     margin-bottom: 5px; }
-    main .layout-menu ul.main-menu li a {
+    main .layout-menu ul.main-menu li form {
+      width: 100%; }
+    main .layout-menu ul.main-menu li a, main .layout-menu ul.main-menu li button {
+      text-align: left;
       padding: 10px;
       text-decoration: none;
       color: #212529;
       font-weight: 500;
       width: 100%; }
+      main .layout-menu ul.main-menu li a:focus, main .layout-menu ul.main-menu li button:focus {
+        box-shadow: none; }
     main .layout-menu ul.main-menu li span {
       margin-left: 10px; }
     main .layout-menu ul.main-menu li i {

@@ -37,7 +37,7 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>
-                                <form method="POST" action="{{ route('login') }}">
+                                <form method="POST" action="{{ route('client.login') }}">
                                     @csrf
                                     <div class="form-group">
                                         <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />

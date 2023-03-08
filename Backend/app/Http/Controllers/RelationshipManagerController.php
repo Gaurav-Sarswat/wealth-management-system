@@ -96,12 +96,7 @@ class RelationshipManagerController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email'],
             'password' => ['required'],
-        ]);
-
-        $user = new RelationshipManager([
-            'email' => $request->email,
-            'password' => $request->password
-        ]);        
+        ]);      
 
         $credentials = $request->only('email', 'password');
         // return dd($request);

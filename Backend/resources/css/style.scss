@@ -87,13 +87,7 @@ body {
         background: $white !important;
     }
 }
-.container-header{
-    padding: 24px;
-    padding-bottom: 24px;
-}
-.container{
-    padding-top: 24px;
-}
+
 .custom-card {
     background: $white;
     border: 1px solid #eee;
@@ -334,12 +328,19 @@ main {
             li {
                 transition: .4s;
                 margin-bottom: 5px;
-                a {
+                form {
+                    width: 100%;
+                }
+                a, button {
+                    text-align: left;
                     padding: 10px;
                     text-decoration: none;
                     color: $text;
                     font-weight: 500;
                     width: 100%;
+                    &:focus {
+                        box-shadow: none;
+                    }
                 }
                 span {
                     margin-left: 10px;

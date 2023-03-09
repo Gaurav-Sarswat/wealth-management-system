@@ -39,7 +39,7 @@ Route::name('client.')->prefix('client')->group(function(){
 Route::name('relationship-manager.')->prefix('relationship-manager')->group(function(){
     Route::post('/login', [RelationshipManagerController::class, 'login'])->name('login');
     
-    Route::middleware('auth:rm')->group(function () {
+    Route::middleware('auth')->group(function () {
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');

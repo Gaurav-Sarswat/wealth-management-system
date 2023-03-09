@@ -22,7 +22,7 @@
                             </div>
                         @endif
 
-                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                             <li class="nav-item">
                               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Client</a>
                             </li>
@@ -32,7 +32,7 @@
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ideagiver</a>
                             </li>
-                        </ul>
+                        </ul> -->
 
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">

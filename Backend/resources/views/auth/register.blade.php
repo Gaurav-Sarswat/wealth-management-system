@@ -11,6 +11,15 @@
                 </header>
                 <div class="auth-form-wrapper h-100 d-flex align-items-center justify-content-center">
                     <div class="auth-form">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0 list-unstyled">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <h4 class="mb-4 text-center">Create an account</h4>
                         <form method="POST" action="{{ route('register') }}">
                         @csrf

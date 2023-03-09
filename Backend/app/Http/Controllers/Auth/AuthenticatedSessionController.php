@@ -32,7 +32,20 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('client.dashboard');
+        $user = Auth::user();
+
+        switch ($request->user()->role) {
+            case 'client':
+                return redirect()->route('client.dashboard');
+                break;
+            case 'rm':
+                return redirect()->route('relationship-manager.dashboard');
+                break;
+            default:
+                # code...
+                break;
+        }
+
     }
 
     /**

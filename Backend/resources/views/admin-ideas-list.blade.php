@@ -22,10 +22,10 @@
                         <a href="FIXME:">Home</a>
                     </li>
                     <li>
-                        RM Recomendation
+                        All Ideas
                     </li>
                 </ul>
-                <h5 class="page-title">RM Recomendation</h5>
+                <h5 class="page-title">All Ideas</h5>
             </div>
             <!-- Start Dynamic Sections Starts here -->
             <section class="investment-lists pt-4 pb-5">

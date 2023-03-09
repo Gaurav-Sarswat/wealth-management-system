@@ -24,6 +24,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/temp-page', function() {
+
+    return view('temp');
+
+})->middleware(['auth'])->name('temp');
+
 // Clients
 Route::name('client.')->prefix('client')->group(function(){
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
@@ -45,5 +51,6 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
         })->name('dashboard');
     });
 });
+
 
 require __DIR__.'/auth.php';

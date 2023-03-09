@@ -20,8 +20,7 @@ class RelationshipManagerController extends Controller
      */
     public function index()
     {
-        //
-        // return view('')
+        return view('dashboard')->with('pagename', 'Dashboard');
     }
 
     /**

@@ -27,8 +27,8 @@
             </li>
             <li class="d-flex align-items-center">
                 <a class="d-block" href="FIXME:">
-                    <i class="fas fa-user-alt"></i>
-                    <span>Relationship Managers</span>
+                    <i class="fas fa-users"></i>
+                    <span>Users</span>
                 </a>
             </li>
             <li class="d-flex align-items-center">

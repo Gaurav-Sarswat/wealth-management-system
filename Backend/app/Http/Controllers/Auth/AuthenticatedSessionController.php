@@ -41,6 +41,12 @@ class AuthenticatedSessionController extends Controller
             case 'rm':
                 return redirect()->route('relationship-manager.dashboard');
                 break;
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+                break;
+            case 'ideator':
+                return redirect()->route('ideator.dashboard');
+                break;
             default:
                 # code...
                 break;

@@ -13,30 +13,59 @@
     <div class="container">
         <ul class="main-menu list-unstyled mb-0 mt-2">
             <!-- .active class for the tab which is active -->
-            <li class="d-flex align-items-center active">
-                <a class="d-block" href="FIXME:">
-                    <i class="fas fa-table"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li class="d-flex align-items-center">
-                <a class="d-block" href="FIXME:">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Investments</span>
-                </a>
-            </li>
-            <li class="d-flex align-items-center">
-                <a class="d-block" href="FIXME:">
-                    <i class="fas fa-users"></i>
-                    <span>Users</span>
-                </a>
-            </li>
-            <li class="d-flex align-items-center">
-                <a class="d-block" href="FIXME:">
-                    <i class="fas fa-cog"></i>
-                    <span>Account Settings</span>
-                </a>
-            </li>
+            @if (Auth::user()->role === 'admin')
+                <li class="d-flex align-items-center active">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-table"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-users"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Ideas</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+            @endif
+            @if (Auth::user()->role === 'ideator')
+                <li class="d-flex align-items-center active">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-table"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Create Idea</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-list"></i>
+                        <span>List Ideas</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+            @endif
+            <!-- Logout -->
             <li class="d-flex align-items-center">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
@@ -46,6 +75,7 @@
                     </button>
                 </form>
             </li>
+
         </ul>
     </div>
 </div>

@@ -347,6 +347,8 @@ main {
                 }
                 i {
                     color: $primary;
+                    width: 15px;
+                    height: 15px;
                 }
                 &.active {
                     border-radius: 4px;

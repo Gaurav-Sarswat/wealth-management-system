@@ -30,13 +30,6 @@
             <div class="wrapper d-flex">
                 <div class="layout-menu d-none d-lg-flex flex-column">
                     @include('layouts.navigation')
-                    <!-- @isset($error)
-                        <div class="alert alert-danger">
-                            <ul class="mb-0">
-                                <li>{{ $error }}</li>
-                            </ul>
-                        </div>
-                    @endisset -->
                 </div>
                 {{ $slot }}
             </div>

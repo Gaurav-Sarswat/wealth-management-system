@@ -12,4 +12,18 @@
             </li>
         </ul>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger mt-2 mb-0 w-100">
+            <ul class="mb-0 list-unstyled">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (session('success'))
+        <div class="alert alert-success mt-2 mb-0 w-100">
+            {{ session('success') }}
+        </div>
+    @endif
 </nav>

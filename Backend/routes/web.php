@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\IdeatorController;
 use App\Http\Controllers\RelationshipManagerController;
@@ -58,6 +59,9 @@ Route::name('admin.')->prefix('admin')->group(function(){
     
     Route::middleware(['auth', 'checkUserType:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/add', [UserController::class, 'show_form'])->name('add-user-form');
+        Route::post('/users/add', [UserController::class, 'create'])->name('add-user');
     });
 });
 

@@ -199,7 +199,9 @@ main .layout-menu {
     main .layout-menu ul.main-menu li span {
       margin-left: 10px; }
     main .layout-menu ul.main-menu li i {
-      color: #327DF6; }
+      color: #327DF6;
+      width: 15px;
+      height: 15px; }
     main .layout-menu ul.main-menu li.active {
       border-radius: 4px;
       background-color: rgba(50, 125, 246, 0.1); }

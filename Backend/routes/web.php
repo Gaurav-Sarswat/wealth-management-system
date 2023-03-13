@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\IdeatorController;
 use App\Http\Controllers\RelationshipManagerController;
+use App\Http\Controllers\IdeaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,7 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
     
     Route::middleware(['auth', 'checkUserType:ideator'])->group(function () {
         Route::get('/dashboard', [IdeatorController::class, 'index'])->name('dashboard');
+        Route::get('/ideas/add', [IdeaController::class, 'show_form'])->name('create-idea-form');
     });
 });
 

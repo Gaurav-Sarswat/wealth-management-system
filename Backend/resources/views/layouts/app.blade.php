@@ -15,15 +15,10 @@
         <link rel="stylesheet" href="{{ asset('/vendors/bootstrap-4.5.0-dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendors/fontawesome-free-5.14.0-web/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('/vendors/dropify/dropify.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
         <!-- <link rel="stylesheet" href="css/style.css"> -->
 
-        <!-- Scripts -->
-        <script src="{{ asset('/vendors/jQuery-3.5.1/jquery-3.5.1.min.js') }}"></script>
-        <script src="{{ asset('/vendors/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
-        <script src="{{ asset('js/app.js') }}" defer></script>
-        <!-- <script src="/js/script.js"></script> -->
     </head>
     <body>
         <main>
@@ -34,5 +29,14 @@
                 {{ $slot }}
             </div>
         </main>
+        <!-- Scripts -->
+        <script src="{{ asset('/vendors/jQuery-3.5.1/jquery-3.5.1.min.js') }}"></script>
+        <script src="{{ asset('/vendors/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
+        <script src="{{ asset('/vendors/dropify/dropify.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script>
+            $('.dropify').dropify()
+        </script>
     </body>
 </html>

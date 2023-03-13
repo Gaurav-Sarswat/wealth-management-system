@@ -22,26 +22,29 @@
                                         <div class="auth-form-wrapper">
                                             <div class="auth-form">
                                                 <h4 class="mb-4 text-center">Create an Idea</h4>
-                                                <form action="FIXME:" method="POST">
-                                                    <div class="row">
+                                                <form action="{{route('ideator.create-idea')}}" method="POST">
+                                                @csrf
+                                                <div class="row">
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Title" class="form-control">
+                                                                <input type="text" placeholder="Title" name="title" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Abstract" class="form-control">
+                                                                <input type="text" placeholder="Abstract" name="abstract" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <textarea rows="5" placeholder="Content" class="form-control"></textarea>
+                                                                <textarea rows="5" placeholder="Content" name="content" class="form-control"></textarea>
+                                                            </div>
+                                                            
+                                                            <div class="form-group">
+                                                            <p class="mb-0" id="rangeValue">Risk Rating: 0</p>
+                                                                <input type="range" min="0" max="10" value="0" oninput="rangeValue.innerText = `Risk Rating: ${this.value}`" placeholder="Risk Rating" name="risk_rating" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="range" placeholder="Risk Rating" class="form-control">
+                                                                <input type="date" placeholder="Expiry date" name="expiry_date" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="date" placeholder="Expiry date" class="form-control">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <select name="category" id="category" class="form-control">
+                                                                <select id="category" name="category" class="form-control">
                                                                     <option value="" disabled selected hidden>Select Category</option>
                                                                     <option value="real-estate">Real Estate</option>
                                                                     <option value="equity">Equity</option>
@@ -52,29 +55,29 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Instruments" class="form-control">
+                                                                <input type="text" placeholder="Instruments" name="instruments" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <div class="form-group">
-                                                                <select name="category" id="Currency" class="form-control">
+                                                                <select id="Currency" name="currency" class="form-control">
                                                                     <option value="" disabled selected hidden>Select Currency</option>
-                                                                    <option value="real-estate">GBP</option>
-                                                                    <option value="equity">Doller</option>
-                                                                    <option value="crypto">INR</option>
-                                                                    <option value="bonds">PKR</option>
-                                                                    <option value="nft">NGN</option>
-                                                                    <option value="forex">EURO</option>
+                                                                    <option value="gbp">GBP</option>
+                                                                    <option value="doller">Doller</option>
+                                                                    <option value="inr">INR</option>
+                                                                    <option value="pkr">PKR</option>
+                                                                    <option value="ngn">NGN</option>
+                                                                    <option value="euro">EURO</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Major Sector" class="form-control">
+                                                                <input type="text" placeholder="Major Sector" name="major_sector" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="text" placeholder="Minor Sector" class="form-control">
+                                                                <input type="text" placeholder="Minor Sector" name="minor_sector" class="form-control">
                                                             </div>
                                                             <div class="form-group">
-                                                                <select name="country" id="Region" class="form-control">
+                                                                <select id="Region" name="region" class="form-control">
                                                                     <option value="" disabled selected hidden>Select Region</option>
                                                                     <option value="north-america">North America</option>
                                                                     <option value="south-america">South America</option>
@@ -86,14 +89,14 @@
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <select name="country" id="country" class="form-control">
+                                                                <select id="country" name="country" class="form-control">
                                                                     <option value="" disabled selected hidden>Select Country</option>
                                                                     <option value="uk">United Kingdom</option>
                                                                     <option value="india">India</option>
                                                                 </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                <input type="file" placeholder="Upload a cover image" class="dropify">
+                                                                <input type="file" placeholder="Upload a cover image" name="image" class="dropify">
                                                             </div>
                                                         </div>
                                                     </div>

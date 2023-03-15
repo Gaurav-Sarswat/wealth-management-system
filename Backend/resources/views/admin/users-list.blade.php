@@ -32,7 +32,7 @@
                         <tbody>
                             @foreach ($clients as $client)
                                 <tr>
-                                    <td scope="row">1</td>
+                                    <td scope="row">{{ $client->id }}</td>
                                     <td>{{ $client->name }}</td>
                                     <td>{{ $client->email }}</td>
                                     <td>{{ $client->number }}</td>

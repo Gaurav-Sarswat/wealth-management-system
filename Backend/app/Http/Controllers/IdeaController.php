@@ -49,4 +49,9 @@ class IdeaController extends Controller
 
         return redirect()->route('ideator.ideas')->with('success', 'Idea created successfully!');
     }
+    public function list()
+    { 
+        $ideas = Idea::all(); 
+        return view('idea.idea-list')->with('ideas', $ideas);
+    }
 }

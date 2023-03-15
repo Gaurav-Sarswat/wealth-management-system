@@ -71,7 +71,8 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
     Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
     
     Route::middleware(['auth', 'checkUserType:ideator'])->group(function () {
-        Route::get('/dashboard', [IdeatorController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [IdeatorController::class, 'index'])->name('dashboard'); 
+        Route::get('/ideas', [IdeaController::class, 'list'])->name('ideas');
         Route::get('/ideas/add', [IdeaController::class, 'show_form'])->name('create-idea-form');
         Route::post('/ideas/add', [IdeaController::class, 'create'])->name('create-idea');
     });

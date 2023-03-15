@@ -41,19 +41,19 @@
             @endif
             @if (Auth::user()->role === 'ideator')
                 <li class="d-flex align-items-center active">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('ideator.dashboard') }}">
                         <i class="fas fa-table"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('ideator.create-idea-form') }}">
                         <i class="fas fa-lightbulb"></i>
                         <span>Create Idea</span>
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('ideator.ideas') }}">
                         <i class="fas fa-list"></i>
                         <span>List Ideas</span>
                     </a>

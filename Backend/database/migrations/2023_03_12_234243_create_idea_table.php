@@ -42,6 +42,6 @@ class CreateIdeaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('idea');
+        Schema::dropIfExists('ideas');
     }
 }

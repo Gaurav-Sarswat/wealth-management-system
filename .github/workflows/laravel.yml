@@ -2,9 +2,9 @@ name: Laravel
 
 on:
   push:
-    branches: [ "cicd" ]
+    branches: [ "development" ]
   pull_request:
-    branches: [ "cicd" ]
+    branches: [ "development" ]
 
 jobs:
   laravel-tests:

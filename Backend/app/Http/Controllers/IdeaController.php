@@ -10,7 +10,7 @@ class IdeaController extends Controller
     //
     public function show_form()
     {
-        return view("idea.create-idea");
+        return view("idea.create-idea")->with('pagename', 'Create Idea');
     }
     public function create(Request $request)
     {
@@ -53,5 +53,16 @@ class IdeaController extends Controller
     { 
         $ideas = Idea::all(); 
         return view('idea.idea-list')->with('ideas', $ideas);
+    }
+    public function view($id)
+    { 
+        $idea = Idea::find($id); 
+ 
+        $data = [
+            'idea' => $idea,
+            'pagename' => $idea->title
+        ];
+ 
+        return view('idea.view-idea', $data);
     }
 }

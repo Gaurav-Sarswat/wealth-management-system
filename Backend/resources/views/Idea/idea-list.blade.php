@@ -8,10 +8,10 @@
                         <a href="FIXME:">Home</a>
                     </li>
                     <li>
-                        Page Name
+                        Ideas
                     </li>
                 </ul>
-                <h5 class="page-title">Page Name</h5>
+                <h5 class="page-title">Ideas</h5>
             </div>
             <!-- Start Dynamic Sections Starts here -->
             <section class="investment-lists pt-4 pb-5">

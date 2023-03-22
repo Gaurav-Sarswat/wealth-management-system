@@ -88,6 +88,18 @@ body {
         background: transparent;
     }
 }
+.bg-danger-custom{
+    background-color: $primary;
+    color: #F63232;
+    font-weight: 500;
+    padding: 12px 0;
+    border-radius: 25px;
+    border: 2px solid $primary;
+    &:hover {
+        color: $primary;
+        background: transparent;
+    }
+}
 .container-header{
     padding: 24px;
     padding-bottom: 24px;

@@ -173,6 +173,19 @@ section.choose-preferences ul.tags-wrapper {
   .navbar-nav .user-profile-nav a i {
     font-size: .8rem; }
 
+.navbar .hover-menu-wrapper {
+  position: relative; }
+  .navbar .hover-menu-wrapper .hover-menu {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    transition: .4s; }
+    .navbar .hover-menu-wrapper .hover-menu.show {
+      opacity: 1; }
+
 main .layout-menu {
   flex: 20%;
   border-right: 1px solid #eee;

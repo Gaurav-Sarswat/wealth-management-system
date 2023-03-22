@@ -42,6 +42,8 @@ Route::name('client.')->prefix('client')->group(function(){
 
     Route::middleware(['auth', 'checkUserType:client'])->group(function () {
         Route::get('/dashboard', [ClientController::class, 'index'])->name('dashboard');
+        Route::get('/set-preferences', [ClientController::class, 'setPreferencesView'])->name('set-preferences-view');
+        Route::post('/set-preferences', [ClientController::class, 'setPreferences'])->name('set-preferences');
     });
 });
 

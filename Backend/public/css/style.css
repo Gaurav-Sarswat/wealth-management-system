@@ -135,9 +135,6 @@ section.choose-preferences ul.tags-wrapper {
       section.choose-preferences ul.tags-wrapper li.tag input[type=checkbox]:checked + label {
         background-color: #327DF6;
         color: #FFF; }
-        section.choose-preferences ul.tags-wrapper li.tag input[type=checkbox]:checked + label i {
-          display: block;
-          opacity: 1; }
     section.choose-preferences ul.tags-wrapper li.tag label {
       margin-bottom: 0;
       cursor: pointer;

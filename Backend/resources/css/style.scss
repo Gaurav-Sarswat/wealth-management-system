@@ -249,10 +249,10 @@ section.choose-preferences {
                 &:checked+label {
                     background-color: $primary;
                     color: $white;   
-                    i {
-                        display: block;
-                        opacity: 1;
-                    }
+                    // i {
+                    //     display: block;
+                    //     opacity: 1;
+                    // }
                 }
             }
             label {

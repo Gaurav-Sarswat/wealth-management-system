@@ -91,6 +91,32 @@
                     </a>
                 </li>
             @endif
+            @if (Auth::user()->role === 'client')
+                <li class="d-flex align-items-center {{ request()->routeIs('client.dashboard') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('client.dashboard') }}">
+                        <i class="fas fa-table"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Suggested Ideas</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Investments</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+            @endif
             <!-- Logout -->
             <li class="d-flex align-items-center">
                 <form method="POST" action="{{ route('logout') }}">

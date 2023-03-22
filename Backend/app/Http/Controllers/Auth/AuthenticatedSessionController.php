@@ -36,7 +36,7 @@ class AuthenticatedSessionController extends Controller
 
         switch ($request->user()->role) {
             case 'client':
-                return redirect()->route('client.dashboard');
+                return redirect()->route('client.set-preferences');
                 break;
             case 'rm':
                 return redirect()->route('relationship-manager.dashboard');

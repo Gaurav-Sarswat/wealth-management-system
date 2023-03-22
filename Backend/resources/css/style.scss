@@ -401,3 +401,30 @@ main {
 }
 
 // Layout Ends
+
+// View Idea Starts
+
+section.view-idea {
+    figure {
+        &.idea-image {
+            img {
+                border-radius: 5px;
+                border: 2px solid $primary;
+            }
+        }
+    }
+    .idea-details {
+        .idea-details-text {
+            p {
+                color: #666;
+                font-weight: 400;
+            }
+            span {
+                font-size: 1.3rem;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// View Idea Ends

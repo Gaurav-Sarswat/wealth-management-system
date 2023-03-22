@@ -1,4 +1,4 @@
-<nav class="navbar py-2">
+<nav class="navbar py-2 border-bottom">
     <div class="container">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-flex align-items-center user-profile-nav">

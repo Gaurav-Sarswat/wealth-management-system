@@ -30,7 +30,7 @@
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>
                                     <span class="d-block mb-2 date">{{ date('d/m/Y', strtotime($idea->created_at)) }}</span>
-                                    <a href="FIXME:"
+                                    <a href="{{ route('ideator.view-idea', ['id' => $idea->id]) }}"
                                         class="btn btn-custom px-4 py-2 d-flex align-items-center justify-content-center">Read
                                         More <i class="fas fa-arrow-right ml-2"></i></a>
                                 </div>

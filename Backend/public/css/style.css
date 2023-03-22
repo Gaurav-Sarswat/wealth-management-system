@@ -235,3 +235,15 @@ main .layout-main {
   main .layout-main .content-wrapper .page-title {
     font-weight: 500; }
 
+section.view-idea figure.idea-image img {
+  border-radius: 5px;
+  border: 2px solid #327DF6; }
+
+section.view-idea .idea-details .idea-details-text p {
+  color: #666;
+  font-weight: 400; }
+
+section.view-idea .idea-details .idea-details-text span {
+  font-size: 1.3rem;
+  font-weight: 600; }
+

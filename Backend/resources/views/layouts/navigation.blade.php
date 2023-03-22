@@ -1,4 +1,4 @@
-<nav class="py-2">
+<nav class="py-2 border-bottom">
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">

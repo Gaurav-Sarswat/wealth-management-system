@@ -21,7 +21,7 @@
                             <div class="card p-4">
                                 <div class="auth-form-wrapper">
                                     <div class="auth-form">
-                                        <h4 class="mb-4 text-center">Create an Idea</h4>
+                                        <h4 class="mb-4 text-center">Update an Idea</h4>
                                         <form action="{{route('ideator.create-idea')}}" method="POST">
                                         @csrf
                                         <div class="row">

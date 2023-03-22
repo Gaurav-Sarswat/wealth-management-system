@@ -54,15 +54,25 @@ class IdeaController extends Controller
         $ideas = Idea::all(); 
         return view('idea.idea-list')->with('ideas', $ideas);
     }
+    public function updateForm($id)
+    { 
+        $idea = Idea::find($id); 
+
+        $data = [
+            'idea' => $idea,
+            'pagename' => 'Update Idea'
+        ];
+
+        return view('idea.update-idea', $data);
+    }
     public function view($id)
     { 
         $idea = Idea::find($id); 
- 
+
         $data = [
             'idea' => $idea,
             'pagename' => $idea->title
         ];
- 
         return view('idea.view-idea', $data);
     }
 }

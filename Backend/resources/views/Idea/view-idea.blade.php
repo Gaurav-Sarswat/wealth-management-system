@@ -29,30 +29,32 @@
                             <div class="idea-details">
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Title</p>
-                                    <span class="d-block">Agro farming Project</span>
+                                    <span class="d-block">{{$idea->title}}</span>
                                 </div>
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Idea Category</p>
-                                    <span class="d-block">Crypto</span>
+                                    <span class="d-block">{{$idea->category}}</span>
                                 </div>
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Country</p>
-                                    <span class="d-block">United Kingdom</span>
+                                    <span class="d-block text-uppercase">{{$idea->country}}</span>
                                 </div>
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Region</p>
-                                    <span class="d-block">Cambridge</span>
+                                    <span class="d-block">{{$idea->region}}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                     <div class="row mt-4">
                         <div class="col-lg-12">
                             <div class="h4">Description</div>
+                            <p>{{$idea->abstract}}</p>
+                            <p>{{$idea->content}}</p>
+                            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi tenetur doloremque minima quis a commodi nostrum suscipit, culpa mollitia ipsum exercitationem, repellat eius ex quibusdam perspiciatis reiciendis inventore. Dolorem blanditiis earum debitis dicta voluptatem explicabo, quisquam autem! Repellat, dolores nihil.</p> -->
                         </div>
                     </div>
                 </div>

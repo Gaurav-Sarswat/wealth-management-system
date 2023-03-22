@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('admin.ideas') }}">
                         <i class="fas fa-lightbulb"></i>
                         <span>Ideas</span>
                     </a>

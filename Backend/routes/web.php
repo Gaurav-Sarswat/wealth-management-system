@@ -63,6 +63,8 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/users', [UserController::class, 'index'])->name('users');
         Route::get('/users/add', [UserController::class, 'show_form'])->name('add-user-form');
         Route::post('/users/add', [UserController::class, 'create'])->name('add-user');
+        Route::get('/ideas', [AdminController::class, 'list'])->name('ideas');
+        Route::get('/idea/{id}/view', [AdminController::class, 'view'])->name('admin-view-idea');
     });
 });
 

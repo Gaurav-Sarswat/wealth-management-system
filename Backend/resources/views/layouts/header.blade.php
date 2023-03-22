@@ -12,18 +12,25 @@
             </li>
         </ul>
     </div>
-    @if ($errors->any())
-        <div class="alert alert-danger mt-2 mb-0 w-100">
+</nav>
+@if ($errors->any())
+    <div class="container">
+        <div class="alert alert-danger alert-dismissible mt-2 mb-0 w-100">
             <ul class="mb-0 list-unstyled">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
             </ul>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    @endif
-    @if (session('success'))
+    </div>
+@endif
+@if (session('success'))
+    <div class="container">
         <div class="alert alert-success mt-2 mb-0 w-100">
             {{ session('success') }}
         </div>
-    @endif
-</nav>
+    </div>
+@endif

@@ -65,6 +65,32 @@
                     </a>
                 </li>
             @endif
+            @if (Auth::user()->role === 'rm')
+                <li class="d-flex align-items-center active">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-table"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-users"></i>
+                        <span>Clients</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="{{ route('relationship-manager.ideas') }}">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Ideas</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
+                    <a class="d-block" href="FIXME:">
+                        <i class="fas fa-cog"></i>
+                        <span>Account Settings</span>
+                    </a>
+                </li>
+            @endif
             <!-- Logout -->
             <li class="d-flex align-items-center">
                 <form method="POST" action="{{ route('logout') }}">

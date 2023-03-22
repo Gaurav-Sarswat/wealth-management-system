@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Idea;
 use App\Http\Requests\StoreRelationshipManagerRequest;
 use App\Http\Requests\UpdateRelationshipManagerRequest;
 use App\Models\RelationshipManager;
@@ -102,5 +103,22 @@ class RelationshipManagerController extends Controller
         Auth::guard('rm')->attempt($credentials);
 
         return redirect()->route('relationship-manager.dashboard');
+    }
+
+    public function list()
+    { 
+        $ideas = Idea::all(); 
+        return view('relationship-manager.rm-idea-list')->with('ideas', $ideas);
+    }
+
+    public function view($id)
+    { 
+        $idea = Idea::find($id); 
+
+        $data = [
+            'idea' => $idea,
+            'pagename' => $idea->title
+        ];
+        return view('relationship-manager.rm-view-idea', $data);
     }
 }

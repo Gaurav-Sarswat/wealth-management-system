@@ -14,5 +14,9 @@ $(document).ready(function() {
     $('.hover-menu-wrapper').on('mouseleave', function() {
         $('.hover-menu').removeClass('show')
     })
+
+    $('.select2').select2({
+        placeholder: 'Select Categories'
+    });
  
 })

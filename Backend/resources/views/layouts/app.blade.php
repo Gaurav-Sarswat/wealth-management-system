@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{{ asset('/vendors/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendors/fontawesome-free-5.14.0-web/css/all.min.css') }}">
         <link rel="stylesheet" href="{{ asset('/vendors/dropify/dropify.min.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
         <!-- <link rel="stylesheet" href="css/style.css"> -->
 
@@ -34,6 +35,7 @@
         <script src="{{ asset('/vendors/bootstrap-4.5.0-dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('/vendors/OwlCarousel2-2.3.4/dist/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('/vendors/dropify/dropify.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script>
             $('.dropify').dropify()

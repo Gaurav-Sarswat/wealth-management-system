@@ -49,7 +49,7 @@ Route::name('client.')->prefix('client')->group(function(){
 
 // Relationship Manager
 Route::name('relationship-manager.')->prefix('relationship-manager')->group(function(){
-    Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     
     Route::middleware(['auth', 'checkUserType:rm'])->group(function () {
         Route::get('/dashboard', [RelationshipManagerController::class, 'index'])->name('dashboard');
@@ -60,7 +60,7 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
 
 // Admin
 Route::name('admin.')->prefix('admin')->group(function(){
-    Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     
     Route::middleware(['auth', 'checkUserType:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
@@ -74,7 +74,7 @@ Route::name('admin.')->prefix('admin')->group(function(){
 
 // Ideator
 Route::name('ideator.')->prefix('ideator')->group(function(){
-    Route::post('/login', [AuthenticatedSessionController::class, 'login'])->name('login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     
     Route::middleware(['auth', 'checkUserType:ideator'])->group(function () {
         Route::get('/dashboard', [IdeatorController::class, 'index'])->name('dashboard'); 

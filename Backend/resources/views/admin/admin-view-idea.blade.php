@@ -33,7 +33,11 @@
                                 </div>
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Idea Category</p>
-                                    <span class="d-block">{{$idea->category}}</span>
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach($idea->categories as $category)
+                                        <li><span>{{ $category->title }}</span></li>
+                                        @endforeach
+                                    </ul>
                                 </div>
                                 <div class="idea-details-text mb-4">
                                     <p class="title mb-0">Country</p>

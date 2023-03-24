@@ -44,14 +44,11 @@
                                                         <input type="date" placeholder="Expiry date" name="expiry_date" class="form-control">
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="category" name="category" class="form-control">
-                                                            <option value="" disabled selected hidden>Select Category</option>
-                                                            <option value="real-estate">Real Estate</option>
-                                                            <option value="equity">Equity</option>
-                                                            <option value="crypto">Crypto</option>
-                                                            <option value="bonds">Bonds</option>
-                                                            <option value="nft">NFTs</option>
-                                                            <option value="forex">Forex</option>
+                                                        <select id="categories" name="categories[]" multiple class="form-control select2">
+                                                            <option value="" disabled hidden>Select Category</option>
+                                                            @foreach($categories as $category)
+                                                                <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Idea extends Model
@@ -16,7 +17,7 @@ class Idea extends Model
         "content",
         "risk_rating",
         "expiry_date",
-        "category",
+        "categories",
         "instruments",
         "currency",
         "major_sector",
@@ -44,8 +45,23 @@ class Idea extends Model
     protected $casts = [
     ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($idea) {
+            $idea->slug = Str::slug($idea->title);
+        });
+    }
+
     public function users()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'category_idea', 'idea_id', 'category_id');
+    }
+
 }

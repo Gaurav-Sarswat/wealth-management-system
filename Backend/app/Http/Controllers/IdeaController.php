@@ -3,14 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Idea;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class IdeaController extends Controller
 {
     //
     public function show_form()
     {
-        return view("idea.create-idea")->with('pagename', 'Create Idea');
+        $categories = Category::all();
+
+        $data = [
+            'categories' => $categories,
+            'pagename' => 'Create Idea'
+        ];
+
+        return view("idea.create-idea", $data);
     }
     public function create(Request $request)
     {
@@ -20,7 +30,7 @@ class IdeaController extends Controller
             'content' => ['required', 'string', 'max:255'],
             'risk_rating' => ['required', 'string', 'max:255'],
             'expiry_date' => ['required', 'string', 'max:255'],
-            'category' => ['required', 'string', 'max:255'],
+            'categories' => ['required'],
             'instruments' => ['required', 'string', 'max:255'],
             'currency' => ['required', 'string', 'max:255'],
             'major_sector' => ['required', 'string', 'max:255'],
@@ -30,13 +40,12 @@ class IdeaController extends Controller
             'expiry_date' => ['required', 'string', 'max:255'],
         ]);
 
-        $user = Idea::create([
+        $idea = Idea::create([
             'title' => $request->title,
             'abstract' => $request->abstract,
             'content' => $request->content,
             'risk_rating' => $request->risk_rating,
             'expiry_date' => $request->expiry_date,
-            'category' => $request->category,
             'instruments' => $request->instruments,
             'currency' => $request->currency,
             'major_sector' => $request->major_sector,
@@ -44,14 +53,16 @@ class IdeaController extends Controller
             'region' => $request->region,
             'country' => $request->country,
             'expiry_date' => $request->expiry_date,
-            'user_id' => $request->user()->id,
+            'user_id' => Auth::id(),
         ]);
+
+        $idea->categories()->attach($request->categories);
 
         return redirect()->route('ideator.ideas')->with('success', 'Idea created successfully!');
     }
     public function list()
     { 
-        $ideas = Idea::all(); 
+        $ideas = Idea::where('user_id', Auth::id())->get(); 
         return view('idea.idea-list')->with('ideas', $ideas);
     }
     public function updateForm($id)
@@ -67,12 +78,10 @@ class IdeaController extends Controller
     }
     public function view($id)
     { 
-        $idea = Idea::find($id); 
+        $idea = Idea::with('categories')->find($id);
+        $pagename = $idea->title;
 
-        $data = [
-            'idea' => $idea,
-            'pagename' => $idea->title
-        ];
-        return view('idea.view-idea', $data);
+
+        return view('idea.view-idea', compact('idea', 'pagename'));
     }
 }

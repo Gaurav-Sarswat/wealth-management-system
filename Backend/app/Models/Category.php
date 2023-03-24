@@ -8,7 +8,7 @@ use Illuminate\Support\Str;
 class Category extends Model
 {
    
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'idea'];
 
     public static function boot()
     {
@@ -23,4 +23,10 @@ class Category extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function idea()
+    {
+        return $this->belongsToMany(Idea::class, 'category_idea', 'idea_id', 'category_id');
+    }
+
 }

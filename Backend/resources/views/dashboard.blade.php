@@ -9,7 +9,7 @@
                             <a href="FIXME:">Home</a>
                         </li>
                         <li>
-                            {{ $pagename }}
+                            {{ $pagename ?? '' }}
                         </li>
                     </ul>
                     <h5 class="page-title">{{'Welcome to your dashboard, '.Auth::user()->name}}</h5>

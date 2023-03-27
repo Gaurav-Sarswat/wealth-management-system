@@ -88,9 +88,9 @@ body {
         background: transparent;
     }
 }
-.bg-danger-custom{
-    background-color: $primary;
-    color: #F63232;
+.btn-danger-custom{
+    background-color: #F63232;
+   
     font-weight: 500;
     padding: 12px 0;
     border-radius: 25px;
@@ -196,7 +196,10 @@ body {
 
     }
 }
-
+.listy{
+    font-size: .95rem;
+    color: #3283F6;
+}
 .table{
     border-spacing: 0 5px;
     border-collapse: separate;

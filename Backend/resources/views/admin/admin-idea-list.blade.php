@@ -13,7 +13,13 @@
                 </ul>
                 <h5 class="page-title">Ideas</h5>
             </div>
-            <!-- Start Dynamic Sections Starts here -->
+            <!-- Start Dynamic Sections Starts here -->            
+            <select id="categories" name="categories[]" onchange="">
+                <option value="" disabled hidden>Filter</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->title }}</option>
+                @endforeach
+            </select>
             <section class="investment-lists pt-4 pb-5">
                 <div class="container">
                     <div class="container-fluid pl-0">

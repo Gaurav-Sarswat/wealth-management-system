@@ -6,6 +6,7 @@ use App\Models\Idea;
 use App\Http\Requests\StoreRelationshipManagerRequest;
 use App\Http\Requests\UpdateRelationshipManagerRequest;
 use App\Models\RelationshipManager;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules;
@@ -105,10 +106,24 @@ class RelationshipManagerController extends Controller
         return redirect()->route('relationship-manager.dashboard');
     }
 
-    public function list()
+    public function list(Request $request)
     { 
-        $ideas = Idea::all(); 
-        return view('relationship-manager.rm-idea-list')->with('ideas', $ideas);
+        $ideas = Idea::all();
+        $categories = Category::all();
+        $filter_category = $request->query('category');
+        if($filter_category!=''){
+            $ideas = Idea::whereHas('categories', function ($query) use ($filter_category) {
+                $query->where('categories.id', $filter_category);
+            })->get();
+        }
+       
+        $data = [
+            'ideas' => $ideas,
+            'categories' => $categories,
+            'selected_category' => $filter_category
+        ];
+
+        return view('relationship-manager.rm-idea-list', $data);
     }
 
     public function view($id)

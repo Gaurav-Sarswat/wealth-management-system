@@ -20,13 +20,15 @@ class AdminController extends Controller
         $ideas = Idea::all(); 
         $categories = Category::all();
         $filter_category = $request->query('category');
-        $ideas = Idea::whereHas('categories', function ($query) use ($filter_category) {
-            $query->where('categories.id', $filter_category);
-        })->get();
-       
+        if($filter_category!=''){
+            $ideas = Idea::whereHas('categories', function ($query) use ($filter_category) {
+                $query->where('categories.id', $filter_category);
+            })->get();
+        }
         $data = [
             'ideas' => $ideas,
             'categories' => $categories,
+            'selected_category' => $filter_category
         ];
 
         return view('admin.admin-idea-list', $data);

@@ -21,7 +21,7 @@
                     </div>
                     <div class="row mt-3">
                         @foreach ($ideas as $idea)
-                            <div class="col-4 mb-3">
+                            <div class="col-lg-3 mb-3">
                                 <div class="custom-card">
                                     <figure>
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
@@ -29,7 +29,7 @@
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>
-                                    <span class="d-block mb-2 date">{{ date('d/m/Y', strtotime($idea->created_at)) }}</span>
+                                    <span class="d-block mb-2 date">{{ date('d/m/Y', strtotime($idea->published_date)) }}</span>
                                     <a href="{{ route('ideator.view-idea', ['id' => $idea->id]) }}"
                                         class="btn btn-custom px-4 py-2 d-flex align-items-center justify-content-center">Read
                                         More <i class="fas fa-arrow-right ml-2"></i></a>

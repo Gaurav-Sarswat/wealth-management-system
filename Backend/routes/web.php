@@ -34,7 +34,7 @@ Route::get('/temp-page', function() {
 
     return view('temp');
 
-})->middleware(['auth'])->name('temp');
+})->middleware('auth')->name('temp');
 
 // Clients
 Route::name('client.')->prefix('client')->group(function(){
@@ -69,6 +69,8 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::post('/users/add', [UserController::class, 'create'])->name('add-user');
         Route::get('/ideas', [AdminController::class, 'list'])->name('ideas');
         Route::get('/idea/{id}/view', [AdminController::class, 'view'])->name('admin-view-idea');
+        Route::get('/profile', [AdminController::class, 'show_profile'])->name('show-profile');
+        Route::put('/profile', [AdminController::class, 'update_profile'])->name('update-profile');
     });
 });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Idea;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -44,5 +45,27 @@ class AdminController extends Controller
             
         ];
         return view('admin.admin-view-idea', $data);
+    }
+
+    public function show_profile()
+    { 
+        return view('admin.edit-profile');
+    }
+
+    public function update_profile(Request $request)
+    { 
+        $user = Auth::user();
+
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email,'.$user->id,
+    ]);
+
+    $user->name = $request->name;
+    $user->email = $request->email;
+
+    $user->save();
+
+    return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

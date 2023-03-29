@@ -8,8 +8,7 @@ use App\Models\User;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-
-
+use Illuminate\Database\Capsule\Manager;
 
 class UserController extends Controller
 {
@@ -17,10 +16,13 @@ class UserController extends Controller
     public function index()
     {
         $clients = User::where('role', 'client')->get();
+        $relationship_manager = User::where('role', 'rm')->get();
+        $ideators = User::where('role', 'ideator')->get();
         $pagename = 'Users';
-
         $data = [
             'clients' => $clients,
+            'relationship_manager' => $relationship_manager,
+            'ideators' => $ideators,
             'pagename' => 'Users'
         ];
 

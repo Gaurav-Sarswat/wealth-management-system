@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('admin.users') }}">
                         <i class="fas fa-users"></i>
                         <span>Users</span>
                     </a>

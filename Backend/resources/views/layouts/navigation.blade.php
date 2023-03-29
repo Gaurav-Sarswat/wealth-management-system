@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('relationship-manager.users') }}">
                         <i class="fas fa-users"></i>
                         <span>Clients</span>
                     </a>

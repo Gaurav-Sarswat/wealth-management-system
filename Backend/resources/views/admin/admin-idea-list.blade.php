@@ -25,9 +25,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="container-fluid pl-0">
-                        Most Recent
-                    </div>
                     <div class="row mt-3">
                         @foreach ($ideas as $idea)
                             <div class="col-lg-4 mb-3">

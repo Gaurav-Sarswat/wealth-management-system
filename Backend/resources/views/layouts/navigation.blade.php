@@ -98,8 +98,8 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                <li class="d-flex align-items-center {{ request()->routeIs('client.suggested-ideas') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('client.suggested-ideas') }}">
                         <i class="fas fa-lightbulb"></i>
                         <span>Suggested Ideas</span>
                     </a>

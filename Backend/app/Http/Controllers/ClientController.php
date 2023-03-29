@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Idea;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 
 class ClientController extends Controller
@@ -15,7 +17,7 @@ class ClientController extends Controller
     {
         return view('dashboard')->with('pagename', 'Dashboard');
     }
-    public function setPreferencesView()
+    public function set_preferences_view()
     {
         $categories = Category::all();
 
@@ -26,7 +28,7 @@ class ClientController extends Controller
 
         return view('client.set-preferences', $data);
     }
-    public function setPreferences(Request $request)
+    public function set_preferences(Request $request)
     {
 
         $user = User::find($request->user()->id);
@@ -36,5 +38,21 @@ class ClientController extends Controller
 
 
         return redirect()->route('client.dashboard')->with('success', 'Preferences Set Successfully!');
+    }
+    public function suggested_ideas()
+    {
+        $user = Auth::user();
+        $ideas = Idea::whereHas('categories', function($query) use ($user) {
+            $query->whereIn('categories.id', $user->categories()->pluck('categories.id')->toArray());
+        })->where('status', 'Published')->get();
+        
+        return view('client.suggested-ideas', compact('ideas'));
+    }
+    public function view($id)
+    { 
+        $idea = Idea::with('categories')->find($id);
+        $pagename = $idea->title;
+ 
+        return view('idea.view-idea', compact('idea', 'pagename'));
     }
 }

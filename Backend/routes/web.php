@@ -42,8 +42,10 @@ Route::name('client.')->prefix('client')->group(function(){
 
     Route::middleware(['auth', 'checkUserType:client'])->group(function () {
         Route::get('/dashboard', [ClientController::class, 'index'])->name('dashboard');
-        Route::get('/set-preferences', [ClientController::class, 'setPreferencesView'])->name('set-preferences-view');
-        Route::post('/set-preferences', [ClientController::class, 'setPreferences'])->name('set-preferences');
+        Route::get('/set-preferences', [ClientController::class, 'set_preferences_view'])->name('set-preferences-view');
+        Route::post('/set-preferences', [ClientController::class, 'set_preferences'])->name('set-preferences');
+        Route::get('/suggested-ideas', [ClientController::class, 'suggested_ideas'])->name('suggested-ideas');
+        Route::get('/idea/{id}/view', [ClientController::class, 'view'])->name('view-idea');
     });
 });
 

@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('relationship-manager.show-profile') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>
                     </a>

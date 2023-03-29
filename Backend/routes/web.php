@@ -55,6 +55,8 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
         Route::get('/dashboard', [RelationshipManagerController::class, 'index'])->name('dashboard');
         Route::get('/ideas', [RelationshipManagerController::class, 'list'])->name('ideas');
         Route::get('/idea/{id}/view', [RelationshipManagerController::class, 'view'])->name('rm-view-idea');
+        Route::get('/profile', [RelationshipManagerController::class, 'show_profile'])->name('show-profile');
+        Route::put('/profile', [RelationshipManagerController::class, 'update_profile'])->name('update-profile');
     });
 });
 

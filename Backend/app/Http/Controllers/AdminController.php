@@ -55,17 +55,15 @@ class AdminController extends Controller
     public function update_profile(Request $request)
     { 
         $user = Auth::user();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
 
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email,'.$user->id,
-    ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
 
-    $user->name = $request->name;
-    $user->email = $request->email;
-
-    $user->save();
-
-    return redirect()->back()->with('success', 'Profile updated successfully!');
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

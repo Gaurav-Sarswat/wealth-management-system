@@ -136,4 +136,24 @@ class RelationshipManagerController extends Controller
         ];
         return view('relationship-manager.rm-view-idea', $data);
     }
+
+    public function show_profile()
+    { 
+        return view('relationship-manager.edit-profile');
+    }
+
+    public function update_profile(Request $request)
+    { 
+        $user = Auth::user();
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.$user->id,
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
 }

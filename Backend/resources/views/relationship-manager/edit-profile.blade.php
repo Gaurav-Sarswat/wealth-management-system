@@ -15,7 +15,7 @@
             </div>
             <!-- Start Dynamic Sections Starts here -->
             <div class="settings ml-4">
-                <form action="{{ route('admin.update-profile') }}" method="POST">
+                <form action="{{ route('relationship-manager.update-profile') }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group w-50">Full Name

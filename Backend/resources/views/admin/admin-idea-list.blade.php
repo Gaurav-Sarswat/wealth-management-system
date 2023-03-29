@@ -14,20 +14,23 @@
                 <h5 class="page-title">Ideas</h5>
             </div>
             <!-- Start Dynamic Sections Starts here -->            
-            <select id="filter_categories" name="categories[]" onchange="">
-                <option value="">Select Category</option>
-                @foreach($categories as $category)
-                    <option {{ $selected_category == $category->id ? 'selected' : null }} value="{{ $category->id }}">{{ $category->title }}</option>
-                @endforeach
-            </select>
-            <section class="investment-lists pt-4 pb-5">
+            <section class="investment-lists pb-5">
                 <div class="container">
+                    <div class="form-group">
+                        <label for="">Choose Category</label>
+                        <select id="filter_categories" class="form-control" name="categories[]" onchange="">
+                            <option value="">All</option>
+                            @foreach($categories as $category)
+                                <option {{ $selected_category == $category->id ? 'selected' : null }} value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="container-fluid pl-0">
                         Most Recent
                     </div>
                     <div class="row mt-3">
                         @foreach ($ideas as $idea)
-                            <div class="col-lg-3 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <div class="custom-card">
                                     <figure>
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"

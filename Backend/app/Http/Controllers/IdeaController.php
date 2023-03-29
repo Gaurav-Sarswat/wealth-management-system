@@ -53,6 +53,7 @@ class IdeaController extends Controller
             'region' => $request->region,
             'country' => $request->country,
             'expiry_date' => $request->expiry_date,
+            'status' => $request->status,
             'user_id' => Auth::id(),
         ]);
 
@@ -65,9 +66,22 @@ class IdeaController extends Controller
         $ideas = Idea::where('user_id', Auth::id())->get(); 
         return view('idea.idea-list')->with('ideas', $ideas);
     }
-    public function updateForm($id)
+    public function update_idea_form($id)
     { 
-        $idea = Idea::find($id); 
+        $idea = Idea::with('categories')->find($id); 
+        $categories = Category::all();
+
+        $data = [
+            'idea' => $idea,
+            'categories' => $categories,
+            'pagename' => 'Update Idea'
+        ];
+
+        return view('idea.update-idea', $data);
+    }
+    public function update_idea($id)
+    { 
+        $idea = Idea::find($id);
 
         $data = [
             'idea' => $idea,

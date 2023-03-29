@@ -21,11 +21,17 @@
                     </div>
                     <div class="row mt-3">
                         @foreach ($ideas as $idea)
-                            <div class="col-lg-3 mb-3">
+                            <div class="col-lg-4 mb-3">
                                 <div class="custom-card">
                                     <figure>
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                                             class="w-100" alt="">
+                                            @if($idea->status == 'Draft')
+                                                <a class="edit-icon" href="{{ route('ideator.update-idea-form', ['id' => $idea->id]) }}">
+                                                    <i class="fas fa-pen"></i>
+                                                </a>
+                                            @endif
+                                            <span class="tag">{{ $idea->status }}</span>
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>

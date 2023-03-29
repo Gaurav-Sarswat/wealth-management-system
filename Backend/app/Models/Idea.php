@@ -26,7 +26,8 @@ class Idea extends Model
         "country",
         "image",
         "user_id",
-        "published_date"
+        "published_date",
+        "status"
     ];
 
     /**

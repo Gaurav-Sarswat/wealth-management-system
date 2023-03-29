@@ -5173,9 +5173,6 @@ $(document).ready(function () {
   $('.hover-menu-wrapper').on('mouseleave', function () {
     $('.hover-menu').removeClass('show');
   });
-  $('.select2').select2({
-    placeholder: 'Select Categories'
-  });
   function insertParam(key, value) {
     key = encodeURIComponent(key);
     value = encodeURIComponent(value);
@@ -5202,6 +5199,7 @@ $(document).ready(function () {
     var val = $(this).val();
     insertParam('category', val);
   });
+  $('.select2').select2({});
 });
 
 /***/ }),

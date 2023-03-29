@@ -85,7 +85,8 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
         Route::get('/ideas', [IdeaController::class, 'list'])->name('ideas');
         Route::get('/ideas/add', [IdeaController::class, 'show_form'])->name('create-idea-form');
         Route::post('/ideas/add', [IdeaController::class, 'create'])->name('create-idea');
-        Route::get('/idea/{id}', [IdeaController::class, 'updateForm'])->name('update-idea');
+        Route::get('/idea/{id}', [IdeaController::class, 'update_idea_form'])->name('update-idea-form');
+        Route::put('/idea/{id}', [IdeaController::class, 'update_idea'])->name('update-idea');
         Route::get('/idea/{id}/view', [IdeaController::class, 'view'])->name('view-idea');
     });
 });

@@ -63,7 +63,7 @@ class IdeaController extends Controller
     }
     public function list()
     { 
-        $ideas = Idea::where('user_id', Auth::id())->get(); 
+        $ideas = Idea::with('categories')->where('user_id', Auth::id())->get(); 
         return view('idea.idea-list')->with('ideas', $ideas);
     }
     public function update_idea_form($id)

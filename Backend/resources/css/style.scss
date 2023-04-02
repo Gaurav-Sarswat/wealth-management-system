@@ -136,16 +136,39 @@ body {
                 }
             }
         }
-        span.tag {
+        span.status-tag {
             position: absolute;
-            bottom: 8px;
+            top: 8px;
             left: 8px;
             font-size: .65rem;
             text-transform: uppercase;
-            padding: 4px 10px;
-            background-color: rgba($primary, 0.3);
+            padding: 4px 8px;
+            background-color: rgba(#000, 0.3);
             font-weight: 600;
-            border-radius: 5px;
+            border-radius: 3px;
+            color: $white;
+            &.draft {
+                background-color: $secondary;
+            }
+            &.published {
+                background-color: $success;
+            }
+        }
+        ul.category-list {
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            flex-wrap: wrap;
+            span {
+                font-size: .55rem;
+                text-transform: uppercase;
+                padding: 4px 8px;
+                background-color: rgba($primary, 0.9);
+                font-weight: 600;
+                border-radius: 3px;
+                color: $white;
+                margin-right: 2px;
+            }
         }
     }
     .title {

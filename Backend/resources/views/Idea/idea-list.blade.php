@@ -27,11 +27,23 @@
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                                             class="w-100" alt="">
                                             @if($idea->status == 'Draft')
-                                                <a class="edit-icon" href="{{ route('ideator.update-idea-form', ['id' => $idea->id]) }}">
-                                                    <i class="fas fa-pen"></i>
-                                                </a>
+                                            <a class="edit-icon" href="{{ route('ideator.update-idea-form', ['id' => $idea->id]) }}">
+                                                <i class="fas fa-pen"></i>
+                                            </a>
                                             @endif
-                                            <span class="tag">{{ $idea->status }}</span>
+                                            @if($idea->status == 'Draft')
+                                                <span class="status-tag draft">{{ $idea->status }}</span>
+                                            @endif
+                                            @if($idea->status == 'Published')
+                                                <span class="status-tag published">{{ $idea->status }}</span>
+                                            @endif
+                                            <ul class="category-list list-unstyled mb-0 d-flex align-items-center">
+                                                @foreach($idea->categories as $category)
+                                                    <li>
+                                                        <span class="category-tag">{{ $category->title }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>

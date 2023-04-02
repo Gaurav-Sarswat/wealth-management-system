@@ -34,7 +34,7 @@ class ClientController extends Controller
         $user = User::find($request->user()->id);
         $preferences = $request->preferences;
 
-        $user->categories()->attach($preferences);
+        $user->categories()->sync($preferences);
 
 
         return redirect()->route('client.dashboard')->with('success', 'Preferences Set Successfully!');

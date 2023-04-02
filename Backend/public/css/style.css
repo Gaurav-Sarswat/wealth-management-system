@@ -37,7 +37,10 @@ body {
   .custom-card figure {
     position: relative; }
     .custom-card figure img {
-      border-radius: 2px; }
+      border-radius: 2px;
+      height: 200px;
+      -o-object-fit: cover;
+         object-fit: cover; }
     .custom-card figure .edit-icon {
       position: absolute;
       top: 10px;
@@ -237,14 +240,30 @@ section.choose-preferences ul.tags-wrapper {
   position: relative; }
   .navbar .hover-menu-wrapper .hover-menu {
     position: absolute;
-    top: 30px;
-    width: 100%;
+    top: 40px;
+    right: 0;
+    width: 180px;
     background: #FFF;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.15);
     opacity: 0;
     transition: .4s; }
     .navbar .hover-menu-wrapper .hover-menu.show {
       opacity: 1; }
+    .navbar .hover-menu-wrapper .hover-menu ul {
+      text-align: right; }
+      .navbar .hover-menu-wrapper .hover-menu ul li {
+        background-color: #FFF;
+        transition: .4s;
+        padding: 10px; }
+        .navbar .hover-menu-wrapper .hover-menu ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+        .navbar .hover-menu-wrapper .hover-menu ul li i {
+          font-size: .80rem;
+          margin-left: 5px; }
+        .navbar .hover-menu-wrapper .hover-menu ul li:hover {
+          background-color: #327DF6; }
+          .navbar .hover-menu-wrapper .hover-menu ul li:hover span, .navbar .hover-menu-wrapper .hover-menu ul li:hover i {
+            color: #FFF; }
 
 main .layout-menu {
   flex: 20%;

@@ -47,7 +47,7 @@
                             <div class="idea-details-text mb-4">
                               <p>Category</p>
                               @foreach($idea->categories as $category)
-                                <span style="font-weight: bold;">{{ $category->title }}</span>
+                                <span style="font-weight: bold;">{{ $category->title }}</span>,
                               @endforeach
                             </div>
                               

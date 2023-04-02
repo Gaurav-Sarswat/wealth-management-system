@@ -8,15 +8,20 @@
                         <span>{{ Auth::user()->name }}</span>
                         <i class="fas fa-chevron-down ml-2"></i>
                     </a>
-
-<div class="hover-menu">
+                    <div class="hover-menu">
                         <ul class="list-unstyled">
+                            <li>
+                                <a href="FIXME:" class="d-flex align-items-center justify-content-end">
+                                    <span class="">Account Settings</span>
+                                    <i class="fas fa-cog"></i>
+                                </a>
+                            </li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button class="btn">
+                                    <button class="btn p-0">
+                                        <span class="">Logout</span>
                                         <i class="fas fa-sign-out-alt"></i>
-                                        <span>Logout</span>
                                     </button>
                                 </form>
                             </li>
@@ -28,23 +33,23 @@
     </div>
 </nav>
 @if ($errors->any())
-    <div class="container">
-        <div class="alert alert-danger alert-dismissible mt-2 mb-0 w-100">
-            <ul class="mb-0 list-unstyled">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
+<div class="container">
+    <div class="alert alert-danger alert-dismissible mt-2 mb-0 w-100">
+        <ul class="mb-0 list-unstyled">
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+</div>
 @endif
 @if (session('success'))
-    <div class="container">
-        <div class="alert alert-success mt-2 mb-0 w-100">
-            {{ session('success') }}
-        </div>
+<div class="container">
+    <div class="alert alert-success mt-2 mb-0 w-100">
+        {{ session('success') }}
     </div>
+</div>
 @endif

@@ -79,7 +79,7 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/profile', [AdminController::class, 'show_profile'])->name('show-profile');
         Route::put('/profile', [AdminController::class, 'update_profile'])->name('update-profile');
         Route::get('/data/currencies', [CurrencyController::class, 'show_currencies'])->name('show_currencies');
-        Route::get('/data/currencies/add', [CurrencyController::class, 'add_currencies_view'])->name('show_currencies');
+        Route::get('/data/currencies/add', [CurrencyController::class, 'add_currencies_view'])->name('add_currencies_view');
         Route::post('/data/currencies/add', [CurrencyController::class, 'add_currencies'])->name('add_currencies');
 
         Route::get('/data/regions', [RegionController::class, 'show_regions'])->name('show-regions');
@@ -89,6 +89,12 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/data/countries', [CountriesController::class, 'show_countries'])->name('show-countries');
         Route::get('/data/countries/add', [CountriesController::class, 'add_countries_view'])->name('add-countries-view');
         Route::post('/data/countries/add', [CountriesController::class, 'add_country'])->name('add-country');
+        Route::get('/data/major-sectors', [MajorSectorController::class, 'show_major_sector'])->name('show_major_sector');
+        Route::get('/data/major-sectors/add', [MajorSectorController::class, 'add_major_sector_view'])->name('add_major_sector_view');
+        Route::post('/data/major-sectors/add', [MajorSectorController::class, 'add_major_sector'])->name('add_major_sector');
+        Route::get('/data/minor-sectors', [MinorSectorController::class, 'show_minor_sector'])->name('show_minor_sector');
+        Route::get('/data/minor-sectors/add', [MinorSectorController::class, 'add_minor_sector_view'])->name('add_minor_sector_view');
+        Route::post('/data/minor-sectors/add', [MinorSectorController::class, 'add_minor_sector'])->name('add_minor_sector');
         
     });
 });

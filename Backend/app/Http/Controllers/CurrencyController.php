@@ -30,7 +30,7 @@ class CurrencyController extends Controller
                 'name' => $request->name,
             ]);
     
-    
+            
             return redirect()->route('admin.show_currencies')->with('success', 'Currency created successfully!');
         }
 

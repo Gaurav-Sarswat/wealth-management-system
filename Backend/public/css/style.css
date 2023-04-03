@@ -260,9 +260,11 @@ section.choose-preferences ul.tags-wrapper {
     background: #FFF;
     box-shadow: 1px 3px 4px 0px rgba(0, 0, 0, 0.15);
     opacity: 0;
+    visibility: hidden;
     transition: .4s; }
     .navbar .hover-menu-wrapper .hover-menu.show {
-      opacity: 1; }
+      opacity: 1;
+      visibility: visible; }
     .navbar .hover-menu-wrapper .hover-menu ul {
       text-align: right; }
       .navbar .hover-menu-wrapper .hover-menu ul li {
@@ -362,6 +364,18 @@ section.idea-details .author-detail figure img {
 section.idea-details .author-detail span.label {
   margin-right: 4px;
   font-weight: 600; }
+
+section.data-cards a.card {
+  text-decoration: none;
+  transition: .4s;
+  background-color: #FFF; }
+  section.data-cards a.card span {
+    font-weight: 600;
+    font-size: 1.4rem; }
+  section.data-cards a.card:hover {
+    background-color: #327DF6; }
+    section.data-cards a.card:hover span {
+      color: #FFF; }
 
 .select2-container--default .select2-selection--multiple {
   padding-bottom: 0 !important;

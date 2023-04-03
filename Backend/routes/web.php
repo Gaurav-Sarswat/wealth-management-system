@@ -78,6 +78,11 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/idea/{id}/view', [AdminController::class, 'view'])->name('admin-view-idea');
         Route::get('/profile', [AdminController::class, 'show_profile'])->name('show-profile');
         Route::put('/profile', [AdminController::class, 'update_profile'])->name('update-profile');
+
+        Route::get('/data', function() {
+            return view('admin.data');
+        })->name('data');
+
         Route::get('/data/currencies', [CurrencyController::class, 'show_currencies'])->name('show_currencies');
         Route::get('/data/currencies/add', [CurrencyController::class, 'add_currencies_view'])->name('add_currencies_view');
         Route::post('/data/currencies/add', [CurrencyController::class, 'add_currencies'])->name('add_currencies');

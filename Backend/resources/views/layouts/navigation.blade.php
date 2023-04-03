@@ -32,9 +32,9 @@
                         <span>Ideas</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="{{ route('admin.users') }}">
-                        <i class="fas fa-users"></i>
+                <li class="d-flex align-items-center {{ request()->routeIs('admin.data') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('admin.data') }}">
+                        <i class="fas fa-database"></i>
                         <span>Data</span>
                     </a>
                 </li>

@@ -416,9 +416,11 @@ section.choose-preferences {
             -moz-box-shadow: 1px 3px 4px 0px rgba(0,0,0,0.15);
             box-shadow: 1px 3px 4px 0px rgba(0,0,0,0.15);
             opacity: 0;
+            visibility: hidden;
             transition: .4s;
             &.show {
                 opacity: 1;
+                visibility: visible;
             }
             ul {
                 text-align: right;
@@ -587,6 +589,31 @@ section.idea-details {
 }
 
 // Idea details ends
+
+// Data Cards Starts
+
+section.data-cards {
+    a {
+        &.card {
+            text-decoration: none;
+            transition: .4s;
+            background-color: $white;
+            span {
+                font-weight: 600;
+                font-size: 1.4rem;
+                
+            }
+            &:hover {
+                background-color: $primary;
+                span {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+// Data Cards Ends
 
 // Select 2
 .select2-container--default .select2-selection--multiple {

@@ -336,6 +336,19 @@ section.view-idea .idea-details .idea-details-text span {
   font-size: 1.3rem;
   font-weight: 600; }
 
+section.idea-details .author-detail p {
+  font-size: 1.2rem; }
+
+section.idea-details .author-detail figure img {
+  border-radius: 50%;
+  width: 140px;
+  -o-object-fit: cover;
+     object-fit: cover; }
+
+section.idea-details .author-detail span.label {
+  margin-right: 4px;
+  font-weight: 600; }
+
 .select2-container--default .select2-selection--multiple {
   padding-bottom: 0 !important;
   min-height: 42px;

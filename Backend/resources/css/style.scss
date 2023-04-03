@@ -544,6 +544,31 @@ section.view-idea {
 
 // View Idea Ends
 
+// Idea details starts
+
+section.idea-details {
+    .author-detail {
+        p {
+            font-size: 1.2rem;
+        }
+        figure {
+            img {
+                border-radius: 50%;
+                width: 140px;
+                object-fit: cover;
+            }
+        }
+        span {
+            &.label {
+                margin-right: 4px;
+                font-weight: 600;
+            }
+        }
+    }
+}
+
+// Idea details ends
+
 // Select 2
 .select2-container--default .select2-selection--multiple {
     padding-bottom: 0 !important;

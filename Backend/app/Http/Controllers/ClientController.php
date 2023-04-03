@@ -36,7 +36,6 @@ class ClientController extends Controller
 
         $user->categories()->sync($preferences);
 
-
         return redirect()->route('client.dashboard')->with('success', 'Preferences Set Successfully!');
     }
     public function suggested_ideas()
@@ -50,7 +49,7 @@ class ClientController extends Controller
     }
     public function view($id)
     { 
-        $idea = Idea::with(['categories', 'users'])->find($id);
+        $idea = Idea::with('user', 'categories')->find($id);
         $pagename = $idea->title;
  
         return view('client.view-idea', compact('idea', 'pagename'));

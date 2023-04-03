@@ -55,7 +55,7 @@ class Idea extends Model
         });
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

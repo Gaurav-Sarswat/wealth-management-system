@@ -113,7 +113,7 @@
                 <li class="d-flex align-items-center">
                     <a class="d-block" href="FIXME:">
                         <i class="fas fa-chart-bar"></i>
-                        <span>Investments</span>
+                        <span>Portfolio</span>
                     </a>
                 </li>
                 <li class="d-flex align-items-center">

@@ -94,6 +94,25 @@ body {
             background: $white !important;
         }
     }
+    &.danger {
+        background-color: $danger;
+        border: 2px solid $danger !important;
+        &:hover {
+            color: $danger !important;
+            background: $white !important;
+
+        }
+    }
+    &.success {
+        background-color: $success;
+        border: 2px solid $success !important;
+        &:hover {
+            background-color: $success !important;
+            border: 2px solid $success !important;
+            color: $white !important;
+            cursor: default;
+        }
+    }
 }
 
 .custom-card {

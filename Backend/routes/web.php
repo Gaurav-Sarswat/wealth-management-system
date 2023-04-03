@@ -60,6 +60,8 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
         Route::get('/idea/{id}/view', [RelationshipManagerController::class, 'view'])->name('rm-view-idea');
         Route::get('/profile', [RelationshipManagerController::class, 'show_profile'])->name('show-profile');
         Route::put('/profile', [RelationshipManagerController::class, 'update_profile'])->name('update-profile');
+        Route::get('/idea/{id}/accept', [RelationshipManagerController::class, 'accept'])->name('rm-accept-idea');
+        Route::get('/idea/{id}/reject', [RelationshipManagerController::class, 'reject'])->name('rm-reject-idea');
     });
 });
 

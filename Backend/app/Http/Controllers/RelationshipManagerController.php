@@ -108,15 +108,18 @@ class RelationshipManagerController extends Controller
 
     public function list(Request $request)
     { 
-        $ideas = Idea::all();
         $categories = Category::all();
         $filter_category = $request->query('category');
-        if($filter_category!=''){
-            $ideas = Idea::whereHas('categories', function ($query) use ($filter_category) {
+        if($filter_category != ''){
+            $ideas = Idea::where('status', 'Published')->whereIn('verification_status', ['accepted', 'pending'])->
+            whereHas('categories', 
+            function ($query) use ($filter_category) {
                 $query->where('categories.id', $filter_category);
             })->get();
+        } else {
+            $ideas = Idea::where('status', 'Published')->whereIn('verification_status', ['accepted', 'pending'])->get();
         }
-       
+
         $data = [
             'ideas' => $ideas,
             'categories' => $categories,
@@ -155,5 +158,21 @@ class RelationshipManagerController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
+    public function accept($id, Request $request)
+    { 
+        $idea = Idea::find($id);
+        $idea->verification_status = 'accepted';
+        $idea->save();
+        return redirect()->route("relationship-manager.ideas")->with('success', 'Idea accepted successfully!');
+    }
+
+    public function reject($id, Request $request)
+    { 
+        $idea = Idea::find($id);
+        $idea->verification_status = 'rejected';
+        $idea->save();
+        return redirect()->route("relationship-manager.ideas")->with('success', 'Idea rejected successfully!');
     }
 }

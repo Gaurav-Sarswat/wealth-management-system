@@ -32,6 +32,11 @@
                                     <figure>
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                                             class="w-100" alt="">
+                                            @if($idea->verification_status == 'pending')
+                                            <span class="status-tag draft">{{ $idea->verification_status }}</span>
+                                            @else
+                                            <span class="status-tag published">{{ $idea->verification_status }}</span>
+                                            @endif
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>

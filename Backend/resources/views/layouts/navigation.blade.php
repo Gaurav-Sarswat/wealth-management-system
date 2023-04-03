@@ -33,6 +33,12 @@
                     </a>
                 </li>
                 <li class="d-flex align-items-center">
+                    <a class="d-block" href="{{ route('admin.users') }}">
+                        <i class="fas fa-users"></i>
+                        <span>Data</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center">
                     <a class="d-block" href="{{ route('admin.show-profile') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>

@@ -81,6 +81,14 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/data/currencies', [CurrencyController::class, 'show_currencies'])->name('show_currencies');
         Route::get('/data/currencies/add', [CurrencyController::class, 'add_currencies_view'])->name('show_currencies');
         Route::post('/data/currencies/add', [CurrencyController::class, 'add_currencies'])->name('add_currencies');
+
+        Route::get('/data/regions', [RegionController::class, 'show_regions'])->name('show-regions');
+        Route::get('/data/regions/add', [RegionController::class, 'add_regions_view'])->name('add-region-view');
+        Route::post('/data/regions/add', [RegionController::class, 'add_region'])->name('add-region');
+        
+        Route::get('/data/countries', [CountriesController::class, 'show_countries'])->name('show-countries');
+        Route::get('/data/countries/add', [CountriesController::class, 'add_countries_view'])->name('add-countries-view');
+        Route::post('/data/countries/add', [CountriesController::class, 'add_country'])->name('add-country');
         
     });
 });

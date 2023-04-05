@@ -56,6 +56,7 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
     Route::middleware(['auth', 'checkUserType:rm'])->group(function () {
         Route::get('/dashboard', [RelationshipManagerController::class, 'index'])->name('dashboard');
         Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/{id}', [UserController::class, 'view_user'])->name('rm-view-user');
         Route::get('/ideas', [RelationshipManagerController::class, 'list'])->name('ideas');
         Route::get('/idea/{id}/view', [RelationshipManagerController::class, 'view'])->name('rm-view-idea');
         Route::get('/profile', [RelationshipManagerController::class, 'show_profile'])->name('show-profile');

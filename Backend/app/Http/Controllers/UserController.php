@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -67,5 +68,12 @@ class UserController extends Controller
         event(new Registered($user));
 
         return redirect()->route('admin.users')->with('success', 'User created successfully!');
+    }
+    public function view_user($id)
+    {
+        $pagename = 'User Details';
+        $user = User::with('categories')->find($id); 
+        // return dd($user);
+        return view('relationship-manager.rm-view-user', compact('user', 'pagename'));
     }
 }

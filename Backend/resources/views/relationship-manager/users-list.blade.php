@@ -22,7 +22,7 @@
                                 <th scope="col">Full Name</th>
                                 <th scope="col">Email Address</th>
                                 <th scope="col">Phone Number</th>
-                                <th scope="col">Action</th>
+                                <th scope="col">Info</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,9 +33,11 @@
                                     <td>{{ $client->email }}</td>
                                     <td>{{ $client->number }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
-                                        </button>
+                                        <a href="{{ route('relationship-manager.rm-view-user', ['id' => $client->id]) }}">
+                                            <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                                    <i class="fas fa-info" aria-hidden="true"></i>
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

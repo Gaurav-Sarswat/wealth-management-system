@@ -101,7 +101,10 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/data/minor-sectors', [MinorSectorController::class, 'show_minor_sector'])->name('show_minor_sector');
         Route::get('/data/minor-sectors/add', [MinorSectorController::class, 'add_minor_sector_view'])->name('add_minor_sector_view');
         Route::post('/data/minor-sectors/add', [MinorSectorController::class, 'add_minor_sector'])->name('add_minor_sector');
-        
+        Route::get('/idea/{id}/accept', [AdminController::class, 'accept'])->name('admin-accept-idea');
+        Route::get('/idea/{id}/reject', [AdminController::class, 'reject'])->name('admin-reject-idea');
+        Route::delete('/idea/{id}', [AdminController::class, 'delete_idea'])->name('admin-delete-idea');
+        Route::get('/users/{id}', [UserController::class, 'view_user'])->name('admin-view-user');
     });
 });
 

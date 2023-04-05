@@ -49,9 +49,11 @@
                                     <td>{{ $client->email }}</td>
                                     <td>{{ $client->number }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
+                                        <a href="{{ route('admin.admin-view-user', ['id' => $client->id]) }}">
+                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                            <i class="fas fa-info" aria-hidden="true"></i>
                                         </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,9 +80,11 @@
                                     <td>{{ $rm->email }}</td>
                                     <td>{{ $rm->number }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
+                                    <a href="{{ route('admin.admin-view-user', ['id' => $rm->id]) }}">
+                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                            <i class="fas fa-info" aria-hidden="true"></i>
                                         </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -106,9 +110,11 @@
                                     <td>{{ $ideator->email }}</td>
                                     <td>{{ $ideator->number }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
+                                    <a href="{{ route('admin.admin-view-user', ['id' => $ideator->id]) }}">
+                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                            <i class="fas fa-info" aria-hidden="true"></i>
                                         </button>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -119,32 +125,7 @@
 
             <section class="custom-table-users">
                 <div class="container">
-                    <!-- <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clients as $client)
-                                <tr>
-                                    <td scope="row">{{ $client->id }}</td>
-                                    <td>{{ $client->name }}</td>
-                                    <td>{{ $client->email }}</td>
-                                    <td>{{ $client->number }}</td>
-                                    <td>
-                                        <button type="button" class="btn btn-sm btn-outline-primary">
-                                            <i class="fas fa-edit" aria-hidden="true"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table> -->
+                    
                 </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->

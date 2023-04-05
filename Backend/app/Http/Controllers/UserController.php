@@ -71,9 +71,17 @@ class UserController extends Controller
     }
     public function view_user($id)
     {
-        $pagename = 'User Details';
-        $user = User::with('categories')->find($id); 
-        // return dd($user);
-        return view('relationship-manager.rm-view-user', compact('user', 'pagename'));
+        $user_role = Auth::user();
+
+        if ($user_role->role == 'rm'){
+            $pagename = 'Client Details';
+            $user = User::with('categories')->find($id); 
+            return view('relationship-manager.rm-view-user', compact('user', 'pagename'));
+        }
+        if ($user_role->role == 'admin'){
+            $pagename = 'User Details';
+            $user = User::with('categories')->find($id); 
+            return view('admin.admin-view-user', compact('user', 'pagename'));
+        }
     }
 }

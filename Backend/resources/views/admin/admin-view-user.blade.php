@@ -5,10 +5,10 @@
         <div class="container">
            <ul class="d-flex align-items-center custom-breadcrumb list-unstyled mb-2 py-1">
               <li>
-                 <a href="{{ route('relationship-manager.dashboard') }}">Home</a>
+                 <a href="{{ route('admin.dashboard') }}">Home</a>
               </li>
               <li>
-                 <a href="{{ route('relationship-manager.users') }}">Clients</a>
+                 <a href="{{ route('admin.users') }}">Users</a>
               </li>
               <li>
                  {{ $pagename }}
@@ -36,14 +36,17 @@
                         <span class="text-uppercase" style="font-weight: bold;">{{ $user->number }}</span>
                      </div>
                   </div>
-                  <div class="col-lg-3">
-                     <div class="idea-details-text mb-4">
-                       <p>Preferences</p>
-                       @foreach($user->categories as $category)
-                         <span style="font-weight: bold;">{{ $category->title }}</span>,
-                       @endforeach
+                  @if($user->role == 'client')
+                     <div class="col-lg-3">
+                        <div class="idea-details-text mb-4">
+                          <p>Preferences</p>
+                          @foreach($user->categories as $category)
+                            <span style="font-weight: bold;">{{ $category->title }}</span>,
+                          @endforeach
+                        </div>
                      </div>
-                  </div>
+                  @endif
+
                </div>
             </div>
           </div>

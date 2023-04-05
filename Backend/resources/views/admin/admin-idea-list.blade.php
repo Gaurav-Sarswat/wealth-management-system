@@ -32,6 +32,15 @@
                                     <figure>
                                         <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
                                             class="w-100" alt="">
+                                            @if($idea->verification_status == 'pending' && $idea->status != 'Draft')
+                                            <span class="status-tag draft">{{ $idea->verification_status }}</span>
+                                            @elseif($idea->verification_status == 'pending' && $idea->status == 'Draft')
+                                            <span class="status-tag draft1">{{ $idea->status }}</span>
+                                            @elseif($idea->verification_status == 'rejected')
+                                            <span class="status-tag bg-danger">{{ $idea->verification_status }}</span>
+                                            @elseif($idea->verification_status == 'accepted')
+                                            <span class="status-tag published">{{ $idea->verification_status }}</span>
+                                            @endif
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>
@@ -42,6 +51,7 @@
                                 </div>
                             </div>
                         @endforeach
+                                           
                     </div>
                 </div>
             </section>

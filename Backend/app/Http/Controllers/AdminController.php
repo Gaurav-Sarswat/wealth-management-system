@@ -18,20 +18,23 @@ class AdminController extends Controller
     public function list(Request $request)
     {
         
-        $ideas = Idea::all(); 
         $categories = Category::all();
         $filter_category = $request->query('category');
-        if($filter_category!=''){
-            $ideas = Idea::whereHas('categories', function ($query) use ($filter_category) {
+        if($filter_category != ''){
+            $ideas = Idea::whereIn('status', ['Published', 'Draft'])->whereIn('verification_status', ['accepted', 'pending', 'rejected'])->
+            whereHas('categories', 
+            function ($query) use ($filter_category) {
                 $query->where('categories.id', $filter_category);
             })->get();
+        } else {
+            $ideas = Idea::whereIn('status', ['Published', 'Draft'])->whereIn('verification_status', ['accepted', 'pending', 'rejected'])->get();
         }
+
         $data = [
             'ideas' => $ideas,
             'categories' => $categories,
             'selected_category' => $filter_category
         ];
-
         return view('admin.admin-idea-list', $data);
     }
 
@@ -65,5 +68,28 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+
+    public function accept($id, Request $request)
+    { 
+        $idea = Idea::find($id);
+        $idea->verification_status = 'accepted';
+        $idea->save();
+        return redirect()->route("admin.ideas")->with('success', 'Idea accepted successfully!');
+    }
+
+    public function reject($id, Request $request)
+    { 
+        $idea = Idea::find($id);
+        $idea->verification_status = 'rejected';
+        $idea->save();
+        return redirect()->route("admin.ideas")->with('success', 'Idea rejected successfully!');
+    }
+
+    public function delete_idea($id, Request $request)
+    { 
+        $idea = Idea::find($id);
+        $idea->delete();
+        return redirect()->route("admin.ideas")->with('success', 'Idea Deleted successfully!');
     }
 }

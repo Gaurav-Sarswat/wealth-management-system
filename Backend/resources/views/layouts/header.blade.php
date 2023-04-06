@@ -48,8 +48,11 @@
 @endif
 @if (session('success'))
 <div class="container">
-    <div class="alert alert-success mt-2 mb-0 w-100">
+    <div class="alert alert-success alert-dismissible mt-2 mb-0 w-100">
         {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </div>
 @endif

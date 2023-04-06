@@ -18,6 +18,17 @@
                 <form action="{{ route('admin.update-profile') }}" method="POST">
                     @csrf
                     @method('PUT')
+                    <div class="form-group">
+                        @if(Auth::user()->profile_picture) {
+                            
+                        } else {
+
+                        }
+                        <label for="profile_picture">
+                            <img src="{{ asset('storage/'.Auth::user()->profile_picture) }}" id="profile_picture_placeholder" alt="{{ Auth::user()->name }}">
+                        </label>
+                        <input type="file" hidden id="profile_picture" name="profile_picture">
+                    </div>
                     <div class="form-group w-50">Full Name
                         <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control">
                     </div>

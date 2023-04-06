@@ -67,4 +67,9 @@ class Idea extends Model
         return $this->belongsToMany(Category::class, 'category_idea', 'idea_id', 'category_id');
     }
 
+    public function currencies()
+    {
+        return $this->belongsToMany(Currency::class);
+    }
+
 }

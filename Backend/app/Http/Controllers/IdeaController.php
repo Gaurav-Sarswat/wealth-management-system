@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea;
 use App\Models\Category;
+use App\Models\Countries;
+use App\Models\Currency;
+use App\Models\MajorSector;
+use App\Models\MinorSector;
+use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,13 +19,14 @@ class IdeaController extends Controller
     public function show_form()
     {
         $categories = Category::all();
-
-        $data = [
-            'categories' => $categories,
-            'pagename' => 'Create Idea'
-        ];
-
-        return view("idea.create-idea", $data);
+        $currencies = Currency::all();
+        $major_sectors = MajorSector::all();
+        $minor_sectors = MinorSector::with('majorsector')->get();
+        $regions = Region::all();
+        $countries = Countries::with('region')->get();
+        $pagename = 'Create Idea';
+        
+        return view("idea.create-idea", compact('categories', 'currencies', 'major_sectors', 'minor_sectors', 'regions', 'countries', 'pagename'));
     }
     public function create(Request $request)
     {
@@ -32,7 +38,7 @@ class IdeaController extends Controller
             'expiry_date' => ['required', 'string', 'max:255'],
             'categories' => ['required'],
             'instruments' => ['required', 'string', 'max:255'],
-            'currency' => ['required', 'string', 'max:255'],
+            // 'currency' => ['required', 'string', 'max:255'],
             'major_sector' => ['required', 'string', 'max:255'],
             'minor_sector' => ['required', 'string', 'max:255'],
             'region' => ['required', 'string', 'max:255'],
@@ -47,7 +53,7 @@ class IdeaController extends Controller
             'risk_rating' => $request->risk_rating,
             'expiry_date' => $request->expiry_date,
             'instruments' => $request->instruments,
-            'currency' => $request->currency,
+            // 'currency' => $request->currency,
             'major_sector' => $request->major_sector,
             'minor_sector' => $request->minor_sector,
             'region' => $request->region,
@@ -58,6 +64,7 @@ class IdeaController extends Controller
         ]);
 
         $idea->categories()->attach($request->categories);
+        $idea->currencies()->attach($request->currency);
 
         return redirect()->route('ideator.ideas')->with('success', 'Idea created successfully!');
     }

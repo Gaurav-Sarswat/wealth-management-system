@@ -5200,6 +5200,29 @@ $(document).ready(function () {
     insertParam('category', val);
   });
   $('.select2').select2({});
+  $('select.has-parent').children('option').attr('disabled', true);
+  $('select.parent.sector').on('change', function () {
+    $('select.has-parent.sector').val(null).trigger('change');
+    var val = $(this).val();
+    $('select.has-parent.sector').children('option').each(function () {
+      if (val.includes($(this).attr('data-parent'))) {
+        $(this).removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', true);
+      }
+    });
+  });
+  $('select.parent.country').on('change', function () {
+    $('select.has-parent.country').val(null).trigger('change');
+    var val = $(this).val();
+    $('select.has-parent.country').children('option').each(function () {
+      if (val.includes($(this).attr('data-parent'))) {
+        $(this).removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', true);
+      }
+    });
+  });
 });
 
 /***/ }),

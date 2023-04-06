@@ -12,4 +12,9 @@ class Currency extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function ideas()
+    {
+        return $this->belongsToMany(Idea::class);
+    }
 }

@@ -70,50 +70,39 @@
                                                         <input type="text" placeholder="Instruments" name="instruments" class="form-control">
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="currency" multiple name="currency" class="form-control select2" data-placeholder="Select Currencies">
-                                                            <option value="gbp">GBP</option>
-                                                            <option value="usd">USD</option>
-                                                            <option value="inr">INR</option>
-                                                            <option value="pkr">PKR</option>
-                                                            <option value="ngn">NGN</option>
-                                                            <option value="euro">EURO</option>
+                                                        <select id="currency" multiple name="currency[]" class="form-control select2" data-placeholder="Select Currencies">
+                                                            @foreach($currencies as $currency)
+                                                                <option value="{{ $currency->id }}">{{ $currency->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="major_sector" multiple name="major_sector" class="form-control select2" data-placeholder="Major Sector">
-                                                            <option value="gbp">GBP</option>
-                                                            <option value="usd">USD</option>
-                                                            <option value="inr">INR</option>
-                                                            <option value="pkr">PKR</option>
-                                                            <option value="ngn">NGN</option>
-                                                            <option value="euro">EURO</option>
+                                                        <select id="major_sector" multiple name="major_sector[]" class="form-control select2 parent sector" data-placeholder="Major Sector">
+                                                            @foreach($major_sectors as $ms)
+                                                                <option value="{{ $ms->id }}">{{ $ms->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="minor_sector" multiple name="minor_sector" class="form-control select2" data-placeholder="Minor Sector">
-                                                            <option value="gbp">GBP</option>
-                                                            <option value="usd">USD</option>
-                                                            <option value="inr">INR</option>
-                                                            <option value="pkr">PKR</option>
-                                                            <option value="ngn">NGN</option>
-                                                            <option value="euro">EURO</option>
+                                                        <select id="minor_sector" multiple name="minor_sector[]" class="form-control select2 has-parent sector" data-placeholder="Minor Sector">
+                                                            @foreach($minor_sectors as $ms)
+                                                                <option data-parent="{{ $ms->majorsector->id }}" value="{{ $ms->id }}">{{ $ms->name }}</option>
+                                                            @endforeach
+                                                            
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="Region" multiple name="region" class="form-control select2" data-placeholder="Select Regions">
-                                                            <option value="north-america">North America</option>
-                                                            <option value="south-america">South America</option>
-                                                            <option value="europe">Europe</option>
-                                                            <option value="asia">Asia</option>
-                                                            <option value="africa">Africa</option>
-                                                            <option value="antarctica">Antarctica</option>
-                                                            <option value="ocenia">Oceania</option>
+                                                        <select id="Region" multiple name="region[]" class="form-control select2 parent country" data-placeholder="Select Regions">
+                                                            @foreach($regions as $region)
+                                                                <option value="{{ $region->id }}">{{ $region->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <select id="country" multiple name="country" class="form-control select2" data-placeholder="Select Country">
-                                                            <option value="uk">United Kingdom</option>
-                                                            <option value="india">India</option>
+                                                        <select id="country" multiple name="country[]" class="form-control select2 has-parent country" data-placeholder="Select Country">
+                                                            @foreach($countries as $country)
+                                                                <option data-parent="{{ $country->region->id }}" value="{{ $country->id }}">{{ $country->name }}</option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                     <div class="form-group">

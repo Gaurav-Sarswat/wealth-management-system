@@ -631,3 +631,14 @@ section.data-cards {
 .select2-selection__rendered {
     font-family: 'Nunito', sans-serif !important;
 }
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: $primary;
+    color: $white;
+    border-color: $primary;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: $white;
+    border-right-color: $white;
+}

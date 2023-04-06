@@ -391,3 +391,12 @@ section.data-cards a.card {
 .select2-selection__rendered {
   font-family: 'Nunito', sans-serif !important; }
 
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  background-color: #327DF6;
+  color: #FFF;
+  border-color: #327DF6; }
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+  color: #FFF;
+  border-right-color: #FFF; }
+

@@ -17,6 +17,11 @@ class Countries extends Model
     {
         return $this->belongsTo(Region::class);
     }
+
+    public function ideas()
+    {
+        return $this->belongsToMany(Idea::class, 'country_id', 'countries_id', 'idea_id');
+    }
     
     use HasFactory;
 }

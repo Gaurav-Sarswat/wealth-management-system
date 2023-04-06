@@ -49,7 +49,7 @@ class ClientController extends Controller
     }
     public function view($id)
     { 
-        $idea = Idea::with('user', 'categories')->find($id);
+        $idea = Idea::with('user', 'categories', 'currencies', 'majorsectors', 'minorsectors', 'regions', 'countries')->find($id);
         $pagename = $idea->title;
  
         return view('client.view-idea', compact('idea', 'pagename'));

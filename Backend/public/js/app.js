@@ -5200,7 +5200,9 @@ $(document).ready(function () {
     insertParam('category', val);
   });
   $('.select2').select2({});
-  $('select.has-parent').children('option').attr('disabled', true);
+
+  // $('select.has-parent').children('option').attr('disabled', true)
+
   $('select.parent.sector').on('change', function () {
     $('select.has-parent.sector').val(null).trigger('change');
     var val = $(this).val();

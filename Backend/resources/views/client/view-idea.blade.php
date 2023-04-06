@@ -51,7 +51,7 @@
             </ul>
             <div class="tab-content" id="myTabContent">
               <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <div class="row mt-3 ml-2">
+              <div class="row mt-3 ml-2">
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Category</p>
@@ -70,33 +70,31 @@
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
-                      <p>Country</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->country }}</span>
-                    </div>
-    
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="idea-details-text mb-4">
-                      <p>Currency</p>
-                      <span class="text-uppercase" style="font-weight: bold;">{{ $idea->currency }}</span>
-                    </div>
-    
-                  </div>
-                </div>
-                <div class="row mt-3 ml-2">
-                  <div class="col-lg-3">
-                    <div class="idea-details-text mb-4">
-                      <p>Region</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->region }}</span>
-                    </div>
-    
-                  </div>
-                  <div class="col-lg-3">
-                    <div class="idea-details-text mb-4">
                       <p>Risk rating</p>
                       <span style="font-weight: bold;">{{ $idea->risk_rating }}</span>
                     </div>
-    
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="idea-details-text mb-4">
+                      <p>Instrument</p>
+                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->instruments }}</span>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="idea-details-text mb-4">
+                      <p>Regions</p>
+                      @foreach($idea->regions as $region)
+                        <span class="text-capitalize" style="font-weight: bold;">{{ $region->name }}</span>,
+                      @endforeach
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <div class="idea-details-text mb-4">
+                      <p>Countries</p>
+                      @foreach($idea->countries as $country)
+                        <span class="text-capitalize" style="font-weight: bold;">{{ $country->name }}</span>,
+                      @endforeach
+                    </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
@@ -109,28 +107,31 @@
                       <p>Expiry Date</p>
                       <span style="font-weight: bold;">{{ date('d/m/Y', strtotime($idea->expiry_date)) }}</span>
                     </div>
-    
                   </div>
-                </div>
-                <div class="row mt-3 ml-2">
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
-                      <p>Instrument</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->instruments }}</span>
+                      <p>Currency</p>
+                      @foreach($idea->currencies as $currency)
+                        <span class="text-uppercase" style="font-weight: bold;">{{ $currency->name }}</span>,
+                      @endforeach
                     </div>
     
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
-                      <p>Major Sector</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->major_sector }}</span>
+                      <p>Major Sectors</p>
+                      @foreach($idea->majorsectors as $sector)
+                        <span class="text-capitalize" style="font-weight: bold;">{{ $sector->name }}</span>,
+                      @endforeach
                     </div>
-    
+                    
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Minor Sector</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->minor_sector }}</span>
+                      @foreach($idea->minorsectors as $sector)
+                        <span class="text-capitalize" style="font-weight: bold;">{{ $sector->name }}</span>,
+                      @endforeach
                     </div>
                   </div>
                 </div>

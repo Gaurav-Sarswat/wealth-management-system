@@ -18,4 +18,9 @@ class MinorSector extends Model
     {
         return $this->belongsTo(MajorSector::class, "major_sectors_id");
     }
+
+    public function ideas()
+    {
+        return $this->belongsToMany(Idea::class, "minor_sector_idea");
+    }
 }

@@ -13,8 +13,13 @@ class MajorSector extends Model
         'name',
     ];
 
-    public function minorSectors()
+    public function minorsectors()
     {
         return $this->hasMany(MinorSector::class);
+    }
+
+    public function ideas()
+    {
+        return $this->belongsToMany(Idea::class, 'major_sector_idea');
     }
 }

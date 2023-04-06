@@ -17,5 +17,10 @@ class Region extends Model
         return $this->hasMany(Country::class);
     }
 
+    public function ideas()
+    {
+        return $this->belongsToMany(Idea::class, 'region_id');
+    }
+
     use HasFactory;
 }

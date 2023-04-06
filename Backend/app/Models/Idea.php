@@ -72,4 +72,24 @@ class Idea extends Model
         return $this->belongsToMany(Currency::class);
     }
 
+    public function majorsectors()
+    {
+        return $this->belongsToMany(MajorSector::class, 'major_sector_idea');
+    }
+
+    public function minorsectors()
+    {
+        return $this->belongsToMany(MinorSector::class, 'minor_sector_idea');
+    }
+
+    public function regions()
+    {
+        return $this->belongsToMany(Region::class, 'region_idea');
+    }
+
+    public function countries()
+    {
+        return $this->belongsToMany(Countries::class, 'country_idea', 'idea_id', 'countries_id');
+    }
+
 }

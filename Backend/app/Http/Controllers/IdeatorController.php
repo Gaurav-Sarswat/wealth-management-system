@@ -9,6 +9,6 @@ class IdeatorController extends Controller
     //
     public function index()
     {
-        return view('dashboard')->with('pagename', 'Dashboard');
+        return view('idea.dashboard')->with('pagename', 'Dashboard');
     }
 }

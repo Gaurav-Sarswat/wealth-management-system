@@ -110,10 +110,16 @@
                         <span>Suggested Ideas</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                <li class="d-flex align-items-center {{ request()->routeIs('client.portfolio') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('client.portfolio') }}">
                         <i class="fas fa-chart-bar"></i>
                         <span>Portfolio</span>
+                    </a>
+                </li>
+                <li class="d-flex align-items-center {{ request()->routeIs('client.wishlist') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('client.wishlist') }}">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Wishlist</span>
                     </a>
                 </li>
                 <li class="d-flex align-items-center">

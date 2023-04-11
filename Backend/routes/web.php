@@ -46,6 +46,10 @@ Route::name('client.')->prefix('client')->group(function(){
         Route::post('/set-preferences', [ClientController::class, 'set_preferences'])->name('set-preferences');
         Route::get('/suggested-ideas', [ClientController::class, 'suggested_ideas'])->name('suggested-ideas');
         Route::get('/idea/{id}/view', [ClientController::class, 'view'])->name('view-idea');
+        Route::post('/add-to-portfolio/{id}', [ClientController::class, 'add_to_portfolio'])->name('add-to-portfolio');
+        Route::get('/portfolio', [ClientController::class, 'portfolio'])->name('portfolio');
+        Route::post('/add-to-wishlist/{id}', [ClientController::class, 'add_to_wishlist'])->name('add-to-wishlist');
+        Route::get('/wishlist', [ClientController::class, 'wishlist'])->name('wishlist');
     });
 });
 

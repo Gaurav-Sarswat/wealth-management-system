@@ -53,4 +53,12 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Category::class);
     }
+    public function portfolio()
+    {
+        return $this->belongsToMany(Idea::class, 'user_portfolio', 'user_id', 'idea_id');
+    }
+    public function wishlist()
+    {
+        return $this->belongsToMany(Idea::class, 'user_wishlist', 'user_id', 'idea_id');
+    }
 }

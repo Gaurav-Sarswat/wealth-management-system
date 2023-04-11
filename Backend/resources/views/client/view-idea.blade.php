@@ -17,16 +17,40 @@
       </div>
       <section class="idea-details">
         <div class="container">
-          <div>
-            <div class="d-flex align-items-center justify-content-between">
-              <h4 class="page-title">{{ $idea->title }}</h4>
-              <div class="d-flex align-items-center">
-                <a href="FIXME:" class="btn btn-custom px-4 py-2 d-flex align-items-center justify-content-center"><i
-                    class="fas fa-plus-circle mr-2"></i>Add to portfolio</a>
-                <a href="FIXME:"
-                  class="btn btn-danger-custom px-4 py-2 d-flex align-items-center justify-content-center ml-2"><i
-                    class="fas fa-bookmark mr-2"></i>Add to wishlist</a>
-              </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <h4 class="page-title">{{ $idea->title }}</h4>
+            <div class="d-flex align-items-center">
+            @if(in_array($idea->id, $wishlist->pluck('id')->toArray()))
+              <form action="{{ route('client.add-to-portfolio', ['id' => $idea->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-custom px-4 py-2 d-flex align-items-center justify-content-center">
+                  <i class="fas fa-plus-circle mr-2"></i>
+                  Add to portfolio
+                </button>
+              </form>
+            @endif
+            @if(in_array($idea->id, $portfolio->pluck('id')->toArray()))
+              <button type="button" class="btn btn-custom success px-4 py-2 d-flex align-items-center justify-content-center">
+                <i class="fas fa-wallet mr-2"></i>
+                Added to portfolio
+              </button>
+            @endif
+            @if((!in_array($idea->id, $portfolio->pluck('id')->toArray())) && (!in_array($idea->id, $wishlist->pluck('id')->toArray())))
+              <form action="{{ route('client.add-to-portfolio', ['id' => $idea->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-custom px-4 py-2 d-flex align-items-center justify-content-center">
+                  <i class="fas fa-plus-circle mr-2"></i>
+                  Add to portfolio
+                </button>
+              </form>
+              <form action="{{ route('client.add-to-wishlist', ['id' => $idea->id]) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn btn-danger-custom px-4 py-2 d-flex align-items-center justify-content-center ml-2">
+                  <i class="fas fa-bookmark mr-2"></i>
+                  Add to wishlist
+                </button>
+              </form>
+            @endif
             </div>
           </div>
           <div class="pt-4">
@@ -59,14 +83,14 @@
                       <span style="font-weight: bold;">{{ $category->title }}</span>,
                       @endforeach
                     </div>
-    
+ 
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Author</p>
                       <span style="font-weight: bold;">{{ $idea->user->name }}</span>
                     </div>
-    
+ 
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
@@ -115,7 +139,7 @@
                         <span class="text-uppercase" style="font-weight: bold;">{{ $currency->name }}</span>,
                       @endforeach
                     </div>
-    
+ 
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
@@ -124,7 +148,7 @@
                         <span class="text-capitalize" style="font-weight: bold;">{{ $sector->name }}</span>,
                       @endforeach
                     </div>
-                    
+ 
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">

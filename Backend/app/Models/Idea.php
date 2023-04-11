@@ -91,5 +91,14 @@ class Idea extends Model
     {
         return $this->belongsToMany(Countries::class, 'country_idea', 'idea_id', 'countries_id');
     }
+    public function userportfolio()
+    {
+        return $this->belongsToMany(User::class, 'user_portfolio', 'idea_id', 'user_id');
+    }
+ 
+    public function userwishlist()
+    {
+        return $this->belongsToMany(User::class, 'user_wishlist', 'idea_id', 'user_id');
+    }
 
 }

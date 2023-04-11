@@ -50,8 +50,44 @@ class ClientController extends Controller
     public function view($id)
     { 
         $idea = Idea::with('user', 'categories', 'currencies', 'majorsectors', 'minorsectors', 'regions', 'countries')->find($id);
+        $user = User::with('portfolio', 'wishlist')->find(Auth::user()->id);
+        $portfolio = $user->portfolio;
+        $wishlist = $user->wishlist;
         $pagename = $idea->title;
  
-        return view('client.view-idea', compact('idea', 'pagename'));
+        return view('client.view-idea', compact('idea', 'pagename', 'portfolio', 'wishlist'));
+    }
+    public function add_to_portfolio($id)
+    {
+        $user = Auth::user();
+        $user->wishlist()->detach($id);
+        $user->portfolio()->attach($id);
+ 
+ 
+        return redirect()->back()->with('success', 'Congratulations, Added to portfolio successfully!');
+    }
+    public function portfolio()
+    {
+        $user = User::with('portfolio')->find(Auth::user()->id);
+        $ideas = $user->portfolio;
+        $pagename = 'My Portfolio';
+ 
+        return view('client.portfolio', compact('ideas', 'pagename'));
+    }
+    public function add_to_wishlist($id)
+    {
+        $user = Auth::user();
+        $user->wishlist()->attach($id);
+ 
+ 
+        return redirect()->back()->with('success', 'Congratulations, Added to wishlist successfully!');
+    }
+    public function wishlist()
+    {
+        $user = User::with('wishlist')->find(Auth::user()->id);
+        $ideas = $user->wishlist;
+        $pagename = 'My Wishlist';
+ 
+        return view('client.portfolio', compact('ideas', 'pagename'));
     }
 }

@@ -93,12 +93,12 @@ class Idea extends Model
     }
     public function userportfolio()
     {
-        return $this->belongsToMany(User::class, 'user_portfolio', 'idea_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_portfolio', 'idea_id', 'user_id')->withTimestamps();
     }
  
     public function userwishlist()
     {
-        return $this->belongsToMany(User::class, 'user_wishlist', 'idea_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_wishlist', 'idea_id', 'user_id')->withTimestamps();
     }
 
 }

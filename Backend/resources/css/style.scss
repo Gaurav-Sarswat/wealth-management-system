@@ -209,6 +209,17 @@ body {
         }
     }
 }
+
+img {
+    &.custom-rounded {
+        border-radius: 50%;
+    }
+}
+
+td {
+    vertical-align: middle !important;
+}
+
 // Common Classes Ends
 
 main {
@@ -614,6 +625,36 @@ section.data-cards {
 }
 
 // Data Cards Ends
+
+// Dashboard starts_
+section.dashboard {
+    .your-manager-wrapper {
+        padding: 20px;
+        // -webkit-box-shadow: 1px 1px 25px -15px #b3b3b3;
+        // -moz-box-shadow: 1px 1px 25px -15px #b3b3b3;
+        // box-shadow: 1px 1px 25px -15px #b3b3b3;
+        // border-radius: 5px;
+        figure {
+            img {
+                min-width: 100px;
+            }
+        }
+        span {
+            &.name {
+                font-size: 1.5rem;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: $primary;
+            transition: .4s;
+            &:hover {
+                color: $text;
+            }
+        }
+    }
+}
+// Dashboard ends
 
 // Select 2
 .select2-container--default .select2-selection--multiple {

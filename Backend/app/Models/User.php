@@ -23,7 +23,8 @@ class User extends Authenticatable
         'email',
         'password',
         'number',
-        'role'
+        'role',
+        'manager_id'
     ];
 
     /**
@@ -51,14 +52,22 @@ class User extends Authenticatable
     }
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class)->withTimestamps();
     }
     public function portfolio()
     {
-        return $this->belongsToMany(Idea::class, 'user_portfolio', 'user_id', 'idea_id');
+        return $this->belongsToMany(Idea::class, 'user_portfolio', 'user_id', 'idea_id')->withTimestamps();
     }
     public function wishlist()
     {
-        return $this->belongsToMany(Idea::class, 'user_wishlist', 'user_id', 'idea_id');
+        return $this->belongsToMany(Idea::class, 'user_wishlist', 'user_id', 'idea_id')->withTimestamps();
+    }
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id');
+    }
+    public function clients()
+    {
+        return $this->hasMany(User::class, 'manager_id');
     }
 }

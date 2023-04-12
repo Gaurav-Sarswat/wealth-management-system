@@ -118,6 +118,12 @@ body {
   .custom-card a i {
     transform: rotate(-45deg); }
 
+img.custom-rounded {
+  border-radius: 50%; }
+
+td {
+  vertical-align: middle !important; }
+
 main.auth {
   min-height: 100vh; }
 
@@ -376,6 +382,19 @@ section.data-cards a.card {
     background-color: #327DF6; }
     section.data-cards a.card:hover span {
       color: #FFF; }
+
+section.dashboard .your-manager-wrapper {
+  padding: 20px; }
+  section.dashboard .your-manager-wrapper figure img {
+    min-width: 100px; }
+  section.dashboard .your-manager-wrapper span.name {
+    font-size: 1.5rem; }
+  section.dashboard .your-manager-wrapper a {
+    text-decoration: none;
+    color: #327DF6;
+    transition: .4s; }
+    section.dashboard .your-manager-wrapper a:hover {
+      color: #212529; }
 
 .select2-container--default .select2-selection--multiple {
   padding-bottom: 0 !important;

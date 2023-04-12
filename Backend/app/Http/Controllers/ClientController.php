@@ -15,7 +15,10 @@ class ClientController extends Controller
     //
     public function index()
     {
-        return view('dashboard')->with('pagename', 'Dashboard');
+        $id = Auth::user()->id;
+        $user = User::with('portfolio')->take(10)->with('manager')->find(Auth::user()->id);
+        $pagename = 'Dashboard';
+        return view('client.dashboard', compact('pagename', 'user'));
     }
     public function set_preferences_view()
     {

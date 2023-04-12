@@ -43,12 +43,15 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $manager = User::withCount('clients')->where('role', 'rm')->orderBy('clients_count', 'asc')->first();
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'number' => $request->number,
             'password' => Hash::make($request->password),
-            'role' => 'client'
+            'role' => 'client',
+            'manager_id' => $manager->id
         ]);
 
         event(new Registered($user));

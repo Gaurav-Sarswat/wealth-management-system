@@ -11,7 +11,7 @@ use App\Models\MinorSector;
 use App\Models\Region;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 
 class IdeaController extends Controller
 {
@@ -26,10 +26,16 @@ class IdeaController extends Controller
         $countries = Countries::with('region')->get();
         $pagename = 'Create Idea';
         
+        
         return view("idea.create-idea", compact('categories', 'currencies', 'major_sectors', 'minor_sectors', 'regions', 'countries', 'pagename'));
     }
     public function create(Request $request)
     {
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('public/images');
+            $url = Storage::url($path);
+        }
+        $image = $request->file('image');
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'abstract' => ['required', 'string', 'max:255'],
@@ -44,6 +50,7 @@ class IdeaController extends Controller
             'region' => ['required'],
             'country' => ['required'],
             'expiry_date' => ['required', 'string', 'max:255'],
+            
         ]);
 
         $idea = Idea::create([
@@ -61,6 +68,7 @@ class IdeaController extends Controller
             'expiry_date' => $request->expiry_date,
             'status' => $request->status,
             'user_id' => Auth::id(),
+            'image' => $url
         ]);
 
         $idea->categories()->attach($request->categories);

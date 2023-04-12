@@ -15,7 +15,7 @@
             <!-- .active class for the tab which is active -->
             @if (Auth::user()->role === 'admin')
                 <li class="d-flex align-items-center active">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-table"></i>
                         <span>Dashboard</span>
                     </a>

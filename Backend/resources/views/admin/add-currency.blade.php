@@ -5,7 +5,7 @@
             <div class="container">
                 <ul class="d-flex align-items-center custom-breadcrumb list-unstyled mb-2 py-1">
                     <li>
-                        <a href="FIXME:">Home</a>
+                        <a href="{{ route('admin.dashboard') }}">Home</a>
                     </li>
                     <li>
                         {{ $pagename }}

@@ -22,7 +22,7 @@
                                 <div class="auth-form-wrapper">
                                     <div class="auth-form">
                                         <!-- <h4 class="mb-4 text-center">Create an Idea</h4> -->
-                                        <form action="{{route('ideator.create-idea')}}" method="POST"
+                                        <form action="{{route('ideator.create-idea')}}" enctype="multipart/form-data" method="POST"
                                             autocomplete="new">
                                             @csrf
                                             <div class="row">
@@ -107,7 +107,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="image">Upload any supporting files</label>
-                                                        <input type="file" placeholder="Upload a cover image" data-height="115" name="image" class="dropify">
+                                                        <input type="file" placeholder="Upload a cover image" data-height="115" name="files" class="dropify">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">

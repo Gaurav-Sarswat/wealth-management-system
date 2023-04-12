@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea;
 use App\Models\Category;
+use App\Models\RelationshipManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +14,26 @@ class AdminController extends Controller
     //
     public function index()
     {
-        return view('dashboard')->with('pagename', 'Dashboard');
+        $users = User::count();
+        $clients = User::where('role', 'client')->count();
+        $relationship_manager = User::where('role', 'rm')->count();
+        $ideators = User::where('role', 'ideator')->count();
+        $pagename = 'Dashboard';
+        $label_user = ['Clients', 'Relationship Manager', 'Ideator'];
+        $data_user = [$clients, $relationship_manager, $ideators];
+        $ideas = Idea::count();
+        $published_ideas = Idea::where('status', 'Published')->count();
+        $draft_ideas = Idea::where('status', 'Draft')->count();
+        $label_status = ['Published', 'Draft'];
+        $data_status = [$published_ideas, $draft_ideas];
+        $accepted_ideas = Idea::where('verification_status', 'accepted')->count();
+        $rejected_ideas = Idea::where('verification_status', 'rejected')->count();
+        $pending_ideas = Idea::where('verification_status', 'pending')->count();
+        $label_verification_status = ['Accepted Ideas', 'Rejected Ideas', 'Pending Ideas'];
+        $data_verification_status = [$accepted_ideas, $rejected_ideas, $pending_ideas];
+        
+        
+        return view('admin.dashboard', compact('users', 'clients', 'relationship_manager', 'ideators', 'ideas', 'published_ideas', 'draft_ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas', 'label_user', 'data_user', 'label_status', 'data_status', 'label_verification_status', 'data_verification_status'));
     }
 
     public function list(Request $request)

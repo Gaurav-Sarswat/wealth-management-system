@@ -19,11 +19,7 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        @if(Auth::user()->profile_picture) {
-                            
-                        } else {
-
-                        }
+                        
                         <label for="profile_picture">
                             <img src="{{ asset('storage/'.Auth::user()->profile_picture) }}" id="profile_picture_placeholder" alt="{{ Auth::user()->name }}">
                         </label>

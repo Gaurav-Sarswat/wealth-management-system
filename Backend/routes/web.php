@@ -83,8 +83,6 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::post('/users/add', [UserController::class, 'create'])->name('add-user');
         Route::get('/ideas', [AdminController::class, 'list'])->name('ideas');
         Route::get('/idea/{id}/view', [AdminController::class, 'view'])->name('admin-view-idea');
-        Route::get('/profile', [AdminController::class, 'show_profile'])->name('show-profile');
-        Route::put('/profile', [AdminController::class, 'update_profile'])->name('update-profile');
 
         Route::get('/data', function() {
             return view('admin.data');
@@ -93,6 +91,10 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/data/currencies', [CurrencyController::class, 'show_currencies'])->name('show_currencies');
         Route::get('/data/currencies/add', [CurrencyController::class, 'add_currencies_view'])->name('add_currencies_view');
         Route::post('/data/currencies/add', [CurrencyController::class, 'add_currencies'])->name('add_currencies');
+
+        Route::get('/data/categories', [CategoriesController::class, 'show_categories'])->name('show_categories');
+        Route::get('/data/categories/add', [CategoriesController::class, 'add_categories_view'])->name('add_categories_view');
+        Route::post('/data/categories/add', [CategoriesController::class, 'add_categories'])->name('add_categories');
 
         Route::get('/data/regions', [RegionController::class, 'show_regions'])->name('show-regions');
         Route::get('/data/regions/add', [RegionController::class, 'add_regions_view'])->name('add-region-view');
@@ -111,6 +113,8 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/idea/{id}/reject', [AdminController::class, 'reject'])->name('admin-reject-idea');
         Route::delete('/idea/{id}', [AdminController::class, 'delete_idea'])->name('admin-delete-idea');
         Route::get('/users/{id}', [UserController::class, 'view_user'])->name('admin-view-user');
+        Route::get('/account-settings', [AdminController::class, 'user_profile_view'])->name('user-profile-view');
+        Route::put('/account-settings', [AdminController::class, 'update_profile'])->name('update-profile');
     });
 });
 

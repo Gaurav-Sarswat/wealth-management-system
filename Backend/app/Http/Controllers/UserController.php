@@ -32,6 +32,7 @@ class UserController extends Controller
             $clients = User::where('role', 'client')->get();
             $relationship_manager = User::where('role', 'rm')->get();
             $ideators = User::where('role', 'ideator')->get();
+            
             $data = [
                 'clients' => $clients,
                 'relationship_manager' => $relationship_manager,
@@ -80,8 +81,9 @@ class UserController extends Controller
         }
         if ($user_role->role == 'admin'){
             $pagename = 'User Details';
-            $user = User::with('categories')->find($id); 
-            return view('admin.admin-view-user', compact('user', 'pagename'));
+            $user = User::with('categories','portfolio')->find($id); 
+            $portfolio = $user->portfolio();
+            return view('admin.admin-view-user', compact('user', 'pagename', 'portfolio'));
         }
     }
 }

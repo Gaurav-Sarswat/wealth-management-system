@@ -45,6 +45,14 @@
                           @endforeach
                         </div>
                      </div>
+                     <div class="col-lg-3">
+                     <div class="idea-details-text mb-4">
+                          <p>Portfolio</p>
+                          @foreach($user->portfolio as $portfolio)
+                            <span style="font-weight: bold;">{{ $portfolio->title }}</span>,
+                          @endforeach
+                        </div>
+                     </div>
                   @endif
 
                </div>

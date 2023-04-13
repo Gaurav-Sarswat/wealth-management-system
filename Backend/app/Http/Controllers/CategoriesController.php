@@ -16,18 +16,18 @@ class CategoriesController extends Controller
                 'categories' => $categories,
                 'pagename' => $pagename
             ];
-            return view('admin.currency-list', $data);
+            return view('admin.category-list', $data);
         }
 
         public function add_categories(Request $request)
         {
             $pagename = 'Add-categories';
             $request->validate([
-                'name' => ['required', 'string', 'max:255'],
+                'title' => ['required', 'string', 'max:255'],
             ]);
     
-            $currency = Category::create([
-                'name' => $request->name,
+            $category = Category::create([
+                'title' => $request->title,
             ]);
     
             

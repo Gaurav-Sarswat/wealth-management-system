@@ -14,19 +14,19 @@
         <ul class="main-menu list-unstyled mb-0 mt-2">
             <!-- .active class for the tab which is active -->
             @if (Auth::user()->role === 'admin')
-                <li class="d-flex align-items-center active">
+                <li class="d-flex align-items-center {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-table"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
+                <li class="d-flex align-items-center {{ request()->routeIs('admin.users') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('admin.users') }}">
                         <i class="fas fa-users"></i>
                         <span>Users</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
+                <li class="d-flex align-items-center {{ request()->routeIs('admin.ideas') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('admin.ideas') }}">
                         <i class="fas fa-lightbulb"></i>
                         <span>Ideas</span>
@@ -38,8 +38,8 @@
                         <span>Data</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="{{ route('admin.show-profile') }}">
+                <li class="d-flex align-items-center {{ request()->routeIs('admin.user-profile-view') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('admin.user-profile-view') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>
                     </a>

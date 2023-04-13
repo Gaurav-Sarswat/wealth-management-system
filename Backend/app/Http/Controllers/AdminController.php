@@ -8,6 +8,8 @@ use App\Models\RelationshipManager;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -71,25 +73,6 @@ class AdminController extends Controller
         return view('admin.admin-view-idea', $data);
     }
 
-    public function show_profile()
-    { 
-        return view('admin.edit-profile');
-    }
-
-    public function update_profile(Request $request)
-    { 
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ]);
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully!');
-    }
 
     public function accept($id, Request $request)
     { 
@@ -112,5 +95,32 @@ class AdminController extends Controller
         $idea = Idea::find($id);
         $idea->delete();
         return redirect()->route("admin.ideas")->with('success', 'Idea Deleted successfully!');
+    }
+
+    public function user_profile_view()
+    {
+        return view('admin.edit-profile');
+    }
+    public function update_profile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $picture = $user->profile_picture;
+        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        if($request->hasFile('profile_picture')){
+            $path = $request->file('profile_picture')->store('public/uploads');
+            $url = Storage::url($path);
+            $user->profile_picture = $url;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

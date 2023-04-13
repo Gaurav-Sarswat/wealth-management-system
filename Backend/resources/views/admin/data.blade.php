@@ -21,7 +21,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4 mb-4">
-                            <a href="{{ route('admin.show_currencies') }}" class="d-block card d-flex align-items-center justify-content-center py-5">
+                            <a href="{{ route('admin.show_categories') }}" class="d-block card d-flex align-items-center justify-content-center py-5">
                                 <span>Categories</span>
                             </a>
                         </div>

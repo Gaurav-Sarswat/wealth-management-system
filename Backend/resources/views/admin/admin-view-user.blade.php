@@ -41,7 +41,10 @@
                         <div class="idea-details-text mb-4">
                           <p>Preferences</p>
                           @foreach($user->categories as $category)
-                            <span style="font-weight: bold;">{{ $category->title }}</span>,
+                          <ul>
+                              <li style="font-weight: bold;">{{ $category->title }}</li>
+                              
+                           </ul>
                           @endforeach
                         </div>
                      </div>
@@ -49,8 +52,34 @@
                      <div class="idea-details-text mb-4">
                           <p>Portfolio</p>
                           @foreach($user->portfolio as $portfolio)
-                            <span style="font-weight: bold;">{{ $portfolio->title }}</span>,
+                          <ul>
+                              <li style="font-weight: bold;">{{ $portfolio->title }}</li>
+                              
+                           </ul>
                           @endforeach
+                        </div>
+                     </div>
+                  @endif
+
+                  @if($user->role == 'rm')
+                     <div class="col-lg-3">
+                        <div class="idea-details-text mb-4">
+                          <p>Clients</p>
+                          @foreach($rmclients->clients as $client)
+                          <ul>
+                              <li style="font-weight: bold;">{{ $client->name }}</li>
+                              
+                           </ul>
+                          @endforeach
+                        </div>
+                     </div>
+                  @endif
+
+                  @if($user->role == 'ideator')
+                     <div class="col-lg-3">
+                        <div class="idea-details-text mb-4">
+                          <p>Number of Idea posted</p>
+                          <span class="text-uppercase" style="font-weight: bold;">{{ $ideacount }}</span>
                         </div>
                      </div>
                   @endif

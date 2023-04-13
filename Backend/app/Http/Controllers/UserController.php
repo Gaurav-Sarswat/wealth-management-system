@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Idea;
 use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -83,7 +84,9 @@ class UserController extends Controller
             $pagename = 'User Details';
             $user = User::with('categories','portfolio')->find($id); 
             $portfolio = $user->portfolio();
-            return view('admin.admin-view-user', compact('user', 'pagename', 'portfolio'));
+            $rmclients = User::with('clients')->find($id);
+            $ideacount = Idea::where('user_id', $id)->count();
+            return view('admin.admin-view-user', compact('user', 'pagename', 'portfolio', 'rmclients', 'ideacount'));
         }
     }
 }

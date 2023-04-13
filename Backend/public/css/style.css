@@ -398,14 +398,34 @@ section.dashboard .your-manager-wrapper {
     section.dashboard .your-manager-wrapper a:hover {
       color: #212529; }
 
-section.account-settings figure img {
-  border-radius: 50%;
-  width: 160px;
-  height: 160px;
-  -o-object-fit: cover;
-     object-fit: cover; }
-  section.account-settings figure img:hover {
+section.account-settings figure {
+  position: relative; }
+  section.account-settings figure:hover {
     cursor: pointer; }
+    section.account-settings figure:hover i {
+      background-color: #327DF6;
+      color: #FFF; }
+  section.account-settings figure img {
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    -o-object-fit: cover;
+       object-fit: cover; }
+  section.account-settings figure i {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #327DF6;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #FFF;
+    border: 2px solid #327DF6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: .4s; }
 
 .select2-container--default .select2-selection--multiple {
   padding-bottom: 0 !important;

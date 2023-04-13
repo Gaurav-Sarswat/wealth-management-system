@@ -24,6 +24,7 @@
                         <label for="profile_picture">
                             <figure>
                                 <img src="{{ asset(Auth::user()->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" id="profile_picture_placeholder" alt="{{ Auth::user()->name }}">
+                                <i class="fas fa-pen"></i>
                             </figure>
                         </label>
                         <input type="file" hidden id="profile_picture" name="profile_picture">

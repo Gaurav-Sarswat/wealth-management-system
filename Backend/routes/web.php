@@ -132,6 +132,8 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
         Route::get('/idea/{id}/view', [IdeaController::class, 'view'])->name('view-idea');
         Route::get('/account-settings', [IdeatorController::class, 'user_profile_view'])->name('user-profile-view');
         Route::put('/account-settings', [IdeatorController::class, 'update_profile'])->name('update-profile');
+        Route::get('/change-password', [IdeatorController::class, 'change_password_view'])->name('change-password-view');
+        Route::put('/change-password', [IdeatorController::class, 'change_password'])->name('change-password');
     });
 });
 

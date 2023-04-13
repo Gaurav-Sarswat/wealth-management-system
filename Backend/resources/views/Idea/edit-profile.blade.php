@@ -24,6 +24,7 @@
                         <label for="profile_picture">
                             <figure>
                                 <img src="{{ asset(Auth::user()->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" id="profile_picture_placeholder" alt="{{ Auth::user()->name }}">
+                                <i class="fas fa-pen"></i>
                             </figure>
                         </label>
                         <input type="file" hidden id="profile_picture" name="profile_picture">
@@ -35,8 +36,9 @@
                         <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control">
                     </div>
 
-                    <button type="submit" class="mt-4 btn btn-custom w-50">Save Changes</button>
+                    <button type="submit" class="mt-2 btn btn-custom w-50">Save Changes</button>
                 </form>
+                <a href="{{ route('ideator.change-password-view') }}" class="mt-2 btn btn-custom w-50">Change Password</a>
             </div>
         </section>
         <!-- Start Dynamic Sections Ends here -->

@@ -21,6 +21,11 @@
                                 </ul>
                             </div>
                         @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
 
                         <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                             <li class="nav-item">

@@ -662,14 +662,35 @@ section.dashboard {
 
 section.account-settings {
     figure {
+        position: relative;
+        &:hover {
+            cursor: pointer;
+            i {
+                background-color: $primary;
+                color: $white;
+            }
+        }
         img {
             border-radius: 50%;
             width: 160px;
             height: 160px;
             object-fit: cover;
-            &:hover {
-                cursor: pointer;
-            }
+        }
+        i {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            color: $primary;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: $white;
+            border: 2px solid $primary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: .4s;
         }
     }
 }

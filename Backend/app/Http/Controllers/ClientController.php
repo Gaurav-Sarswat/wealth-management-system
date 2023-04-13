@@ -40,14 +40,16 @@ class ClientController extends Controller
 
         return redirect()->route('client.dashboard')->with('success', 'Preferences Set Successfully!');
     }
-    public function suggested_ideas()
-    {
+    public function suggested_ideas(Request $request)
+    {   
+        $categories = Category::all();
+        $selected_category = $request->query('category');
         $user = Auth::user();
         $ideas = Idea::whereHas('categories', function($query) use ($user) {
             $query->whereIn('categories.id', $user->categories()->pluck('categories.id')->toArray());
         })->where('status', 'Published')->get();
         
-        return view('client.suggested-ideas', compact('ideas'));
+        return view('client.suggested-ideas', compact('ideas', 'categories', 'selected_category'));
     }
     public function view($id)
     { 

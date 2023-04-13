@@ -16,6 +16,15 @@
             <!-- Start Dynamic Sections Starts here -->
             <section class="investment-lists pb-5">
                 <div class="container">
+                <div class="form-group">
+                        <label for="">Choose Category</label>
+                        <select id="filter_categories" class="form-control" name="categories[]" onchange="">
+                            <option value="">All</option>
+                            @foreach($categories as $category)
+                                <option {{ $selected_category == $category->id ? 'selected' : null }} value="{{ $category->id }}">{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="row mt-3">
                         @foreach ($ideas as $idea)
                             <div class="col-lg-4 mb-3">

@@ -73,7 +73,7 @@
             @endif
             @if (Auth::user()->role === 'rm')
                 <li class="d-flex align-items-center active">
-                    <a class="d-block" href="FIXME:">
+                    <a class="d-block" href="{{ route('relationship-manager.dashboard') }}">
                         <i class="fas fa-table"></i>
                         <span>Dashboard</span>
                     </a>

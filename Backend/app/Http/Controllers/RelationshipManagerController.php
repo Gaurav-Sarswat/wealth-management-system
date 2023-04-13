@@ -6,6 +6,7 @@ use App\Models\Idea;
 use App\Http\Requests\StoreRelationshipManagerRequest;
 use App\Http\Requests\UpdateRelationshipManagerRequest;
 use App\Models\RelationshipManager;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +20,16 @@ class RelationshipManagerController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function index()
     {
-        return view('dashboard')->with('pagename', 'Dashboard');
+        $pagename = 'Dashboard';
+        $clients = User::where('role', 'client')->count();
+        $ideas = Idea::count();
+        $accepted_ideas = Idea::where('verification_status', 'accepted')->count();
+        $rejected_ideas = Idea::where('verification_status', 'rejected')->count();
+        $pending_ideas = Idea::where('verification_status', 'pending')->count();
+        return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas'));
     }
 
     /**

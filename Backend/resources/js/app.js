@@ -94,71 +94,109 @@ $(document).ready(function() {
         }
       }
     });
-    // Chart JS Ends
-    const userChart = document.getElementById('userChart');
-    let labelUser = $('#userChart').attr('data-labels').split(',')
-    let dataUser = $('#userChart').attr('data-values').split(',')
-    new Chart(userChart, {
-      type: 'doughnut',
-      data: {
-        labels: labelUser,
-        datasets: [{
-          label: 'Count',
-          data: dataUser,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
 
-    const verificationstatusChart = document.getElementById('verificationstatusChart');
-    let labelverification = $('#verificationstatusChart').attr('data-verification-labels').split(',')
-    let dataverification = $('#verificationstatusChart').attr('data-verification-values').split(',')
-    new Chart(verificationstatusChart, {
-      type: 'doughnut',
-      data: {
-        labels: labelverification,
-        datasets: [{
-          label: ' Count',
-          data: dataverification,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
+    if($('#ideaStatusChartRM').length){
+      const ideaStatusChartRM = document.getElementById('ideaStatusChartRM');
+      let labelStatusRM = $('#ideaStatusChartRM').attr('data-labels-rm').split(',');
+      let valueStatusRM = $('#ideaStatusChartRM').attr('data-values-rm').split(',');
 
-    const statusChart = document.getElementById('statusChart');
-    let labelstatus = $('#statusChart').attr('data-status-labels').split(',')
-    let datastatus = $('#statusChart').attr('data-status-values').split(',')
-    new Chart(statusChart, {
-      type: 'doughnut',
-      data: {
-        labels: labelstatus,
-        datasets: [{
-          label: ' Number of Ideas',
-          data: datastatus,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
+      new Chart(ideaStatusChartRM, {
+          type: 'bar',
+          data: {
+              labels: labelStatusRM,
+              datasets: [{
+                  label: "Count",
+                  data: valueStatusRM,
+                  backgroundColor: [
+                      '#28a745',
+                      '#dc3545',
+                      '#959595',
+                  ],
+                  borderColor: [
+                      '#212529',
+                      '#212529',
+                      '#212529'
+                  ],
+                  borderWidth: 1,
+                  barThickness: 50
+              }]
+          },
+          options: {
+              indexAxis: 'y',
+              scales: {
+                  x: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+    }
+
+    if($('#userChart').length){
+      const userChart = document.getElementById('userChart');
+      let labelUser = $('#userChart').attr('data-labels').split(',');
+      let dataUser = $('#userChart').attr('data-values').split(',');
+      new Chart(userChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelUser,
+          datasets: [{
+            label: 'Count',
+            data: dataUser,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
-      }
-    });
- 
+      });
+
+      const verificationstatusChart = document.getElementById('verificationstatusChart');
+      let labelverification = $('#verificationstatusChart').attr('data-verification-labels').split(',');
+      let dataverification = $('#verificationstatusChart').attr('data-verification-values').split(',');
+      new Chart(verificationstatusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelverification,
+          datasets: [{
+            label: ' Count',
+            data: dataverification,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+
+      const statusChart = document.getElementById('statusChart');
+      let labelstatus = $('#statusChart').attr('data-status-labels').split(',');
+      let datastatus = $('#statusChart').attr('data-status-values').split(',');
+      new Chart(statusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelstatus,
+          datasets: [{
+            label: ' Number of Ideas',
+            data: datastatus,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
 })

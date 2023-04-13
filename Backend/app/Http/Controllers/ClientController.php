@@ -8,8 +8,8 @@ use App\Models\User;
 use App\Models\Idea;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
-
-
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 class ClientController extends Controller
 {
     //
@@ -23,13 +23,12 @@ class ClientController extends Controller
     public function set_preferences_view()
     {
         $categories = Category::all();
+        $user = User::with('categories')->find(Auth::user()->id);
+        $user_categories = $user->categories;
+        $pagename = 'Set Preferences';
 
-        $data = [
-            'categories' => $categories,
-            'pagename' => 'Set Preferences'
-        ];
 
-        return view('client.set-preferences', $data);
+        return view('client.set-preferences', compact('categories', 'pagename', 'user_categories'));
     }
     public function set_preferences(Request $request)
     {
@@ -92,5 +91,35 @@ class ClientController extends Controller
         $pagename = 'My Wishlist';
  
         return view('client.portfolio', compact('ideas', 'pagename'));
+    }
+    public function user_profile_view()
+    {
+        $categories = Category::all();
+        $user = User::with('categories')->find(Auth::user()->id);
+        $user_categories = $user->categories;
+        return view('client.edit-profile', compact('categories', 'user_categories'));
+    }
+    public function update_profile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $picture = $user->profile_picture;
+        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        if($request->hasFile('profile_picture')){
+            $path = $request->file('profile_picture')->store('public/uploads');
+            $url = Storage::url($path);
+            $user->profile_picture = $url;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->categories()->sync($request->preferences);
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

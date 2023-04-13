@@ -73,6 +73,26 @@ $(document).ready(function() {
         })
     })
 
+    $('#profile_picture').on('change', function() {
+        const preview = document.querySelector('#profile_picture_placeholder');
+        const input = document.querySelector('#profile_picture');
+
+        // Make sure a file was selected
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                console.log(e.target.result)
+                preview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(input.files[0]); // Read the selected file
+        }
+        else {
+            preview.src = "{{ $imageUrl }}"; // Set the default image if no file selected
+        }
+    })
+
     // Chart JS Starts
     const ctx = document.getElementById('dashboard-chart');
 

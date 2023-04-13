@@ -50,6 +50,8 @@ Route::name('client.')->prefix('client')->group(function(){
         Route::get('/portfolio', [ClientController::class, 'portfolio'])->name('portfolio');
         Route::post('/add-to-wishlist/{id}', [ClientController::class, 'add_to_wishlist'])->name('add-to-wishlist');
         Route::get('/wishlist', [ClientController::class, 'wishlist'])->name('wishlist');
+        Route::get('/account-settings', [ClientController::class, 'user_profile_view'])->name('user-profile-view');
+        Route::put('/account-settings', [ClientController::class, 'update_profile'])->name('update-profile');
     });
 });
 
@@ -124,6 +126,8 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
         Route::get('/idea/{id}', [IdeaController::class, 'update_idea_form'])->name('update-idea-form');
         Route::put('/idea/{id}', [IdeaController::class, 'update_idea'])->name('update-idea');
         Route::get('/idea/{id}/view', [IdeaController::class, 'view'])->name('view-idea');
+        Route::get('/account-settings', [IdeatorController::class, 'user_profile_view'])->name('user-profile-view');
+        Route::put('/account-settings', [IdeatorController::class, 'update_profile'])->name('update-profile');
     });
 });
 

@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-flex align-items-center user-profile-nav">
-                <img src="{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}" alt="Username">
+                <img src="{{ asset(Auth::user()->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" alt="Username">
                 <div class="d-flex align-items-center ml-2 hover-menu-wrapper">
                     <a href="FIXME:">
                         <span>{{ Auth::user()->name }}</span>
@@ -10,12 +10,22 @@
                     </a>
                     <div class="hover-menu">
                         <ul class="list-unstyled">
-                            <li>
-                                <a href="FIXME:" class="d-flex align-items-center justify-content-end">
-                                    <span class="">Account Settings</span>
-                                    <i class="fas fa-cog"></i>
-                                </a>
-                            </li>
+                            @if(Auth::user()->role == 'client')
+                                <li>
+                                    <a href="{{ route('client.user-profile-view') }}" class="d-flex align-items-center justify-content-end">
+                                        <span class="">Account Settings</span>
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->role == 'ideator')
+                                <li>
+                                    <a href="{{ route('ideator.user-profile-view') }}" class="d-flex align-items-center justify-content-end">
+                                        <span class="">Account Settings</span>
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf

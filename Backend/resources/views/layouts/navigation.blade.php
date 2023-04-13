@@ -64,8 +64,8 @@
                         <span>List Ideas</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                <li class="d-flex align-items-center {{ request()->routeIs('ideator.user-profile-view') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('ideator.user-profile-view') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>
                     </a>
@@ -122,8 +122,8 @@
                         <span>Wishlist</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="FIXME:">
+                <li class="d-flex align-items-center {{ request()->routeIs('client.user-profile-view') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('client.user-profile-view') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>
                     </a>

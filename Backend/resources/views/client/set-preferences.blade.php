@@ -17,7 +17,7 @@
                                         @foreach($categories as $category)
                                             <li class="tag">
                                                 <div class="">
-                                                    <input type="checkbox" name="preferences[]" id="{{ $category->title }}" value="{{ $category->id }}">
+                                                    <input type="checkbox" @if(in_array($category->id, $user_categories->pluck('id')->toArray())) checked @endif name="preferences[]" id="{{ $category->title }}" value="{{ $category->id }}">
                                                     <label for="{{ $category->title }}">
                                                         <i class="fas fa-check mr-2"></i>
                                                         <span>{{ $category->title }}</span>

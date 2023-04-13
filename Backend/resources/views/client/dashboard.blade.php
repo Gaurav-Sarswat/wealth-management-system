@@ -53,7 +53,7 @@
                                     <i class="fas fa-envelope"></i>
                                     <span class="ml-1">{{ $user->manager->email }}</span>
                                 </a>
-                                <a class="d-block" href="{{'mailto:'.$user->manager->number}}">
+                                <a class="d-block" href="{{'tel:'.$user->manager->number}}">
                                     <i class="fas fa-phone-alt"></i>
                                     <span class="ml-1">+44-{{ $user->manager->number }}</span>
                                 </a>

@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Idea;
-use App\Http\Requests\StoreRelationshipManagerRequest;
-use App\Http\Requests\UpdateRelationshipManagerRequest;
 use App\Models\RelationshipManager;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 
 
@@ -30,61 +29,6 @@ class RelationshipManagerController extends Controller
         $rejected_ideas = Idea::where('verification_status', 'rejected')->count();
         $pending_ideas = Idea::where('verification_status', 'pending')->count();
         return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreRelationshipManagerRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRelationshipManagerRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\RelationshipManager  $relationshipManager
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RelationshipManager $relationshipManager)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\RelationshipManager  $relationshipManager
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RelationshipManager $relationshipManager)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateRelationshipManagerRequest  $request
-     * @param  \App\Models\RelationshipManager  $relationshipManager
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateRelationshipManagerRequest $request, RelationshipManager $relationshipManager)
-    {
-        //
     }
 
     /**
@@ -147,26 +91,6 @@ class RelationshipManagerController extends Controller
         return view('relationship-manager.rm-view-idea', $data);
     }
 
-    public function show_profile()
-    { 
-        return view('relationship-manager.edit-profile');
-    }
-
-    public function update_profile(Request $request)
-    { 
-        $user = Auth::user();
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,'.$user->id,
-        ]);
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully!');
-    }
-
     public function accept($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -181,5 +105,32 @@ class RelationshipManagerController extends Controller
         $idea->verification_status = 'rejected';
         $idea->save();
         return redirect()->route("relationship-manager.ideas")->with('success', 'Idea rejected successfully!');
+    }
+
+    public function user_profile_view()
+    {
+        return view('relationship-manager.edit-profile');
+    }
+    public function update_profile(Request $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $picture = $user->profile_picture;
+        
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+        ]);
+
+        if($request->hasFile('profile_picture')){
+            $path = $request->file('profile_picture')->store('public/uploads');
+            $url = Storage::url($path);
+            $user->profile_picture = $url;
+        }
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        return redirect()->back()->with('success', 'Profile updated successfully!');
     }
 }

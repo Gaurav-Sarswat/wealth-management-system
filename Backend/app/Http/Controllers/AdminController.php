@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Idea;
 use App\Models\Category;
-use App\Models\RelationshipManager;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

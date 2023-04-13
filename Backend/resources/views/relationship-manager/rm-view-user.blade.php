@@ -38,10 +38,12 @@
                   </div>
                   <div class="col-lg-3">
                      <div class="idea-details-text mb-4">
-                       <p>Preferences</p>
-                       @foreach($user->categories as $category)
-                         <span style="font-weight: bold;">{{ $category->title }}</span>,
-                       @endforeach
+                        <p>Preferences</p>
+                        @foreach($user->categories as $category)
+                        <ul>
+                           <li style="font-weight: bold;">{{ $category->title }}</li>
+                        </ul>
+                        @endforeach
                      </div>
                   </div>
                </div>

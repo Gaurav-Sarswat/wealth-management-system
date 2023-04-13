@@ -72,26 +72,26 @@
                 </li>
             @endif
             @if (Auth::user()->role === 'rm')
-                <li class="d-flex align-items-center active">
+                <li class="d-flex align-items-center {{ request()->routeIs('relationship-manager.dashboard') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('relationship-manager.dashboard') }}">
                         <i class="fas fa-table"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
+                <li class="d-flex align-items-center {{ request()->routeIs('relationship-manager.users') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('relationship-manager.users') }}">
                         <i class="fas fa-users"></i>
                         <span>Clients</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
+                <li class="d-flex align-items-center {{ request()->routeIs('relationship-manager.ideas') ? 'active' : '' }}">
                     <a class="d-block" href="{{ route('relationship-manager.ideas') }}">
                         <i class="fas fa-lightbulb"></i>
                         <span>Ideas</span>
                     </a>
                 </li>
-                <li class="d-flex align-items-center">
-                    <a class="d-block" href="{{ route('relationship-manager.show-profile') }}">
+                <li class="d-flex align-items-center {{ request()->routeIs('relationship-manager.user-profile-view') ? 'active' : '' }}">
+                    <a class="d-block" href="{{ route('relationship-manager.user-profile-view') }}">
                         <i class="fas fa-cog"></i>
                         <span>Account Settings</span>
                     </a>

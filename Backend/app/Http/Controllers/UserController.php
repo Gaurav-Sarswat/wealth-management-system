@@ -21,9 +21,9 @@ class UserController extends Controller
         $user = Auth::user();
         if ($user->role == 'rm'){
             $pagename = 'Clients';
-            $clients = User::where('role', 'client')->get();
+            $rm_clients = User::with('clients')->find($user->id);
             $data = [
-                'clients' => $clients,
+                'clients' => $rm_clients->clients,
                 'pagename' => $pagename
             ];
             return view('relationship-manager.users-list', $data);

@@ -65,10 +65,10 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
         Route::get('/users/{id}', [UserController::class, 'view_user'])->name('rm-view-user');
         Route::get('/ideas', [RelationshipManagerController::class, 'list'])->name('ideas');
         Route::get('/idea/{id}/view', [RelationshipManagerController::class, 'view'])->name('rm-view-idea');
-        Route::get('/profile', [RelationshipManagerController::class, 'show_profile'])->name('show-profile');
-        Route::put('/profile', [RelationshipManagerController::class, 'update_profile'])->name('update-profile');
         Route::get('/idea/{id}/accept', [RelationshipManagerController::class, 'accept'])->name('rm-accept-idea');
         Route::get('/idea/{id}/reject', [RelationshipManagerController::class, 'reject'])->name('rm-reject-idea');
+        Route::get('/account-settings', [RelationshipManagerController::class, 'user_profile_view'])->name('user-profile-view');
+        Route::put('/account-settings', [RelationshipManagerController::class, 'update_profile'])->name('update-profile');
     });
 });
 

@@ -53,7 +53,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="image">Upload a cover image</label>
-                                                        <input type="file" placeholder="Upload a cover image" data-height="127" name="image" class="dropify">
+                                                        <input type="file" placeholder="Upload a cover image" data-allowed-file-extensions="png jpg jpeg" data-height="127" name="image" class="dropify">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -106,8 +106,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="image">Upload any supporting files</label>
-                                                        <input type="file" placeholder="Upload a cover image" data-height="115" name="files" class="dropify">
+                                                        <label for="supporting_file">Upload any supporting file</label>
+                                                        <input type="file" placeholder="Upload any supporting file" data-height="115" data-allowed-file-extensions="pdf png jpeg jpg docx doc" name="supporting_file" class="dropify">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">

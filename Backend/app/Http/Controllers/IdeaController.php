@@ -33,9 +33,12 @@ class IdeaController extends Controller
     {
         if($request->hasFile('image')){
             $path = $request->file('image')->store('public/images');
-            $url = Storage::url($path);
+            $imageUrl = Storage::url($path);
         }
-        $image = $request->file('image');
+        if($request->hasFile('supporting_file')){
+            $path = $request->file('supporting_file')->store('public/files');
+            $supportingFileurl = Storage::url($path);
+        }
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'abstract' => ['required', 'string', 'max:255'],
@@ -68,7 +71,8 @@ class IdeaController extends Controller
             'expiry_date' => $request->expiry_date,
             'status' => $request->status,
             'user_id' => Auth::id(),
-            'image' => $url
+            'image' => $imageUrl,
+            'supporting_file' => $supportingFileurl
         ]);
 
         $idea->categories()->attach($request->categories);
@@ -88,6 +92,9 @@ class IdeaController extends Controller
     public function update_idea_form($id)
     { 
         $idea = Idea::with('categories')->find($id); 
+        if($idea->status == 'Published'){
+            return redirect()->back()->with('error', 'You can\'t update a published idea');
+        }
         $categories = Category::all();
         $currencies = Currency::all();
         $major_sectors = MajorSector::all();
@@ -117,6 +124,15 @@ class IdeaController extends Controller
             'country' => ['required'],
             'expiry_date' => ['required', 'string', 'max:255'],
         ]);
+
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('public/images');
+            $idea->image = Storage::url($path);
+        }
+        if($request->hasFile('supporting_file')){
+            $path = $request->file('supporting_file')->store('public/files');
+            $idea->supporting_file = Storage::url($path);
+        }
 
         $idea->title = $request->title;
         $idea->abstract = $request->abstract;

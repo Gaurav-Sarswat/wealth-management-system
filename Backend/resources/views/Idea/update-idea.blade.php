@@ -21,7 +21,7 @@
                             <div class="card p-4">
                                 <div class="auth-form-wrapper">
                                     <div class="auth-form">
-                                        <form action="{{route('ideator.update-idea', ['id' => $idea->id])}}" method="POST">
+                                        <form action="{{route('ideator.update-idea', ['id' => $idea->id])}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="row">
@@ -52,7 +52,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="image">Upload a cover image</label>
-                                                        <input type="file" placeholder="Upload a cover image" data-height="127" name="image" class="dropify">
+                                                        <input type="file" placeholder="Upload a cover image" data-default-file="{{ asset($idea->image) }}" data-height="127" name="image" class="dropify">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -105,8 +105,8 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="image">Upload any supporting files</label>
-                                                        <input type="file" placeholder="Upload a cover image" data-height="115" name="image" class="dropify">
+                                                        <label for="supporting_file">Upload any supporting file</label>
+                                                        <input type="file" placeholder="Upload any supporting file" data-default-file="{{ asset($idea->supporting_file) }}" data-height="115" name="supporting_file" class="dropify">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">

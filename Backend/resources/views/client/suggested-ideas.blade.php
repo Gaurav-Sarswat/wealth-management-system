@@ -30,7 +30,8 @@
                             <div class="col-lg-4 mb-3">
                                 <div class="custom-card">
                                     <figure>
-                                        <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                                        <img src="{{ asset($idea->image) }}"
+                                            onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
                                             class="w-100" alt="">
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>

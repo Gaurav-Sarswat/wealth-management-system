@@ -66,3 +66,13 @@
     </div>
 </div>
 @endif
+@if (session('error'))
+<div class="container">
+    <div class="alert alert-danger alert-dismissible mt-2 mb-0 w-100">
+        {{ session('error') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+@endif

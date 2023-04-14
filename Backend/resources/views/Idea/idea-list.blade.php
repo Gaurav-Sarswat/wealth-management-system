@@ -57,6 +57,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{ $ideas->links("pagination::bootstrap-4") }}
                 </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->

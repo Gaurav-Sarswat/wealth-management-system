@@ -72,7 +72,7 @@
             <div class="col-lg-5">
               <img src="{{ asset($idea->image) }}"
                 onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
-                class="w-100" style="border-radius: 8px;" alt="{{ $idea->title }}">
+                class="w-100"  alt="{{ $idea->title }}">
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
           </ul>
           <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="idea-detail">
-              <div class="row mt-3 ml-2">
+              <div class="row mt-3">
                 <div class="col-lg-3">
                   <div class="idea-details-text mb-4">
                     <p>Category</p>
@@ -179,17 +179,17 @@
               </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="description-tab">
-              <div class="idea-details-text mt-4 ml-4">
+              <div class="idea-details-text mt-4">
                 <p>Abstract</p>
                 <span class="d-block">{{ $idea->abstract }}</span>
               </div>
-              <div class="idea-details-text mt-4 ml-4">
+              <div class="idea-details-text mt-4">
                 <p>Description</p>
                 <span class="d-block">{{ $idea->content }}</span>
               </div>
             </div>
             <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-tab">
-              <div class="idea-details-text mt-4 ml-4">
+              <div class="idea-details-text mt-4">
                 @if(!empty($idea->supporting_file))
                   <p>Supporting Files</p>
                   <a download="" target="_blank"

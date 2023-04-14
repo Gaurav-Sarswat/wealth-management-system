@@ -45,48 +45,16 @@
                                 <form method="POST" action="{{ route('client.login') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
+                                        <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" />
                                     </div>
                                     <div class="form-group">
-                                            <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
+                                        <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" autocomplete="new-password"/>
                                     </div>
-                                    <x-button type="submit" class="mt-4 btn btn-custom w-100">
+                                    <x-button type="submit" id="login-btn" class="mt-2 btn btn-custom w-100">
                                         {{ __('Login') }}
                                     </x-button>
                                 </form>
                                 <p class="mt-2">Don't have an account ? <a href="{{ route('register') }}">Create an account</a></p>
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="description-tab">
-                                <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>
-                                <form method="POST" action="{{ route('relationship-manager.login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
-                                    </div>
-                                    <div class="form-group">
-                                            <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
-                                    </div>
-                                    <x-button type="submit" class="mt-4 btn btn-custom w-100">
-                                        {{ __('Login') }}
-                                    </x-button>
-                                </form>
-                                <!-- <p class="mt-2">Don't have an account ? <a href="FIXME:">Create an account</a></p> -->
-                            </div>
-                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>
-                                <form method="POST" action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <x-input id="password" placeholder="Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
-                                    </div>
-                                    <x-button type="submit" class="mt-4 btn btn-custom w-100">
-                                        {{ __('Login') }}
-                                    </x-button>
-                                </form>
-                                <!-- <p class="mt-2">Don't have an account ? <a href="FIXME:">Create an account</a></p> -->
                             </div>
                         </div>
                     </div>

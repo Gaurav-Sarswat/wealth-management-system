@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Idea;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -17,7 +18,17 @@ class IdeatorController extends Controller
     //
     public function index()
     {
-        return view('idea.dashboard')->with('pagename', 'Dashboard');
+        $draft_ideas = Idea::where('status', 'Draft')->count();
+        $published_ideas = Idea::where('status', 'Published')->count();
+        $ideaLabels = ['Draft', 'Published'];
+        $ideaValues = [$draft_ideas, $published_ideas];
+        $pagename = 'Dashboard';
+        return view('idea.dashboard', compact('ideaValues', 'ideaLabels', 'pagename'));
+    }
+    public function list()
+    { 
+        $ideas = Idea::with('categories')->latest()->where('user_id', Auth::id())->paginate(9); 
+        return view('idea.idea-list')->with('ideas', $ideas);
     }
     public function user_profile_view()
     {

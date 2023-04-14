@@ -30,7 +30,7 @@
                                 <x-input id="email" placeholder="Email Address" class="form-control" type="email" name="email" :value="old('email')" required />
                             </div>
                             <div class="form-group">
-                                <x-input id="number" placeholder="Phone Number" class="form-control" type="tel" name="number" :value="old('number')" required />
+                                <x-input id="number" onkeypress="return isNumberKey(event)" maxlength=10 placeholder="Phone Number" class="form-control" type="tel" name="number" :value="old('number')" required />
                             </div>
                             <div class="form-group">
                                 <x-input id="password" placeholder="Create New Password" class="form-control" type="password" name="password" required autocomplete="new-password"/>
@@ -39,7 +39,7 @@
                                 <x-input id="password_confirmation" placeholder="Confirm New Password" class="form-control" type="password" name="password_confirmation" required autocomplete="new-password"/>
                             </div>
                             <!-- <button type="submit" class="mt-4 btn btn-custom w-100">Create Account</button> -->
-                            <x-button type="submit" class="mt-4 btn btn-custom w-100">
+                            <x-button type="submit" id="register-btn" class="mt-2 btn btn-custom w-100">
                                 {{ __('Create Account') }}
                             </x-button>
                         </form>

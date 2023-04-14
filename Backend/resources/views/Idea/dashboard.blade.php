@@ -19,9 +19,10 @@
             <section class="dashboard py-5">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <div class="chart-wrapper">
-                                <canvas id="dashboard-chart"></canvas>
+                        <div class="col-lg-4">
+                            <div class="dashboard-cards">
+                                <p class="mb-0">Your Ideas</p>
+                                <canvas data-labels="{{ implode(',', $ideaLabels) }}" data-values="{{ implode(',', $ideaValues) }}" id="ideator-dashboard-chart"></canvas>
                             </div>
                         </div>
                     </div>

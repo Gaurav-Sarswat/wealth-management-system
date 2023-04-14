@@ -30,13 +30,13 @@
                         <input type="file" hidden id="profile_picture" name="profile_picture">
                     </div>
                     <div class="form-group w-50">Full Name
-                        <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control">
+                        <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" class="form-control">
                     </div>
                     <div class="form-group w-50">Email Address
-                        <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control">
+                        <input type="text" id="email" name="email" value="{{ Auth::user()->email }}" class="form-control">
                     </div>
 
-                    <button type="submit" class="mt-2 btn btn-custom w-50">Save Changes</button>
+                    <button id="edit-profile-btn" type="submit" class="mt-2 btn btn-custom w-50">Save Changes</button>
                 </form>
                 <a href="{{ route('ideator.change-password-view') }}" class="mt-2 btn btn-custom w-50">Change Password</a>
             </div>

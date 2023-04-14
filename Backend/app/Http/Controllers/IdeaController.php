@@ -84,11 +84,6 @@ class IdeaController extends Controller
 
         return redirect()->route('ideator.ideas')->with('success', 'Idea created successfully!');
     }
-    public function list()
-    { 
-        $ideas = Idea::with('categories')->where('user_id', Auth::id())->get(); 
-        return view('idea.idea-list')->with('ideas', $ideas);
-    }
     public function update_idea_form($id)
     { 
         $idea = Idea::with('categories')->find($id); 

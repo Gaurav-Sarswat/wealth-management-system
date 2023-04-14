@@ -5203,7 +5203,9 @@ $(document).ready(function () {
     var val = $(this).val();
     insertParam('risk', val);
   });
-  $('.select2').select2({});
+  if ($('.select2') && $('.select2').length) {
+    $('.select2').select2({});
+  }
 
   // $('select.has-parent').children('option').attr('disabled', true)
 
@@ -5247,26 +5249,31 @@ $(document).ready(function () {
   });
 
   // Chart JS Starts
-  var ctx = document.getElementById('dashboard-chart');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+  if ($('#ideator-dashboard-chart') && $('#ideator-dashboard-chart').length) {
+    var ctx = document.getElementById('ideator-dashboard-chart');
+    var labelStatus = $('#ideator-dashboard-chart').attr('data-labels').split(',');
+    var valueStatus = $('#ideator-dashboard-chart').attr('data-values').split(',');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labelStatus,
+        datasets: [{
+          label: 'Count ',
+          data: valueStatus,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: false
+          }
         }
       }
-    }
-  });
-  if ($('#ideaStatusChartRM').length) {
+    });
+  }
+  if ($('#ideaStatusChartRM') && $('#ideaStatusChartRM').length) {
     var ideaStatusChartRM = document.getElementById('ideaStatusChartRM');
     var labelStatusRM = $('#ideaStatusChartRM').attr('data-labels-rm').split(',');
     var valueStatusRM = $('#ideaStatusChartRM').attr('data-values-rm').split(',');
@@ -5302,7 +5309,7 @@ $(document).ready(function () {
       }
     });
   }
-  if ($('#userChart').length) {
+  if ($('#userChart') && $('#userChart').length) {
     var userChart = document.getElementById('userChart');
     var labelUser = $('#userChart').attr('data-labels').split(',');
     var dataUser = $('#userChart').attr('data-values').split(',');
@@ -5325,52 +5332,204 @@ $(document).ready(function () {
         }
       }
     });
-    var verificationstatusChart = document.getElementById('verificationstatusChart');
-    var labelverification = $('#verificationstatusChart').attr('data-verification-labels').split(',');
-    var dataverification = $('#verificationstatusChart').attr('data-verification-values').split(',');
-    new Chart(verificationstatusChart, {
-      type: 'doughnut',
-      data: {
-        labels: labelverification,
-        datasets: [{
-          label: ' Count',
-          data: dataverification,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            display: false
+    if ($('#verificationstatusChart') && $('#verificationstatusChart').length) {
+      var verificationstatusChart = document.getElementById('verificationstatusChart');
+      var labelverification = $('#verificationstatusChart').attr('data-verification-labels').split(',');
+      var dataverification = $('#verificationstatusChart').attr('data-verification-values').split(',');
+      new Chart(verificationstatusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelverification,
+          datasets: [{
+            label: ' Count',
+            data: dataverification,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false
+            }
           }
         }
-      }
-    });
-    var statusChart = document.getElementById('statusChart');
-    var labelstatus = $('#statusChart').attr('data-status-labels').split(',');
-    var datastatus = $('#statusChart').attr('data-status-values').split(',');
-    new Chart(statusChart, {
-      type: 'doughnut',
-      data: {
-        labels: labelstatus,
-        datasets: [{
-          label: ' Number of Ideas',
-          data: datastatus,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            display: false
+      });
+    }
+    if ($('#statusChart') && $('#statusChart').length) {
+      var statusChart = document.getElementById('statusChart');
+      var labelstatus = $('#statusChart').attr('data-status-labels').split(',');
+      var datastatus = $('#statusChart').attr('data-status-values').split(',');
+      new Chart(statusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelstatus,
+          datasets: [{
+            label: ' Number of Ideas',
+            data: datastatus,
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false
+            }
           }
         }
-      }
-    });
+      });
+    }
   }
   // Chart JS Ends
+
+  // Form Validtion Starts
+
+  window.isNumberKey = function (evt) {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  };
+  $('#login-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if ($('#password').val().trim() === '') {
+      error = true;
+      $('#password').after('<small class="error text-danger">This field is required</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#register-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#name').val().trim() === '') {
+      error = true;
+      $('#name').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if ($('#number').val().trim() === '') {
+      error = true;
+      $('#number').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#number').val().trim() !== '' && $('#number').val().trim().length !== 10) {
+      error = true;
+      $('#number').after('<small class="error text-danger">Please enter a valid number</small>');
+    }
+    if ($('#password').val().trim() === '') {
+      error = true;
+      $('#password').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#password_confirmation').val().trim() === '') {
+      error = true;
+      $('#password_confirmation').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#password').val().trim() !== $('#password_confirmation').val().trim()) {
+      error = true;
+      $('#password_confirmation').after('<small class="error text-danger">Password & Confirm Password don\'t match</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#edit-profile-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#name').val().trim() === '') {
+      error = true;
+      $('#name').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#idea-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#title').val().trim() === '') {
+      error = true;
+      $('#title').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#abstract').val().trim() === '') {
+      error = true;
+      $('#abstract').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#content').val().trim() === '') {
+      error = true;
+      $('#content').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#expiry_date').val().trim() === '') {
+      error = true;
+      $('#expiry_date').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#instruments').val().trim() === '') {
+      error = true;
+      $('#instruments').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#categories').val().length < 1) {
+      error = true;
+      $('#categories').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#currency').val().length < 1) {
+      error = true;
+      $('#currency').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#major_sector').val().length < 1) {
+      error = true;
+      $('#major_sector').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#minor_sector').val().length < 1) {
+      error = true;
+      $('#minor_sector').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#region').val().length < 1) {
+      error = true;
+      $('#region').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#country').val().length < 1) {
+      error = true;
+      $('#country').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+
+  // Form Validtion Ends
 });
 
 /***/ }),

@@ -2,7 +2,7 @@
     <div class="container">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a href="FIXME:">
+                <a href="{{ route('dashboard') }}" class="d-block">
                     <img src="{{ asset('/images/common/team-7.png') }}" height="70" alt="">
                 </a>
             </li>

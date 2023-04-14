@@ -9,6 +9,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\IdeatorController;
 use App\Http\Controllers\RelationshipManagerController;
 use App\Http\Controllers\IdeaController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,20 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    $user = Auth::user();
+    if($user->role == 'rm') {
+        return redirect()->route('relationship-manager.dashboard');
+    }
+    if($user->role == 'admin') {
+        return redirect()->route('admin.dashboard');
+    }
+    if($user->role == 'client') {
+        return redirect()->route('client.dashboard');
+    }
+    if($user->role == 'ideator') {
+        return redirect()->route('ideator.dashboard');
+    }
+})->name('dashboard');
 
 Route::get('/temp-page', function() {
 
@@ -130,7 +143,7 @@ Route::name('ideator.')->prefix('ideator')->group(function(){
     
     Route::middleware(['auth', 'checkUserType:ideator'])->group(function () {
         Route::get('/dashboard', [IdeatorController::class, 'index'])->name('dashboard'); 
-        Route::get('/ideas', [IdeaController::class, 'list'])->name('ideas');
+        Route::get('/ideas', [IdeatorController::class, 'list'])->name('ideas');
         Route::get('/ideas/add', [IdeaController::class, 'show_form'])->name('create-idea-form');
         Route::post('/ideas/add', [IdeaController::class, 'create'])->name('create-idea');
         Route::get('/idea/{id}', [IdeaController::class, 'update_idea_form'])->name('update-idea-form');

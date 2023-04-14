@@ -7,8 +7,10 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
@@ -121,5 +123,32 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
+    }
+    public function change_password_view()
+    {
+        return view('admin.change-password');
+    }
+    public function change_password(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        if(!Hash::check($request->current_password, Auth::user()->password)){
+            return redirect()->back()->with('error', 'Incorrect old password, please try again!');
+        }
+        
+        $user = User::find(Auth::user()->id);
+        
+        $user->password = Hash::make($request->password);
+        $user->save();
+        
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('success', 'Password changed successfully, please login again');
+
     }
 }

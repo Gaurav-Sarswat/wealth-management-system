@@ -788,6 +788,21 @@ section.account-settings {
 
 // Account Settings Ends
 
+// User Detail Starts
+section.user-detail {
+    .user-detail-profile {
+        figure {
+            img {
+                width: 110px;
+                height: 110px;
+                object-fit: cover;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+// User Detail Ends
+
 // Select 2
 .select2-container--default .select2-selection--multiple {
     padding-bottom: 0 !important;

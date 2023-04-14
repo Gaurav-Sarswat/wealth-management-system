@@ -117,6 +117,8 @@ Route::name('admin.')->prefix('admin')->group(function(){
         Route::get('/users/{id}', [UserController::class, 'view_user'])->name('admin-view-user');
         Route::get('/account-settings', [AdminController::class, 'user_profile_view'])->name('user-profile-view');
         Route::put('/account-settings', [AdminController::class, 'update_profile'])->name('update-profile');
+        Route::get('/change-password', [AdminController::class, 'change_password_view'])->name('change-password-view');
+        Route::put('/change-password', [AdminController::class, 'change_password'])->name('change-password');
     });
 });
 

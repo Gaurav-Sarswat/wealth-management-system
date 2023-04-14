@@ -86,6 +86,7 @@ class UserController extends Controller
             $portfolio = $user->portfolio();
             $rmclients = User::with('clients')->find($id);
             $ideacount = Idea::where('user_id', $id)->count();
+            
             return view('admin.admin-view-user', compact('user', 'pagename', 'portfolio', 'rmclients', 'ideacount'));
         }
     }

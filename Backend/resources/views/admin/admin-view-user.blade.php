@@ -17,10 +17,11 @@
         </div>
         <section class="user-detail pt-4">
           <div class="container">
-            <div>
-               <div class="d-flex align-items-center justify-content-between">
-                  <h3 class="page-title">{{ $user->name }}</h3>
-               </div>
+            <div class="user-detail-profile d-flex align-items-center">
+               <figure>
+                     <img src="{{ asset($user->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.$user->name.'&background=327DF6&color=fff'}}'" alt="{{ $user->name }}">
+               </figure>
+               <h3 class="page-title ml-3">{{ $user->name }}</h3>
             </div>
             <div class="switcher my-4">
                <div class="row mt-3">
@@ -36,6 +37,7 @@
                         <span class="text-uppercase" style="font-weight: bold;">{{ $user->number }}</span>
                      </div>
                   </div>
+                  
                   @if($user->role == 'client')
                      <div class="col-lg-3">
                         <div class="idea-details-text mb-4">

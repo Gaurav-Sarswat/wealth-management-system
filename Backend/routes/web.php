@@ -71,6 +71,8 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
         Route::get('/idea/{id}/reject', [RelationshipManagerController::class, 'reject'])->name('rm-reject-idea');
         Route::get('/account-settings', [RelationshipManagerController::class, 'user_profile_view'])->name('user-profile-view');
         Route::put('/account-settings', [RelationshipManagerController::class, 'update_profile'])->name('update-profile');
+        Route::get('/change-password', [RelationshipManagerController::class, 'change_password_view'])->name('change-password-view');
+        Route::put('/change-password', [RelationshipManagerController::class, 'change_password'])->name('change-password');
     });
 });
 

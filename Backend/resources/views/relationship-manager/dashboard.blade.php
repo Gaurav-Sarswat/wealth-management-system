@@ -37,9 +37,9 @@
                         </div>
                         <div class="col-lg-5">
                             <div class="dashboard-cards">
-                                <p class="mb-0">All Ideas</p>
+                                <p class="mb-0">Ideas Verification Status</p>
                                 <div class="chart-wrapper">
-                                    <canvas data-labels-rm="Accepted,Rejected,Pending" data-values-rm="{{ $accepted_ideas}},{{$rejected_ideas}},{{$pending_ideas }}" id="ideaStatusChartRM"></canvas>
+                                    <canvas data-labels-rm="Accepted,Pending" data-values-rm="{{ $accepted_ideas}},{{$pending_ideas }}" id="ideaStatusChartRM"></canvas>
                                 </div>
                             </div>
                         </div>

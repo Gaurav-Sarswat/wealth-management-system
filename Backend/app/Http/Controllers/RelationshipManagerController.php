@@ -28,9 +28,8 @@ class RelationshipManagerController extends Controller
         $clients = User::where('role', 'client')->count();
         $ideas = Idea::count();
         $accepted_ideas = Idea::where('verification_status', 'accepted')->count();
-        $rejected_ideas = Idea::where('verification_status', 'rejected')->count();
         $pending_ideas = Idea::where('verification_status', 'pending')->count();
-        return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas'));
+        return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'pending_ideas'));
     }
 
     /**

@@ -137,18 +137,10 @@ $(document).ready(function () {
         datasets: [{
           label: "Count",
           data: valueStatusRM,
-          // backgroundColor: [
-          //   '#28a745',
-          //   '#dc3545',
-          //   '#959595',
-          // ],
-          // borderColor: [
-          //   '#212529',
-          //   '#212529',
-          //   '#212529'
-          // ],
-          // borderWidth: 1,
-          // barThickness: 50
+          backgroundColor: [
+            '#28a745',
+            '#ffc107'
+          ]
         }]
       },
       options: {

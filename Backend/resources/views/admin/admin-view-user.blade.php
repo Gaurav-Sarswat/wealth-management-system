@@ -22,12 +22,12 @@
                   <h3 class="page-title">{{ $user->name }}</h3>
                </div>
             </div>
-            <div class="switcher mt-4">
+            <div class="switcher my-4">
                <div class="row mt-3">
                   <div class="col-lg-3">
                      <div class="idea-details-text mb-4">
                         <p>Email</p>
-                        <span class="text-capitalize" style="font-weight: bold;">{{ $user->email }}</span>
+                        <span>{{ $user->email }}</span>
                      </div>
                   </div>
                   <div class="col-lg-3">

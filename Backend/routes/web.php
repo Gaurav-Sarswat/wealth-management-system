@@ -52,6 +52,8 @@ Route::name('client.')->prefix('client')->group(function(){
         Route::get('/wishlist', [ClientController::class, 'wishlist'])->name('wishlist');
         Route::get('/account-settings', [ClientController::class, 'user_profile_view'])->name('user-profile-view');
         Route::put('/account-settings', [ClientController::class, 'update_profile'])->name('update-profile');
+        Route::get('/change-password', [ClientController::class, 'change_password_view'])->name('change-password-view');
+        Route::put('/change-password', [ClientController::class, 'change_password'])->name('change-password');
     });
 });
 

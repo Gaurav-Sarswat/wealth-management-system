@@ -29,10 +29,10 @@
 
                         <!-- <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                             <li class="nav-item">
-                              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Client</a>
+                              <a class="nav-link active" id="idea-detail" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Client</a>
                             </li>
                             <li class="nav-item">
-                              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Relationship Manager</a>
+                              <a class="nav-link" id="description-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Relationship Manager</a>
                             </li>
                             <li class="nav-item">
                               <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Ideagiver</a>
@@ -40,7 +40,7 @@
                         </ul> -->
 
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="idea-detail">
                                 <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>
                                 <form method="POST" action="{{ route('client.login') }}">
                                     @csrf
@@ -56,7 +56,7 @@
                                 </form>
                                 <p class="mt-2">Don't have an account ? <a href="{{ route('register') }}">Create an account</a></p>
                             </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="description-tab">
                                 <h4 class="mb-4 text-center">Welcome Back! Sign in to continue</h4>
                                 <form method="POST" action="{{ route('relationship-manager.login') }}">
                                     @csrf

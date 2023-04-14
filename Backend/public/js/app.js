@@ -5199,6 +5199,10 @@ $(document).ready(function () {
     var val = $(this).val();
     insertParam('category', val);
   });
+  $('#risk_rating').on('change', function () {
+    var val = $(this).val();
+    insertParam('risk', val);
+  });
   $('.select2').select2({});
 
   // $('select.has-parent').children('option').attr('disabled', true)
@@ -5267,23 +5271,32 @@ $(document).ready(function () {
     var labelStatusRM = $('#ideaStatusChartRM').attr('data-labels-rm').split(',');
     var valueStatusRM = $('#ideaStatusChartRM').attr('data-values-rm').split(',');
     new Chart(ideaStatusChartRM, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
         labels: labelStatusRM,
         datasets: [{
           label: "Count",
-          data: valueStatusRM,
-          backgroundColor: ['#28a745', '#dc3545', '#959595'],
-          borderColor: ['#212529', '#212529', '#212529'],
-          borderWidth: 1,
-          barThickness: 50
+          data: valueStatusRM
+          // backgroundColor: [
+          //   '#28a745',
+          //   '#dc3545',
+          //   '#959595',
+          // ],
+          // borderColor: [
+          //   '#212529',
+          //   '#212529',
+          //   '#212529'
+          // ],
+          // borderWidth: 1,
+          // barThickness: 50
         }]
       },
+
       options: {
-        indexAxis: 'y',
         scales: {
-          x: {
-            beginAtZero: true
+          y: {
+            beginAtZero: true,
+            display: false
           }
         }
       }

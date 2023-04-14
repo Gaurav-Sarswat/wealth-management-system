@@ -29,60 +29,63 @@
           <div class="pt-4">
             <div class="row">
               <div class="col-lg-5">
-                <img
-                  src="{{asset($idea->image)}}"
+                <img src="{{asset($idea->image)}}"
                   onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
                   class="w-100" style="border-radius: 8px;" alt="{{ $idea->title }}">
               </div>
             </div>
           </div>
-          <div class="switcher mt-4">
+          <div class="switcher my-4">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                  aria-selected="true">Idea detail</a>
+                <a class="nav-link active" id="idea-detail" data-toggle="tab" href="#home" role="tab"
+                  aria-controls="home" aria-selected="true">Idea detail</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
-                  aria-selected="false">Description</a>
+                <a class="nav-link" id="description-tab" data-toggle="tab" href="#profile" role="tab"
+                  aria-controls="profile" aria-selected="false">Description</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="additional-tab" data-toggle="tab" href="#additional" role="tab"
+                  aria-controls="additional" aria-selected="false">Additional Files</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="idea-detail">
                 <div class="row mt-3 ml-2">
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Category</p>
                       @foreach($idea->categories as $category)
-                      <span style="font-weight: bold;">{{ $category->title }}</span>,
+                      <span>{{ $category->title }}</span>,
                       @endforeach
                     </div>
-    
+
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Author</p>
-                      <span style="font-weight: bold;">{{ $idea->user->name }}</span>
+                      <span>{{ $idea->user->name }}</span>
                     </div>
-    
+
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Risk rating</p>
-                      <span style="font-weight: bold;">{{ $idea->risk_rating }}</span>
+                      <span>{{ $idea->risk_rating }}</span>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Instrument</p>
-                      <span class="text-capitalize" style="font-weight: bold;">{{ $idea->instruments }}</span>
+                      <span>{{ $idea->instruments }}</span>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Regions</p>
                       @foreach($idea->regions as $region)
-                        <span class="text-capitalize" style="font-weight: bold;">{{ $region->name }}</span>,
+                      <span>{{ $region->name }}</span>,
                       @endforeach
                     </div>
                   </div>
@@ -90,67 +93,86 @@
                     <div class="idea-details-text mb-4">
                       <p>Countries</p>
                       @foreach($idea->countries as $country)
-                        <span class="text-capitalize" style="font-weight: bold;">{{ $country->name }}</span>,
+                      <span>{{ $country->name }}</span>,
                       @endforeach
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Publication date</p>
-                      <span style="font-weight: bold;">{{ date('d/m/Y', strtotime($idea->published_date)) }}</span>
+                      <span>{{ date('d/m/Y', strtotime($idea->published_date)) }}</span>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Expiry Date</p>
-                      <span style="font-weight: bold;">{{ date('d/m/Y', strtotime($idea->expiry_date)) }}</span>
+                      <span>{{ date('d/m/Y', strtotime($idea->expiry_date)) }}</span>
                     </div>
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Currency</p>
                       @foreach($idea->currencies as $currency)
-                        <span class="text-uppercase" style="font-weight: bold;">{{ $currency->name }}</span>,
+                      <span class="text-uppercase" style="font-weight: bold;">{{ $currency->name }}</span>,
                       @endforeach
                     </div>
-    
+
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Major Sectors</p>
                       @foreach($idea->majorsectors as $sector)
-                        <span class="text-capitalize" style="font-weight: bold;">{{ $sector->name }}</span>,
+                      <span>{{ $sector->name }}</span>,
                       @endforeach
                     </div>
-                    
+
                   </div>
                   <div class="col-lg-3">
                     <div class="idea-details-text mb-4">
                       <p>Minor Sector</p>
                       @foreach($idea->minorsectors as $sector)
-                        <span class="text-capitalize" style="font-weight: bold;">{{ $sector->name }}</span>,
+                      <span>{{ $sector->name }}</span>,
                       @endforeach
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="description-tab">
                 <div class="idea-details-text mt-4 ml-4">
-                  <p style="font-weight: bold;">Abstract</p>
-                  <p>{{ $idea->abstract }}</p>
+                  <p>Abstract</p>
+                  <span class="d-block">{{ $idea->abstract }}</span>
                 </div>
                 <div class="idea-details-text mt-4 ml-4">
-                  <p style="font-weight: bold;">Idea Description</p>
-                  <p>{{ $idea->abstract }}</p>
+                  <p>Description</p>
+                  <span class="d-block">{{ $idea->content }}</span>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="additional" role="tabpanel" aria-labelledby="additional-tab">
+                <div class="idea-details-text mt-4 ml-4">
+                  @if(!empty($idea->supporting_file))
+                    <p>Supporting Files</p>
+                    <a download="" target="_blank"
+                      class="download-file d-inline-flex align-items-center justify-content-center"
+                      href="{{ asset($idea->supporting_file) }}">
+                      <i class="fas fa-download"></i>
+                      <span class="ml-2">Download</span>
+                    </a>
+                  @else
+                    <p>No files attached</p>
+                  @endif
                 </div>
               </div>
             </div>
-          </div>
-        </div>
       </section>
-      <!-- Start Dynamic Sections Starts here -->
+
+
       <!-- Start Dynamic Sections Ends here -->
     </div>
+  </div>
+  </section>
+  <!-- Start Dynamic Sections Starts here -->
+  <!-- Start Dynamic Sections Ends here -->
+  </div>
   </div>
   </div>
 </x-app-layout>

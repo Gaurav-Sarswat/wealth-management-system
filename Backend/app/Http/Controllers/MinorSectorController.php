@@ -13,7 +13,7 @@ class MinorSectorController extends Controller
     public function show_minor_sector()
     {
         $sectors = MinorSector::with('majorsector')->get();   
-            $pagename = 'MinorSectors';
+            $pagename = 'Minor Sectors';
             $data = [
                 'sectors' => $sectors,
                 'pagename' => $pagename
@@ -23,7 +23,6 @@ class MinorSectorController extends Controller
 
         public function add_minor_sector(Request $request)
         {
-            $pagename = 'Add-MinorSectors';
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'majorsector' => ['required'],
@@ -40,7 +39,7 @@ class MinorSectorController extends Controller
 
         public function add_minor_sector_view()
         {
-            $pagename = 'Add-MajorSectors';
+            $pagename = 'Add Minor Sector';
             $sectors = MajorSector::all(); 
             return view('admin.add-minor-sector', compact('pagename', 'sectors'));
         }

@@ -13,7 +13,7 @@
                 </ul>
                 <div class="d-flex align-items-center justify-content-between">
                     <h5 class="page-title mb-0">{{ $pagename }}</h5>
-                    <a href="{{ route('admin.add_minor_sector') }}" class="py-2 px-3 btn btn-custom">Add MinorSector</a>
+                    <a href="{{ route('admin.add_minor_sector') }}" class="py-2 px-3 btn btn-custom">Add Minor Sector</a>
                 </div>
             </div>
             <!-- Start Dynamic Sections Starts here -->

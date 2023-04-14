@@ -13,7 +13,7 @@
                 </ul>
                 <div class="d-flex align-items-center justify-content-between">
                     <h5 class="page-title mb-0">{{ $pagename }}</h5>
-                    <a href="{{ route('admin.add_major_sector') }}" class="py-2 px-3 btn btn-custom">Add MajorSector</a>
+                    <a href="{{ route('admin.add_major_sector') }}" class="py-2 px-3 btn btn-custom">Add Major Sector</a>
                 </div>
             </div>
             <!-- Start Dynamic Sections Starts here -->

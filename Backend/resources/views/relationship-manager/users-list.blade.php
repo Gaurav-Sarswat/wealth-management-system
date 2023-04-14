@@ -15,34 +15,38 @@
             <!-- Start Dynamic Sections Starts here -->
             <section class="custom-table-users">
                 <div class="container">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Info</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clients as $client)
+                    <div class="custom-card mb-4 p-4">
+                        <div class="h5">All Clients</div>
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td scope="row">{{ $client->id }}</td>
-                                    <td>{{ $client->name }}</td>
-                                    <td>{{ $client->email }}</td>
-                                    <td>{{ $client->number }}</td>
-                                    <td>
-                                        <a href="{{ route('relationship-manager.rm-view-user', ['id' => $client->id]) }}">
-                                            <button type="button" class="btn btn-sm btn-outline-primary px-3">
-                                                    <i class="fas fa-info" aria-hidden="true"></i>
-                                            </button>
-                                        </a>
-                                    </td>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Info</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @foreach ($clients as $client)
+                                    <tr>
+                                        <td scope="row">{{ $client->id }}</td>
+                                        <td>{{ $client->name }}</td>
+                                        <td>{{ $client->email }}</td>
+                                        <td>{{ $client->number }}</td>
+                                        <td>
+                                            <a href="{{ route('relationship-manager.rm-view-user', ['id' => $client->id]) }}">
+                                                <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                                        <i class="fas fa-info" aria-hidden="true"></i>
+                                                </button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $clients->links("pagination::bootstrap-4") }}
+                    </div>
                 </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->

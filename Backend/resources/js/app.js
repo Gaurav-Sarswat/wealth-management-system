@@ -44,6 +44,11 @@ $(document).ready(function () {
     insertParam('category', val)
   })
 
+  $('#risk_rating').on('change', function () {
+    let val = $(this).val();
+    insertParam('risk', val)
+  })
+
 
   $('.select2').select2({});
 
@@ -121,31 +126,31 @@ $(document).ready(function () {
     let valueStatusRM = $('#ideaStatusChartRM').attr('data-values-rm').split(',');
 
     new Chart(ideaStatusChartRM, {
-      type: 'bar',
+      type: 'doughnut',
       data: {
         labels: labelStatusRM,
         datasets: [{
           label: "Count",
           data: valueStatusRM,
-          backgroundColor: [
-            '#28a745',
-            '#dc3545',
-            '#959595',
-          ],
-          borderColor: [
-            '#212529',
-            '#212529',
-            '#212529'
-          ],
-          borderWidth: 1,
-          barThickness: 50
+          // backgroundColor: [
+          //   '#28a745',
+          //   '#dc3545',
+          //   '#959595',
+          // ],
+          // borderColor: [
+          //   '#212529',
+          //   '#212529',
+          //   '#212529'
+          // ],
+          // borderWidth: 1,
+          // barThickness: 50
         }]
       },
       options: {
-        indexAxis: 'y',
         scales: {
-          x: {
-            beginAtZero: true
+          y: {
+            beginAtZero: true,
+            display: false
           }
         }
       }

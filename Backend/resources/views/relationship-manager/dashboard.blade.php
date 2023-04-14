@@ -16,34 +16,34 @@
                 </div>
             </section>
             <!-- Start Dynamic Sections Starts here -->
-            <section class="investment-lists pt-4 pb-5">
+            <section class="dashboard pt-4 pb-5">
                 <div class="container">
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-lg-5 mb-2">
-                            <div class="card">
-                                <div class="card-body text-center" style="font-size: 3rem;">
-                                    <div class="h4">Total Clients</div>
-                                    <span class="d-block">{{ $clients }}</span>   
+                    <div class="row mt-3 align-items-start">
+                        <div class="col-lg-7">
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <div class="dashboard-cards">
+                                        <p class="mb-0">Your Clients</p>
+                                        <span>{{ $clients }}</span>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="dashboard-cards">
+                                        <p class="mb-0">Total Ideas</p>
+                                        <span>{{ $ideas }}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 mb-2">
-                            <div class="card">
-                                <div class="card-body text-center" style="font-size: 3rem;">
-                                    <div class="h4">Total Ideas</div>
-                                    <span class="d-block">{{ $ideas }}</span>   
+                        <div class="col-lg-5">
+                            <div class="dashboard-cards">
+                                <p class="mb-0">All Ideas</p>
+                                <div class="chart-wrapper">
+                                    <canvas data-labels-rm="Accepted,Rejected,Pending" data-values-rm="{{ $accepted_ideas}},{{$rejected_ideas}},{{$pending_ideas }}" id="ideaStatusChartRM"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-lg-8 mb-3">
-                            <div class="custom-card">
-                            <div class="chart-wrapper" style="height: 300px">
-                                <canvas data-labels-rm="Accepted,Rejected,Pending" data-values-rm="{{ $accepted_ideas}},{{$rejected_ideas}},{{$pending_ideas }}" id="ideaStatusChartRM"></canvas>
-                        </div>
-                    </div>
-                </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->
         </div>

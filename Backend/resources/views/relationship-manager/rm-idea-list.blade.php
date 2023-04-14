@@ -30,13 +30,17 @@
                             <div class="col-lg-4 mb-3">
                                 <div class="custom-card">
                                     <figure>
-                                        <img src="https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"
+                                        <img src="{{ asset($idea->image) }}"
+                                            onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
                                             class="w-100" alt="">
-                                            @if($idea->verification_status == 'pending')
-                                            <span class="status-tag draft">{{ $idea->verification_status }}</span>
-                                            @else
-                                            <span class="status-tag published">{{ $idea->verification_status }}</span>
-                                            @endif
+                                            <span class="verification-status-tag {{ $idea->verification_status }}">{{ $idea->verification_status }}</span>
+                                            <ul class="category-list list-unstyled mb-0 d-flex align-items-center">
+                                                @foreach($idea->categories as $category)
+                                                    <li>
+                                                        <span class="category-tag">{{ $category->title }}</span>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>
                                     <p class="mb-2 content">{{ $idea->abstract }}</p>
@@ -48,6 +52,7 @@
                             </div>
                         @endforeach
                     </div>
+                    {{ $ideas->links("pagination::bootstrap-4") }}
                 </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->

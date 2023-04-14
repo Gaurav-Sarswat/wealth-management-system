@@ -45,7 +45,7 @@ body {
 .custom-card {
   background: #FFF;
   border: 1px solid #eee;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 12px;
   box-shadow: 1px 1px 25px -15px #b3b3b3; }
   .custom-card figure {
@@ -93,6 +93,23 @@ body {
         background-color: #ffc107; }
       .custom-card figure span.status-tag.published {
         background-color: #28a745; }
+    .custom-card figure span.verification-status-tag {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: .65rem;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      background-color: rgba(0, 0, 0, 0.3);
+      font-weight: 600;
+      border-radius: 3px;
+      color: #FFF; }
+      .custom-card figure span.verification-status-tag.pending {
+        background-color: #ffc107; }
+      .custom-card figure span.verification-status-tag.accepted {
+        background-color: #28a745; }
+      .custom-card figure span.verification-status-tag.rejected {
+        background-color: #dc3545; }
     .custom-card figure ul.category-list {
       position: absolute;
       bottom: 8px;
@@ -115,7 +132,7 @@ body {
   .custom-card .date {
     font-weight: 700;
     font-size: .9rem; }
-  .custom-card a i {
+  .custom-card a.btn-custom i {
     transform: rotate(-45deg); }
 
 img.custom-rounded {
@@ -123,6 +140,9 @@ img.custom-rounded {
 
 td {
   vertical-align: middle !important; }
+
+.pagination {
+  margin-bottom: 0; }
 
 main.auth {
   min-height: 100vh; }
@@ -325,7 +345,7 @@ main .layout-menu {
 main .layout-main {
   flex: 80%;
   min-height: 100vh; }
-  main .layout-main nav {
+  main .layout-main nav.navbar {
     height: 100px; }
   main .layout-main .content-wrapper .custom-breadcrumb li {
     font-size: .85rem;
@@ -352,13 +372,39 @@ section.view-idea figure.idea-image img {
   border-radius: 5px;
   border: 2px solid #327DF6; }
 
-section.view-idea .idea-details .idea-details-text p {
-  color: #666;
-  font-weight: 400; }
+.switcher .idea-details-text p {
+  color: #999;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 5px; }
 
-section.view-idea .idea-details .idea-details-text span {
-  font-size: 1.3rem;
-  font-weight: 600; }
+.switcher .idea-details-text span {
+  font-size: 1.1rem;
+  font-weight: 500; }
+
+.switcher .idea-details-text a {
+  text-decoration: none; }
+  .switcher .idea-details-text a.download-file {
+    padding: 5px 20px;
+    border: 2px solid #327DF6;
+    border-radius: 5px;
+    transition: .4s; }
+    .switcher .idea-details-text a.download-file:hover {
+      color: #FFF;
+      background-color: #327DF6; }
+
+.switcher .nav.nav-tabs {
+  border-color: #327DF6; }
+  .switcher .nav.nav-tabs .nav-item {
+    margin-right: 2px; }
+    .switcher .nav.nav-tabs .nav-item .nav-link {
+      color: #327DF6;
+      font-weight: 500;
+      transition: .4s;
+      border-color: #327DF6; }
+      .switcher .nav.nav-tabs .nav-item .nav-link.active {
+        background-color: #327DF6;
+        color: #FFF; }
 
 section.idea-details .author-detail p {
   font-size: 1.2rem; }
@@ -386,17 +432,42 @@ section.data-cards a.card {
       color: #FFF; }
 
 section.dashboard .your-manager-wrapper {
-  padding: 20px; }
-  section.dashboard .your-manager-wrapper figure img {
-    min-width: 100px; }
+  padding: 20px;
+  box-shadow: 1px 1px 25px -15px #b3b3b3; }
+  section.dashboard .your-manager-wrapper figure {
+    margin-bottom: 0;
+    border-radius: 50%;
+    border: 2px solid #327DF6;
+    width: 122px;
+    height: 122px;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    section.dashboard .your-manager-wrapper figure img {
+      width: 120px;
+      height: 120px;
+      -o-object-fit: cover;
+         object-fit: cover; }
   section.dashboard .your-manager-wrapper span.name {
-    font-size: 1.5rem; }
+    font-size: 1.8rem;
+    font-weight: 600; }
   section.dashboard .your-manager-wrapper a {
     text-decoration: none;
     color: #327DF6;
     transition: .4s; }
     section.dashboard .your-manager-wrapper a:hover {
       color: #212529; }
+
+section.dashboard .dashboard-cards {
+  padding: 10px 20px;
+  box-shadow: 1px 1px 25px -15px #b3b3b3; }
+  section.dashboard .dashboard-cards p {
+    font-size: .9rem;
+    font-weight: 600;
+    color: #999; }
+  section.dashboard .dashboard-cards span {
+    font-size: 2.4rem;
+    font-weight: 300; }
 
 section.account-settings figure {
   position: relative; }

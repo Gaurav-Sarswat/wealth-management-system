@@ -11,7 +11,7 @@ class CategoriesController extends Controller
     public function show_categories()
     {
         $categories = Category::all();   
-            $pagename = 'categories';
+            $pagename = 'Categories';
             $data = [
                 'categories' => $categories,
                 'pagename' => $pagename

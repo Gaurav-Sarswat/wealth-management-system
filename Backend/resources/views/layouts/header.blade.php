@@ -2,10 +2,21 @@
     <div class="container">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item d-flex align-items-center user-profile-nav">
-                <img src="{{ asset(Auth::user()->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" alt="Username">
+                <img src="{{ asset(Auth::user()->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" alt="{{ Auth::user()->name }}">
                 <div class="d-flex align-items-center ml-2 hover-menu-wrapper">
                     <a href="FIXME:">
-                        <span>{{ Auth::user()->name }}</span>
+                        @if(Auth::user()->role == 'client')
+                            <span>{{ Auth::user()->name }}</span>
+                        @endif
+                        @if(Auth::user()->role == 'rm')
+                            <span>{{ Auth::user()->name }} (Relationship Manager)</span>
+                        @endif
+                        @if(Auth::user()->role == 'ideator')
+                            <span>{{ Auth::user()->name }} (Ideator)</span>
+                        @endif
+                        @if(Auth::user()->role == 'admin')
+                            <span>{{ Auth::user()->name }} (Admin)</span>
+                        @endif
                         <i class="fas fa-chevron-down ml-2"></i>
                     </a>
                     <div class="hover-menu">
@@ -21,6 +32,22 @@
                             @if(Auth::user()->role == 'ideator')
                                 <li>
                                     <a href="{{ route('ideator.user-profile-view') }}" class="d-flex align-items-center justify-content-end">
+                                        <span class="">Account Settings</span>
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->role == 'admin')
+                                <li>
+                                    <a href="{{ route('admin.user-profile-view') }}" class="d-flex align-items-center justify-content-end">
+                                        <span class="">Account Settings</span>
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->role == 'rm')
+                                <li>
+                                    <a href="{{ route('relationship-manager.user-profile-view') }}" class="d-flex align-items-center justify-content-end">
                                         <span class="">Account Settings</span>
                                         <i class="fas fa-cog"></i>
                                     </a>

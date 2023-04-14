@@ -46,7 +46,7 @@
                             <h5 class="py-1">Your Relationship Manager</h5>
                             <div class="your-manager-wrapper card">
                                 <figure>
-                                    <img class="custom-rounded" src="{{'https://ui-avatars.com/api/?name='.$user->manager->name.'&background=327DF6&color=fff'}}" alt="">
+                                    <img class="custom-rounded" src="{{ asset($user->manager->profile_picture) }}" onerror="this.src='{{'https://ui-avatars.com/api/?name='.Auth::user()->name.'&background=327DF6&color=fff'}}'" alt="">
                                 </figure>
                                 <span class="name">{{ $user->manager->name }}</span>
                                 <a class="d-block" href="{{'mailto:'.$user->manager->email}}">

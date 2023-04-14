@@ -27,6 +27,7 @@
                                         <img src="{{ asset($idea->image) }}"
                                             onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
                                             class="w-100" alt="">
+                                            <span class="verification-status-tag {{ $idea->verification_status }}">{{ $idea->verification_status }}</span>
                                             @if($idea->status == 'Draft')
                                             <a class="edit-icon" href="{{ route('ideator.update-idea-form', ['id' => $idea->id]) }}">
                                                 <i class="fas fa-pen"></i>

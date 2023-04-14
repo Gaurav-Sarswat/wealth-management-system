@@ -17,32 +17,22 @@
                 </div>
             </div>
             <!-- Start Dynamic Sections Starts here -->
-
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="client-tab" data-toggle="tab" href="#client" role="tab" aria-controls="client" aria-selected="true">Client</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="rm-tab" data-toggle="tab" href="#rm" role="tab" aria-controls="rm" aria-selected="false">RM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="ideator-tab" data-toggle="tab" href="#ideator" role="tab" aria-controls="ideator" aria-selected="false">Ideator</a>
-            </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="client" role="tabpanel" aria-labelledby="client-tab">
-            <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clients as $client)
+            <section class="custom-table-users">
+                <div class="container">
+                    <div class="custom-card mb-4 p-4">
+                        <div class="h5">All Clients</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($clients as $client)
                                 <tr>
                                     <td scope="row">{{ $client->id }}</td>
                                     <td>{{ $client->name }}</td>
@@ -50,82 +40,82 @@
                                     <td>{{ $client->number }}</td>
                                     <td>
                                         <a href="{{ route('admin.admin-view-user', ['id' => $client->id]) }}">
-                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
-                                            <i class="fas fa-info" aria-hidden="true"></i>
-                                        </button>
+                                            <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                                <i class="fas fa-info" aria-hidden="true"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-            </div>
-            <!-- <div class="tab-pane fade" id="rm" role="tabpanel" aria-labelledby="rm-tab"> -->
-            <div class="tab-pane fade" id="rm" role="tabpanel" aria-labelledby="rm-tab">
-            <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($relationship_manager as $rm)
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $clients->links("pagination::bootstrap-4", ['paginator' => 'clients']) }}
+                    </div>
+                    <div class="custom-card mb-4 p-4">
+                        <div class="h5">All Relationship Managers</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($relationship_managers as $rm)
                                 <tr>
                                     <td scope="row">{{ $rm->id }}</td>
                                     <td>{{ $rm->name }}</td>
                                     <td>{{ $rm->email }}</td>
                                     <td>{{ $rm->number }}</td>
                                     <td>
-                                    <a href="{{ route('admin.admin-view-user', ['id' => $rm->id]) }}">
-                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
-                                            <i class="fas fa-info" aria-hidden="true"></i>
-                                        </button>
+                                        <a href="{{ route('admin.admin-view-user', ['id' => $rm->id]) }}">
+                                            <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                                <i class="fas fa-info" aria-hidden="true"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-            </div>
-            <div class="tab-pane fade" id="ideator" role="tabpanel" aria-labelledby="ideator-tab">
-            <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">S/N</th>
-                                <th scope="col">Full Name</th>
-                                <th scope="col">Email Address</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($ideators as $ideator)
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $relationship_managers->links("pagination::bootstrap-4", ['paginator' => 'relationship_managers']) }}
+                    </div>
+                    <div class="custom-card mb-4 p-4">
+                        <div class="h5">All Ideators</div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">S/N</th>
+                                    <th scope="col">Full Name</th>
+                                    <th scope="col">Email Address</th>
+                                    <th scope="col">Phone Number</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($ideators as $ideator)
                                 <tr>
                                     <td scope="row">{{ $ideator->id }}</td>
                                     <td>{{ $ideator->name }}</td>
                                     <td>{{ $ideator->email }}</td>
                                     <td>{{ $ideator->number }}</td>
                                     <td>
-                                    <a href="{{ route('admin.admin-view-user', ['id' => $ideator->id]) }}">
-                                        <button type="button" class="btn btn-sm btn-outline-primary px-3">
-                                            <i class="fas fa-info" aria-hidden="true"></i>
-                                        </button>
+                                        <a href="{{ route('admin.admin-view-user', ['id' => $ideator->id]) }}">
+                                            <button type="button" class="btn btn-sm btn-outline-primary px-3">
+                                                <i class="fas fa-info" aria-hidden="true"></i>
+                                            </button>
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-            </div>
-            </div>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $ideators->links("pagination::bootstrap-4", ['paginator' => 'ideators']) }}
+                    </div>
 
-            <section class="custom-table-users">
-                <div class="container">
-                    
                 </div>
             </section>
             <!-- Start Dynamic Sections Ends here -->

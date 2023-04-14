@@ -66,9 +66,9 @@ class RelationshipManagerController extends Controller
             whereHas('categories', 
             function ($query) use ($filter_category) {
                 $query->where('categories.id', $filter_category);
-            })->get();
+            })->paginate(10);
         } else {
-            $ideas = Idea::where('status', 'Published')->whereIn('verification_status', ['accepted', 'pending'])->get();
+            $ideas = Idea::where('status', 'Published')->whereIn('verification_status', ['accepted', 'pending'])->paginate(10);
         }
 
         $data = [

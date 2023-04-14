@@ -12,7 +12,7 @@ class MajorSectorController extends Controller
     public function show_major_sector()
     {
         $sectors = MajorSector::all();   
-            $pagename = 'MajorSectors';
+            $pagename = 'Major Sectors';
             $data = [
                 'sectors' => $sectors,
                 'pagename' => $pagename
@@ -22,7 +22,6 @@ class MajorSectorController extends Controller
 
         public function add_major_sector(Request $request)
         {
-            $pagename = 'Add-MajorSectors';
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
             ]);
@@ -37,7 +36,7 @@ class MajorSectorController extends Controller
 
         public function add_major_sector_view()
         {
-            $pagename = 'Add-MajorSectors';
+            $pagename = 'Add Major Sector';
             return view('admin.add-major-sector', compact('pagename'));
         }
 

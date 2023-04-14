@@ -34,7 +34,7 @@ class AdminController extends Controller
         $data_verification_status = [$accepted_ideas, $rejected_ideas, $pending_ideas];
         
         
-        return view('admin.dashboard', compact('users', 'clients', 'relationship_manager', 'ideators', 'ideas', 'published_ideas', 'draft_ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas', 'label_user', 'data_user', 'label_status', 'data_status', 'label_verification_status', 'data_verification_status'));
+        return view('admin.dashboard', compact('users', 'clients', 'relationship_manager', 'ideators', 'ideas', 'published_ideas', 'draft_ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas', 'label_user', 'data_user', 'label_status', 'data_status', 'label_verification_status', 'data_verification_status', 'pagename'));
     }
 
     public function list(Request $request)
@@ -47,9 +47,9 @@ class AdminController extends Controller
             whereHas('categories', 
             function ($query) use ($filter_category) {
                 $query->where('categories.id', $filter_category);
-            })->get();
+            })->paginate(9);
         } else {
-            $ideas = Idea::whereIn('status', ['Published', 'Draft'])->whereIn('verification_status', ['accepted', 'pending', 'rejected'])->get();
+            $ideas = Idea::whereIn('status', ['Published', 'Draft'])->whereIn('verification_status', ['accepted', 'pending', 'rejected'])->paginate(9);
         }
 
         $data = [

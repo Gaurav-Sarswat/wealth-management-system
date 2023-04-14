@@ -54,6 +54,7 @@
 
                     <button type="submit" class="mt-4 btn btn-custom w-50">Save Changes</button>
                 </form>
+                <a href="{{ route('client.change-password-view') }}" class="mt-2 btn btn-custom w-50">Change Password</a>
             </div>
         </section>
         <!-- Start Dynamic Sections Ends here -->

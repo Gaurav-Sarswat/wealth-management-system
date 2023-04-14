@@ -21,22 +21,22 @@ class UserController extends Controller
         $user = Auth::user();
         if ($user->role == 'rm'){
             $pagename = 'Clients';
-            $rm_clients = User::with('clients')->find($user->id);
+            $clients = User::where('manager_id', $user->id)->paginate(5);
             $data = [
-                'clients' => $rm_clients->clients,
+                'clients' => $clients,
                 'pagename' => $pagename
             ];
             return view('relationship-manager.users-list', $data);
         }
         if ($user->role == 'admin'){
-            $pagename = 'Users';
-            $clients = User::where('role', 'client')->get();
-            $relationship_manager = User::where('role', 'rm')->get();
-            $ideators = User::where('role', 'ideator')->get();
+            $pagename = 'All Users';
+            $clients = User::where('role', 'client')->paginate(5, ['*'], 'clients');
+            $relationship_managers = User::where('role', 'rm')->paginate(5, ['*'], 'relationship_managers');
+            $ideators = User::where('role', 'ideator')->paginate(5, ['*'], 'ideators');
             
             $data = [
                 'clients' => $clients,
-                'relationship_manager' => $relationship_manager,
+                'relationship_managers' => $relationship_managers,
                 'ideators' => $ideators,
                 'pagename' => $pagename
             ];

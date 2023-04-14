@@ -36,7 +36,7 @@
                                                             @endforeach
                                                         </select>
                                             
-                                            <button type="submit" class="mt-4 btn btn-custom w-100">Create Major Sector</button>
+                                            <button type="submit" class="mt-4 btn btn-custom w-100">Create Minor Sector</button>
                                         </form>
                                     </div>
                                 </div>

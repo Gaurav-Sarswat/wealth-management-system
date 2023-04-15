@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Idea;
-use App\Models\RelationshipManager;
 use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -25,22 +24,12 @@ class RelationshipManagerController extends Controller
     public function index()
     {
         $pagename = 'Dashboard';
-        $clients = User::where('role', 'client')->count();
-        $ideas = Idea::count();
-        $accepted_ideas = Idea::where('verification_status', 'accepted')->count();
-        $pending_ideas = Idea::where('verification_status', 'pending')->count();
+        $id = Auth::user()->id;
+        $clients = User::where('manager_id', $id)->count();
+        $ideas = Idea::where('status', 'Published')->whereIn('verification_status', ['accepted', 'pending'])->count();
+        $accepted_ideas = Idea::where('status', 'Published')->where('verification_status', 'accepted')->count();
+        $pending_ideas = Idea::where('status', 'Published')->where('verification_status', 'pending')->count();
         return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'pending_ideas'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\RelationshipManager  $relationshipManager
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RelationshipManager $relationshipManager)
-    {
-        //
     }
 
     public function login(Request $request)

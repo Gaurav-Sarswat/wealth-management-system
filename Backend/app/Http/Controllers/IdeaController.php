@@ -31,14 +31,6 @@ class IdeaController extends Controller
     }
     public function create(Request $request)
     {
-        if($request->hasFile('image')){
-            $path = $request->file('image')->store('public/images');
-            $imageUrl = Storage::url($path);
-        }
-        if($request->hasFile('supporting_file')){
-            $path = $request->file('supporting_file')->store('public/files');
-            $supportingFileurl = Storage::url($path);
-        }
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'abstract' => ['required', 'string', 'max:255'],
@@ -71,9 +63,20 @@ class IdeaController extends Controller
             'expiry_date' => $request->expiry_date,
             'status' => $request->status,
             'user_id' => Auth::id(),
-            'image' => $imageUrl,
-            'supporting_file' => $supportingFileurl
+            // 'image' => $imageUrl,
+            // 'supporting_file' => $supportingFileurl
         ]);
+
+        if($request->hasFile('image')){
+            $path = $request->file('image')->store('public/images');
+            $idea->image = Storage::url($path);
+            $idea->save();
+        }
+        if($request->hasFile('supporting_file')){
+            $path = $request->file('supporting_file')->store('public/files');
+            $idea->supporting_file = Storage::url($path);
+            $idea->save();
+        }
 
         $idea->categories()->attach($request->categories);
         $idea->currencies()->attach($request->currency);

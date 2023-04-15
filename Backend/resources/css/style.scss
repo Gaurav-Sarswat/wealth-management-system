@@ -361,22 +361,61 @@ header.auth-nav {
 
 // Welcome Starts
 
-header.welcome {
-    .navbar-brand {
-        img {
-            border-radius: 50%;
-            width: 40px;
+section.welcome {
+    min-height: 100vh;
+    position: relative;
+    .navbar {
+        .navbar-nav {
+            .nav-item {
+                a {
+                    width: 120px;
+                    height: 45px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    transition: .4s;
+                    &.register {
+                        border: 2px solid $primary;
+                        color: $primary;
+                        &:hover {
+                            background-color: $primary;
+                            color: $white;
+                        }
+                    }
+                    &.login {
+                        border: 2px solid $primary;
+                        background-color: $primary;
+                        color: $white;
+                        &:hover {
+                            background-color: $white;
+                            color: $primary;
+                        }
+                    }
+                }
+            }
         }
-        span {
-            font-size: .95rem;
-            font-weight: 500;
+    }
+    .hero-wrapper {
+        h2 {
+            font-size: 3.5rem;
+            text-transform: capitalize;
+            font-weight: 800;
         }
-        i {
-            font-size: .8rem;
+        p {
+            font-size: 1.2rem;
         }
+    }
+    img.waves {
+        position: absolute;
+        top: 10%;
+        left: 0;
+        width: 100%;
+        z-index: -1;
     }
 }
 
+// Set Preferences Starts
 ul.tags-wrapper {
     margin-top: 30px;
     max-width: 550px;
@@ -423,6 +462,7 @@ ul.tags-wrapper {
 }
 section.choose-preferences {
 }
+// Set Preferences Ends
 
 // Welcome Ends
 

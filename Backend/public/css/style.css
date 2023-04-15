@@ -225,16 +225,42 @@ header.auth-nav {
     text-decoration: none;
     color: #327DF6; }
 
-header.welcome .navbar-brand img {
-  border-radius: 50%;
-  width: 40px; }
-
-header.welcome .navbar-brand span {
-  font-size: .95rem;
-  font-weight: 500; }
-
-header.welcome .navbar-brand i {
-  font-size: .8rem; }
+section.welcome {
+  min-height: 100vh;
+  position: relative; }
+  section.welcome .navbar .navbar-nav .nav-item a {
+    width: 120px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: .4s; }
+    section.welcome .navbar .navbar-nav .nav-item a.register {
+      border: 2px solid #327DF6;
+      color: #327DF6; }
+      section.welcome .navbar .navbar-nav .nav-item a.register:hover {
+        background-color: #327DF6;
+        color: #FFF; }
+    section.welcome .navbar .navbar-nav .nav-item a.login {
+      border: 2px solid #327DF6;
+      background-color: #327DF6;
+      color: #FFF; }
+      section.welcome .navbar .navbar-nav .nav-item a.login:hover {
+        background-color: #FFF;
+        color: #327DF6; }
+  section.welcome .hero-wrapper h2 {
+    font-size: 3.5rem;
+    text-transform: capitalize;
+    font-weight: 800; }
+  section.welcome .hero-wrapper p {
+    font-size: 1.2rem; }
+  section.welcome img.waves {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    z-index: -1; }
 
 ul.tags-wrapper {
   margin-top: 30px;

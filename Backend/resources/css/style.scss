@@ -178,10 +178,10 @@ body {
             border-radius: 3px;
             color: $white;
             &.draft {
-                background-color: $secondary;
+                background-color: $text-light;
             }
             &.published {
-                background-color: $success;
+                background-color: $primary;
             }
         }
         span.verification-status-tag {

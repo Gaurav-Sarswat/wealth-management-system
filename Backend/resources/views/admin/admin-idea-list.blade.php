@@ -34,13 +34,16 @@
                                         onerror="this.src='https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'"
                                             class="w-100" alt="">
                                             @if($idea->verification_status == 'pending' && $idea->status != 'Draft')
-                                            <span class="status-tag draft">{{ $idea->verification_status }}</span>
+                                            <span class="status-tag published">{{ $idea->status }}</span>
+                                            <span class="verification-status-tag {{ $idea->verification_status }}">{{ $idea->verification_status }}</span>
                                             @elseif($idea->verification_status == 'pending' && $idea->status == 'Draft')
-                                            <span class="status-tag draft1">{{ $idea->status }}</span>
+                                            <span class="status-tag text-light">{{ $idea->status }}</span>
                                             @elseif($idea->verification_status == 'rejected')
-                                            <span class="status-tag bg-danger">{{ $idea->verification_status }}</span>
+                                            <span class="status-tag published">{{ $idea->status }}</span>
+                                            <span class="verification-status-tag {{ $idea->verification_status }}">{{ $idea->verification_status }}</span>
                                             @elseif($idea->verification_status == 'accepted')
-                                            <span class="status-tag published">{{ $idea->verification_status }}</span>
+                                            <span class="status-tag published">{{ $idea->status }}</span>
+                                            <span class="verification-status-tag {{ $idea->verification_status }}">{{ $idea->verification_status }}</span>
                                             @endif
                                     </figure>
                                     <p class="mb-2 title">{{ $idea->title }}</p>

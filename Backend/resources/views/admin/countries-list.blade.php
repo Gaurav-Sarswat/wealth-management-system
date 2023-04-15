@@ -23,7 +23,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">S/N</th>
+                            <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Region</th>
                         </tr>

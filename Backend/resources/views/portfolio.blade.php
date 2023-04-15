@@ -33,7 +33,7 @@
                             <table class="table">
                                 <thead>
                                   <tr>
-                                    <th scope="col">S/N</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Idea</th>
                                     <th scope="col">Domain</th>
                                     <th scope="col">Date</th>

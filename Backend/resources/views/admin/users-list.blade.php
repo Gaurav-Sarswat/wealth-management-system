@@ -24,7 +24,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">S/N</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Email Address</th>
                                     <th scope="col">Phone Number</th>
@@ -56,7 +56,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">S/N</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Email Address</th>
                                     <th scope="col">Phone Number</th>
@@ -88,7 +88,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">S/N</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Full Name</th>
                                     <th scope="col">Email Address</th>
                                     <th scope="col">Phone Number</th>

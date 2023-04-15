@@ -98,9 +98,9 @@ body {
       border-radius: 3px;
       color: #FFF; }
       .custom-card figure span.status-tag.draft {
-        background-color: #ffc107; }
+        background-color: #959595; }
       .custom-card figure span.status-tag.published {
-        background-color: #28a745; }
+        background-color: #327DF6; }
     .custom-card figure span.verification-status-tag {
       position: absolute;
       bottom: 8px;

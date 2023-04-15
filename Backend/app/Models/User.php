@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Category;
 
 class User extends Authenticatable
 {
@@ -21,7 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'number'
+        'number',
+        'role',
+        'manager_id'
     ];
 
     /**
@@ -42,4 +45,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function ideas()
+    {
+        return $this->hasMany(Idea::class);
+    }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class)->withTimestamps();
+    }
+    public function portfolio()
+    {
+        return $this->belongsToMany(Idea::class, 'user_portfolio', 'user_id', 'idea_id')->withTimestamps();
+    }
+    public function wishlist()
+    {
+        return $this->belongsToMany(Idea::class, 'user_wishlist', 'user_id', 'idea_id')->withTimestamps();
+    }
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'manager_id');
+    }
+    public function clients()
+    {
+        return $this->hasMany(User::class, 'manager_id');
+    }
 }

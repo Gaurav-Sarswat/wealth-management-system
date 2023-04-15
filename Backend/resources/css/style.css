@@ -27,20 +27,13 @@ body {
   background: #FFF !important;
 }
 
-.container-header {
-  padding: 24px;
-  padding-bottom: 24px;
-}
-
-.container {
-  padding-top: 24px;
-}
-
 .custom-card {
   background: #FFF;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 12px;
+  -webkit-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
+  -moz-box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
   box-shadow: 1px 1px 25px -15px rgb(179, 179, 179);
 }
 .custom-card figure img {
@@ -120,12 +113,6 @@ header.auth-nav .navbar .navbar-brand img {
   padding: 20px 10px;
   background-color: rgba(50, 125, 246, 0.1);
 }
-.auth-form-wrapper .auth-form .form-group input::-moz-placeholder {
-  color: #666;
-  font-size: 0.95rem;
-  -moz-transition: 0.3s;
-  transition: 0.3s;
-}
 .auth-form-wrapper .auth-form .form-group input::placeholder {
   color: #666;
   font-size: 0.95rem;
@@ -133,9 +120,6 @@ header.auth-nav .navbar .navbar-brand img {
 }
 .auth-form-wrapper .auth-form .form-group input:focus {
   box-shadow: none;
-}
-.auth-form-wrapper .auth-form .form-group input:focus::-moz-placeholder {
-  font-size: 0.85rem;
 }
 .auth-form-wrapper .auth-form .form-group input:focus::placeholder {
   font-size: 0.85rem;
@@ -238,12 +222,19 @@ main .layout-menu ul.main-menu li {
   transition: 0.4s;
   margin-bottom: 5px;
 }
-main .layout-menu ul.main-menu li a {
+main .layout-menu ul.main-menu li form {
+  width: 100%;
+}
+main .layout-menu ul.main-menu li a, main .layout-menu ul.main-menu li button {
+  text-align: left;
   padding: 10px;
   text-decoration: none;
   color: #212529;
   font-weight: 500;
   width: 100%;
+}
+main .layout-menu ul.main-menu li a:focus, main .layout-menu ul.main-menu li button:focus {
+  box-shadow: none;
 }
 main .layout-menu ul.main-menu li span {
   margin-left: 10px;

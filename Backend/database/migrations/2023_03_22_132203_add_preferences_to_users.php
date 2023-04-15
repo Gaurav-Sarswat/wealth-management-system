@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTableUsers extends Migration
+class AddPreferencesToUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,10 @@ class UpdateTableUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('number', 10)->nullable()->default(NULL);
             //
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateTableUsersNumbers extends Migration
+class AddProfilePictureToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class UpdateTableUsersNumbers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('number', 10)->nullable()->default(NULL);
+            $table->string('profile_picture')->after('role')->nullable();
         });
     }
 
@@ -28,6 +28,7 @@ class UpdateTableUsersNumbers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
+            $table->dropColumn('profile_picture');
         });
     }
 }

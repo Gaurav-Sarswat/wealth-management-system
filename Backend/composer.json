@@ -59,6 +59,11 @@
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "scripts": {
+        "test": "phpunit --bootstrap vendor/autoload.php",
+        "sniff": "phpcs --standard=ruleset.xml",
+        "snifferfix" : "phpcbf --standard=ruleset.xml"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }

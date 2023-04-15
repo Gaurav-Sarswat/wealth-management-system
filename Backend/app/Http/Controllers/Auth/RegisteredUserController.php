@@ -39,21 +39,25 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'number' => ['required', 'string', 'max:10', 'unique:users'],
+            'number' => ['required', 'string', 'min:10', 'max:11', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        $manager = User::withCount('clients')->where('role', 'rm')->orderBy('clients_count', 'asc')->first();
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'number' => $request->number,
             'password' => Hash::make($request->password),
+            'role' => 'client',
+            'manager_id' => $manager->id
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('client.set-preferences');
     }
 }

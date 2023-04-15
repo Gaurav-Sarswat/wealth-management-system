@@ -71,7 +71,7 @@ body {
     // font-family: 'Montserrat', sans-serif;
     font-family: 'Nunito', sans-serif;
     min-height: 100vh;
-    background-color: $bg-color;
+    // background-color: $bg-color;
 }
 
 // Common Classes Starts
@@ -79,6 +79,18 @@ body {
 .btn-custom {
     background-color: $primary;
     color: $white;
+    font-weight: 500;
+    padding: 12px 0;
+    border-radius: 25px;
+    border: 2px solid $primary;
+    &:hover {
+        color: $primary;
+        background: transparent;
+    }
+}
+.btn-danger-custom{
+    background-color: #F63232;
+   
     font-weight: 500;
     padding: 12px 0;
     border-radius: 25px;
@@ -184,7 +196,10 @@ body {
 
     }
 }
-
+.listy{
+    font-size: .95rem;
+    color: #3283F6;
+}
 .table{
     border-spacing: 0 5px;
     border-collapse: separate;
@@ -198,6 +213,9 @@ body {
     }
     tbody{
         tr{
+            -webkit-box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
+            -moz-box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
+            box-shadow: 1px 1px 25px -15px rgba(179,179,179,1);
             background-color: white;
             margin-bottom: 10px;
         }

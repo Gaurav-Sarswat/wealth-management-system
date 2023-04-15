@@ -5166,7 +5166,361 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Alpine = alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"];
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].start();
-$(document).ready(function () {});
+$(document).ready(function () {
+  $('.user-profile-nav').on('mouseover', function () {
+    $('.hover-menu').addClass('show');
+  });
+  $('.user-profile-nav').on('mouseleave', function () {
+    $('.hover-menu').removeClass('show');
+  });
+  function insertParam(key, value) {
+    key = encodeURIComponent(key);
+    value = encodeURIComponent(value);
+    console.log('inside params');
+    // kvp looks like ['key1=value1', 'key2=value2', ...] 
+    var kvp = document.location.search.substr(1).split("&");
+    var i = 0;
+    for (; i < kvp.length; i++) {
+      if (kvp[i].startsWith(key + "=")) {
+        var pair = kvp[i].split("=");
+        pair[1] = value;
+        kvp[i] = pair.join("=");
+        break;
+      }
+    }
+    if (i >= kvp.length) {
+      kvp[kvp.length] = [key, value].join("=");
+    } // can return this or... 
+    var params = kvp.join("&");
+    // reload page with new params 
+    document.location.search = params;
+  }
+  $('#filter_categories').on('change', function () {
+    var val = $(this).val();
+    insertParam('category', val);
+  });
+  $('#risk_rating').on('change', function () {
+    var val = $(this).val();
+    insertParam('risk', val);
+  });
+  if ($('.select2') && $('.select2').length) {
+    $('.select2').select2({});
+  }
+
+  // $('select.has-parent').children('option').attr('disabled', true)
+
+  $('select.parent.sector').on('change', function () {
+    $('select.has-parent.sector').val(null).trigger('change');
+    var val = $(this).val();
+    $('select.has-parent.sector').children('option').each(function () {
+      if (val.includes($(this).attr('data-parent'))) {
+        $(this).removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', true);
+      }
+    });
+  });
+  $('select.parent.country').on('change', function () {
+    $('select.has-parent.country').val(null).trigger('change');
+    var val = $(this).val();
+    $('select.has-parent.country').children('option').each(function () {
+      if (val.includes($(this).attr('data-parent'))) {
+        $(this).removeAttr('disabled');
+      } else {
+        $(this).attr('disabled', true);
+      }
+    });
+  });
+  $('#profile_picture').on('change', function () {
+    var preview = document.querySelector('#profile_picture_placeholder');
+    var input = document.querySelector('#profile_picture');
+
+    // Make sure a file was selected
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        console.log(e.target.result);
+        preview.src = e.target.result;
+      };
+      reader.readAsDataURL(input.files[0]); // Read the selected file
+    } else {
+      preview.src = "{{ $imageUrl }}"; // Set the default image if no file selected
+    }
+  });
+
+  // Chart JS Starts
+  if ($('#ideator-dashboard-chart') && $('#ideator-dashboard-chart').length) {
+    var ctx = document.getElementById('ideator-dashboard-chart');
+    var labelStatus = $('#ideator-dashboard-chart').attr('data-labels').split(',');
+    var valueStatus = $('#ideator-dashboard-chart').attr('data-values').split(',');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labelStatus,
+        datasets: [{
+          label: 'Count ',
+          data: valueStatus,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: false
+          }
+        }
+      }
+    });
+  }
+  if ($('#ideaStatusChartRM') && $('#ideaStatusChartRM').length) {
+    var ideaStatusChartRM = document.getElementById('ideaStatusChartRM');
+    var labelStatusRM = $('#ideaStatusChartRM').attr('data-labels-rm').split(',');
+    var valueStatusRM = $('#ideaStatusChartRM').attr('data-values-rm').split(',');
+    new Chart(ideaStatusChartRM, {
+      type: 'doughnut',
+      data: {
+        labels: labelStatusRM,
+        datasets: [{
+          label: "Count",
+          data: valueStatusRM,
+          backgroundColor: ['#28a745', '#ffc107']
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: false
+          }
+        }
+      }
+    });
+  }
+  if ($('#userChart') && $('#userChart').length) {
+    var userChart = document.getElementById('userChart');
+    var labelUser = $('#userChart').attr('data-labels').split(',');
+    var dataUser = $('#userChart').attr('data-values').split(',');
+    new Chart(userChart, {
+      type: 'doughnut',
+      data: {
+        labels: labelUser,
+        datasets: [{
+          label: 'Count',
+          data: dataUser,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            display: false
+          }
+        }
+      }
+    });
+    if ($('#verificationstatusChart') && $('#verificationstatusChart').length) {
+      var verificationstatusChart = document.getElementById('verificationstatusChart');
+      var labelverification = $('#verificationstatusChart').attr('data-verification-labels').split(',');
+      var dataverification = $('#verificationstatusChart').attr('data-verification-values').split(',');
+      new Chart(verificationstatusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelverification,
+          datasets: [{
+            label: ' Count',
+            data: dataverification,
+            borderWidth: 1,
+            backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false
+            }
+          }
+        }
+      });
+    }
+    if ($('#statusChart') && $('#statusChart').length) {
+      var statusChart = document.getElementById('statusChart');
+      var labelstatus = $('#statusChart').attr('data-status-labels').split(',');
+      var datastatus = $('#statusChart').attr('data-status-values').split(',');
+      new Chart(statusChart, {
+        type: 'doughnut',
+        data: {
+          labels: labelstatus,
+          datasets: [{
+            label: ' Number of Ideas',
+            data: datastatus,
+            borderWidth: 1,
+            backgroundColor: ['#327DF6', '#959595']
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              display: false
+            }
+          }
+        }
+      });
+    }
+  }
+  // Chart JS Ends
+
+  // Form Validtion Starts
+
+  window.isNumberKey = function (evt) {
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  };
+  $('#login-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if ($('#password').val().trim() === '') {
+      error = true;
+      $('#password').after('<small class="error text-danger">This field is required</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#register-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#name').val().trim() === '') {
+      error = true;
+      $('#name').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if ($('#number').val().trim() === '') {
+      error = true;
+      $('#number').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#number').val().trim() !== '' && $('#number').val().trim().length !== 10) {
+      error = true;
+      $('#number').after('<small class="error text-danger">Please enter a valid number</small>');
+    }
+    if ($('#password').val().trim() === '') {
+      error = true;
+      $('#password').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#password_confirmation').val().trim() === '') {
+      error = true;
+      $('#password_confirmation').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#password').val().trim() !== $('#password_confirmation').val().trim()) {
+      error = true;
+      $('#password_confirmation').after('<small class="error text-danger">Password & Confirm Password don\'t match</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#edit-profile-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#name').val().trim() === '') {
+      error = true;
+      $('#name').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() === '') {
+      error = true;
+      $('#email').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#email').val().trim() !== '' && !emailReg.test($('#email').val().trim())) {
+      $("#email").after('<small class="error text-danger">Please enter a valid email address</small>');
+      error = true;
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+  $('#idea-btn').on('click', function () {
+    var error = false;
+    $('small.error').remove();
+    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    if ($('#title').val().trim() === '') {
+      error = true;
+      $('#title').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#abstract').val().trim() === '') {
+      error = true;
+      $('#abstract').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#content').val().trim() === '') {
+      error = true;
+      $('#content').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#expiry_date').val().trim() === '') {
+      error = true;
+      $('#expiry_date').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#instruments').val().trim() === '') {
+      error = true;
+      $('#instruments').after('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#categories').val().length < 1) {
+      error = true;
+      $('#categories').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#currency').val().length < 1) {
+      error = true;
+      $('#currency').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#major_sector').val().length < 1) {
+      error = true;
+      $('#major_sector').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#minor_sector').val().length < 1) {
+      error = true;
+      $('#minor_sector').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#region').val().length < 1) {
+      error = true;
+      $('#region').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if ($('#country').val().length < 1) {
+      error = true;
+      $('#country').parent().append('<small class="error text-danger">This field is required</small>');
+    }
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+
+  // Form Validtion Ends
+});
 
 /***/ }),
 
@@ -22632,7 +22986,7 @@ process.umask = function() { return 0; };
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"/Users/rishikeshsuvarna/Documents/ARU/Advanced Web Solutions/LaravelDemo/test-app-2","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_args":[["axios@0.21.4","C:\\\\team7\\\\wealth-management-system\\\\Backend"]],"_development":true,"_from":"axios@0.21.4","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"version","registry":true,"raw":"axios@0.21.4","name":"axios","escapedName":"axios","rawSpec":"0.21.4","saveSpec":null,"fetchSpec":"0.21.4"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_spec":"0.21.4","_where":"C:\\\\team7\\\\wealth-management-system\\\\Backend","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 

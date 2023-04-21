@@ -70,7 +70,9 @@ Route::name('client.')->prefix('client')->group(function(){
     });
 });
 
-// Relationship Manager
+/**
+ * Relationship Manager Routes.
+ */
 Route::name('relationship-manager.')->prefix('relationship-manager')->group(function(){
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     
@@ -89,7 +91,9 @@ Route::name('relationship-manager.')->prefix('relationship-manager')->group(func
     });
 });
 
-// Admin
+/**
+ * Admin Routes.
+ */
 Route::name('admin.')->prefix('admin')->group(function(){
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login');
     

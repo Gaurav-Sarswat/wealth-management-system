@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Hash;
 class RelationshipManagerController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display dashboard.
      *
      * @return \Illuminate\Http\Response
     */
@@ -32,21 +32,12 @@ class RelationshipManagerController extends Controller
         return view('relationship-manager.dashboard', compact('pagename', 'clients', 'ideas', 'accepted_ideas', 'pending_ideas'));
     }
 
-    public function login(Request $request)
-    {
-
-        $request->validate([
-            'email' => ['required', 'string', 'email'],
-            'password' => ['required'],
-        ]);      
-
-        $credentials = $request->only('email', 'password');
-        // return dd($request);
-        Auth::guard('rm')->attempt($credentials);
-
-        return redirect()->route('relationship-manager.dashboard');
-    }
-
+    /**
+     * Show the list of ideas.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
     public function list(Request $request)
     { 
         $categories = Category::all();
@@ -70,6 +61,12 @@ class RelationshipManagerController extends Controller
         return view('relationship-manager.rm-idea-list', $data);
     }
 
+    /**
+     * Show the details of an idea.
+     *
+     * @param  App\Models\Idea $id
+     * @return \Illuminate\View\View  $data
+     */
     public function view($id)
     { 
         $idea = Idea::find($id); 
@@ -81,6 +78,12 @@ class RelationshipManagerController extends Controller
         return view('relationship-manager.rm-view-idea', $data);
     }
 
+    /**
+     * Accept an idea.
+     *
+     * @param  \App\Models\Idea $id
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function accept($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -89,6 +92,12 @@ class RelationshipManagerController extends Controller
         return redirect()->route("relationship-manager.ideas")->with('success', 'Idea accepted successfully!');
     }
 
+    /**
+     * Reject an idea.
+     *
+     * @param  \App\Models\Idea $id
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function reject($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -97,10 +106,21 @@ class RelationshipManagerController extends Controller
         return redirect()->route("relationship-manager.ideas")->with('success', 'Idea rejected successfully!');
     }
 
+    /**
+     * View profile settings page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function user_profile_view()
     {
         return view('relationship-manager.edit-profile');
     }
+
+    /**
+     * Update profile.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function update_profile(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -123,10 +143,22 @@ class RelationshipManagerController extends Controller
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
+
+    /**
+     * View Change password window.
+     *
+     * @return \Illuminate\View\View
+     */
     public function change_password_view()
     {
         return view('relationship-manager.change-password');
     }
+
+    /**
+     * Method to Change password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function change_password(Request $request)
     {
         $request->validate([

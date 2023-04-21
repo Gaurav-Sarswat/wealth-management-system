@@ -14,7 +14,12 @@ use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
-    //
+
+    /**
+     * Show the Dashboard.
+     *
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $users = User::count();
@@ -39,6 +44,12 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('users', 'clients', 'relationship_manager', 'ideators', 'ideas', 'published_ideas', 'draft_ideas', 'accepted_ideas', 'rejected_ideas', 'pending_ideas', 'label_user', 'data_user', 'label_status', 'data_status', 'label_verification_status', 'data_verification_status', 'pagename'));
     }
 
+    /**
+     * Show the list of ideas.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\View\View
+     */
     public function list(Request $request)
     {
         
@@ -62,6 +73,12 @@ class AdminController extends Controller
         return view('admin.admin-idea-list', $data);
     }
 
+    /**
+     * Show the details of an idea.
+     *
+     * @param  App\Models\Idea $id
+     * @return \Illuminate\View\View  $data
+     */
     public function view($id)
     { 
         $idea = Idea::find($id); 
@@ -74,7 +91,12 @@ class AdminController extends Controller
         return view('admin.admin-view-idea', $data);
     }
 
-
+    /**
+     * Accept an idea.
+     *
+     * @param  \App\Models\Idea $id
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function accept($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -83,6 +105,12 @@ class AdminController extends Controller
         return redirect()->route("admin.ideas")->with('success', 'Idea accepted successfully!');
     }
 
+    /**
+     * Reject an idea.
+     *
+     * @param  \App\Models\Idea $id
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function reject($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -91,6 +119,12 @@ class AdminController extends Controller
         return redirect()->route("admin.ideas")->with('success', 'Idea rejected successfully!');
     }
 
+    /**
+     * Delete an idea.
+     *
+     * @param  \App\Models\Idea $id
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function delete_idea($id, Request $request)
     { 
         $idea = Idea::find($id);
@@ -98,10 +132,21 @@ class AdminController extends Controller
         return redirect()->route("admin.ideas")->with('success', 'Idea Deleted successfully!');
     }
 
+    /**
+     * View profile settings page.
+     *
+     * @return \Illuminate\View\View
+     */
     public function user_profile_view()
     {
         return view('admin.edit-profile');
     }
+
+    /**
+     * Update profile.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function update_profile(Request $request)
     {
         $user = User::find(Auth::user()->id);
@@ -124,10 +169,22 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Profile updated successfully!');
     }
+
+    /**
+     * View Change password window.
+     *
+     * @return \Illuminate\View\View
+     */
     public function change_password_view()
     {
         return view('admin.change-password');
     }
+
+    /**
+     * Method to Change password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
     public function change_password(Request $request)
     {
         $request->validate([

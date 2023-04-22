@@ -25,7 +25,7 @@
                                         <form action="{{ route('admin.add_minor_sector') }}" method="POST">
                                             @csrf
                                             <div class="form-group">
-                                                <x-input type="text" placeholder="Major Sector" name="name" class="form-control" />
+                                                <x-input type="text" placeholder="Minor Sector" name="name" class="form-control" />
                                             </div>
 
                                             <select id="majorsector" name="majorsector" class="form-control" data-placeholder="Select Major Sector">

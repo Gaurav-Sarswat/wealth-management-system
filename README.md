@@ -24,5 +24,10 @@
 
 ## Important
 Before registering any clients, you need to create admin, relationship managers first. 
+
+##Admin email & password
+e: admin@mailinator.com
+p: Pa$$w0rd!
+
 ## Changes
 * Changed git username from rishikeshideamagix to Rishikesh Suvarna

@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
             'number' => $request->number,
             'password' => Hash::make($request->password),
             'role' => 'client',
-            'manager_id' => $manager->id
+            'manager_id' => ($manager) ? $manager->id : null
         ]);
 
         event(new Registered($user));

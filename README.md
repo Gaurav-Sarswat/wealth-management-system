@@ -6,7 +6,7 @@
 
 2. Navigate to dist directory
 
-3. Copy .env.example To .env And Setup Database, Emails, Project Name.
+3. Copy .env.example To .env And Setup Database (DB file attached), Emails, Project Name.
 
 4. $composer install
 
@@ -22,5 +22,7 @@
 
 10. $php artisan serve
 
-# Changes
+## Important
+Before registering any clients, you need to create admin, relationship managers first. 
+## Changes
 * Changed git username from rishikeshideamagix to Rishikesh Suvarna
